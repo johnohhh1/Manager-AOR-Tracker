@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield } from 'lucide-react';
+import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet } from 'lucide-react';
 
 // Official Chili's Brand Colors
 const colors = {
@@ -262,6 +262,23 @@ const ManagerAORTracker = () => {
 
   const tasksByFrequency = manager && !manager.isGM ? getTasksByFrequency(manager.aor) : {};
 
+  // Report Generator
+  const generateReport = () => {
+    // Temporarily disabled until xlsx is installed
+    alert('📊 Report feature coming soon! Run: npm install xlsx file-saver');
+    /*
+    const generator = new ReportGenerator(
+      manager,
+      fiscalInfo,
+      taskCompletions,
+      managerResponsibilities
+    );
+    
+    const fileName = generator.generateExcelReport();
+    alert(`📊 Report downloaded: ${fileName}`);
+    */
+  };
+
   // Task completion handlers
   const toggleTask = (taskIndex) => {
     const today = new Date().toISOString().split('T')[0];
@@ -381,23 +398,47 @@ const ManagerAORTracker = () => {
         {/* Header */}
         <div className="text-white p-6" style={{ background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliRedAlt}, ${colors.chiliYellow})` }}>
           <div className="flex justify-between items-start mb-4">
-            <div>
-              <h1 className="text-2xl font-bold mb-1">🌶️ GM Dashboard - Team Progress</h1>
-              <p className="text-yellow-100">Welcome back, {manager.name}!</p>
-            </div>
-            <button 
-              onClick={() => {
-                if (window.confirm('Reset your profile?')) {
+            <div className="flex items-center">
+              <button 
+                onClick={() => {
                   setIsSetupComplete(false);
                   setManager(null);
                   setSetupForm({ managerName: '', aor: '', isGM: false });
                   setTaskCompletions({});
-                }
-              }}
-              className="bg-white bg-opacity-20 px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-30 transition-all cursor-pointer"
-            >
-              Reset
-            </button>
+                }}
+                className="bg-white bg-opacity-20 p-2 rounded-md mr-3 hover:bg-opacity-30 transition-all cursor-pointer"
+                title="Back to Setup"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <div>
+                <h1 className="text-2xl font-bold mb-1">🌶️ GM Dashboard - Team Progress</h1>
+                <p className="text-yellow-100">Welcome back, {manager.name}!</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button 
+                onClick={generateReport}
+                className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md text-sm font-medium transition-all cursor-pointer flex items-center"
+                title="Download Excel Report"
+              >
+                <FileSpreadsheet size={16} className="mr-2" />
+                Download Report
+              </button>
+              <button 
+                onClick={() => {
+                  if (window.confirm('Reset your profile?')) {
+                    setIsSetupComplete(false);
+                    setManager(null);
+                    setSetupForm({ managerName: '', aor: '', isGM: false });
+                    setTaskCompletions({});
+                  }
+                }}
+                className="bg-white bg-opacity-20 px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-30 transition-all cursor-pointer"
+              >
+                Reset
+              </button>
+            </div>
           </div>
           <p className="text-center text-yellow-100 text-lg font-medium">Excellence Through Leadership & Accountability</p>
         </div>
@@ -553,23 +594,47 @@ const ManagerAORTracker = () => {
         {/* Header */}
         <div className="text-white p-6" style={{ background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliRedAlt}, ${colors.chiliYellow})` }}>
           <div className="flex justify-between items-start mb-4">
-            <div>
-              <h1 className="text-2xl font-bold mb-1">🌶️ {aorData.title}</h1>
-              <p className="text-yellow-100">Welcome back, {manager.name}!</p>
-            </div>
-            <button 
-              onClick={() => {
-                if (window.confirm('Reset your profile?')) {
+            <div className="flex items-center">
+              <button 
+                onClick={() => {
                   setIsSetupComplete(false);
                   setManager(null);
                   setSetupForm({ managerName: '', aor: '', isGM: false });
                   setTaskCompletions({});
-                }
-              }}
-              className="bg-white bg-opacity-20 px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-30 transition-all cursor-pointer"
-            >
-              Reset
-            </button>
+                }}
+                className="bg-white bg-opacity-20 p-2 rounded-md mr-3 hover:bg-opacity-30 transition-all cursor-pointer"
+                title="Back to Setup"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <div>
+                <h1 className="text-2xl font-bold mb-1">🌶️ {aorData.title}</h1>
+                <p className="text-yellow-100">Welcome back, {manager.name}!</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button 
+                onClick={generateReport}
+                className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md text-sm font-medium transition-all cursor-pointer flex items-center"
+                title="Download Period Report"
+              >
+                <FileSpreadsheet size={16} className="mr-2" />
+                Report
+              </button>
+              <button 
+                onClick={() => {
+                  if (window.confirm('Reset your profile?')) {
+                    setIsSetupComplete(false);
+                    setManager(null);
+                    setSetupForm({ managerName: '', aor: '', isGM: false });
+                    setTaskCompletions({});
+                  }
+                }}
+                className="bg-white bg-opacity-20 px-4 py-2 rounded-md text-sm font-medium hover:bg-opacity-30 transition-all cursor-pointer"
+              >
+                Reset
+              </button>
+            </div>
           </div>
           <p className="text-center text-yellow-100 text-lg font-medium">Excellence Through Leadership & Accountability</p>
         </div>
