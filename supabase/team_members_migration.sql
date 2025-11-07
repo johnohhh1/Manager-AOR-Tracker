@@ -1,5 +1,8 @@
+-- Drop existing table if it exists to start fresh
+DROP TABLE IF EXISTS team_members CASCADE;
+
 -- Team Members Table
-CREATE TABLE IF NOT EXISTS team_members (
+CREATE TABLE team_members (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
   phone TEXT,
@@ -41,8 +44,8 @@ CREATE POLICY "Anyone can delete team members"
   USING (true);
 
 -- Create index for faster lookups
-CREATE INDEX IF NOT EXISTS idx_team_members_name ON team_members(name);
-CREATE INDEX IF NOT EXISTS idx_team_members_position ON team_members(position);
+CREATE INDEX idx_team_members_name ON team_members(name);
+CREATE INDEX idx_team_members_position ON team_members(position);
 
 -- Function to update the updated_at timestamp
 CREATE OR REPLACE FUNCTION update_team_members_updated_at()
