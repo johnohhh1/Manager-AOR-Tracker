@@ -48,16 +48,25 @@ CREATE INDEX idx_team_members_name ON team_members(name);
 CREATE INDEX idx_team_members_position ON team_members(position);
 
 -- Function to update the updated_at timestamp
-CREATE OR REPLACE FUNCTION update_team_members_updated_at()
-RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION public.update_team_members_updated_at()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = pg_temp, public
+SECURITY DEFINER
+AS $$
 BEGIN
   NEW.updated_at = NOW();
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$;
+
+-- Revoke public access and grant to authenticated users only
+REVOKE ALL ON FUNCTION public.update_team_members_updated_at() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.update_team_members_updated_at() TO authenticated;
 
 -- Trigger to automatically update updated_at
+DROP TRIGGER IF EXISTS team_members_updated_at ON public.team_members;
 CREATE TRIGGER team_members_updated_at
-  BEFORE UPDATE ON team_members
+  BEFORE UPDATE ON public.team_members
   FOR EACH ROW
-  EXECUTE FUNCTION update_team_members_updated_at();
+  EXECUTE FUNCTION public.update_team_members_updated_at();
