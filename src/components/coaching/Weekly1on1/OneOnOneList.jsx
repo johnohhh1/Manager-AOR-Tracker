@@ -12,10 +12,12 @@ import {
   Star,
   Target,
   TrendingUp,
-  Filter
+  Filter,
+  X
 } from 'lucide-react';
 import { format, subDays, isThisWeek } from 'date-fns';
 import { useCoaching } from '../../../hooks/useCoaching';
+import { supabase } from '../../../supabase';
 
 // Chili's Brand Colors
 const colors = {
@@ -38,6 +40,7 @@ const OneOnOneList = ({ manager }) => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPosition, setFilterPosition] = useState('all');
+  const [showTeamMemberModal, setShowTeamMemberModal] = useState(false);
   const [stats, setStats] = useState({
     thisWeek: 0,
     overdue: 0,
@@ -58,12 +61,15 @@ const OneOnOneList = ({ manager }) => {
 
     setLoading(true);
     try {
-      // Load team members
-      const { data: teamData } = manager.isGM
-        ? await coaching.teamMembers.getAll()
-        : await coaching.teamMembers.getByManagerId(manager.name);
+      // Load team members from the new team_members table
+      const { data: teamData, error: teamError } = await supabase
+        .from('team_members')
+        .select('*')
+        .order('name');
 
-      if (teamData) {
+      if (teamError) {
+        console.error('Error loading team members:', teamError);
+      } else if (teamData) {
         setTeamMembers(teamData);
         calculateStats(teamData);
       }
@@ -168,6 +174,119 @@ const OneOnOneList = ({ manager }) => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
+      {/* Team Member Selection Modal */}
+      {showTeamMemberModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '20px'
+        }}>
+          <div style={{
+            backgroundColor: colors.chiliNavy,
+            borderRadius: '12px',
+            maxWidth: '600px',
+            width: '100%',
+            maxHeight: '80vh',
+            overflow: 'auto',
+            border: `3px solid ${colors.chiliGreen}`
+          }}>
+            <div style={{
+              padding: '20px',
+              borderBottom: `2px solid ${colors.chiliGreen}`,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <h2 style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}>
+                Select Team Member
+              </h2>
+              <button
+                onClick={() => setShowTeamMemberModal(false)}
+                style={{ color: 'white', cursor: 'pointer' }}
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div style={{ padding: '20px' }}>
+              {teamMembers.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '40px' }}>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '20px' }}>
+                    No team members found. Please add team members first.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setShowTeamMemberModal(false);
+                      navigate('/team');
+                    }}
+                    style={{
+                      backgroundColor: colors.chiliGreen,
+                      color: 'white',
+                      padding: '12px 24px',
+                      borderRadius: '8px',
+                      fontWeight: '600',
+                      border: 'none',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Go to Team Management
+                  </button>
+                </div>
+              ) : (
+                <div style={{ display: 'grid', gap: '12px' }}>
+                  {teamMembers.map(member => (
+                    <button
+                      key={member.id}
+                      onClick={() => {
+                        setShowTeamMemberModal(false);
+                        navigate(`/coaching/1on1s/new?teamMemberId=${member.id}&teamMemberName=${encodeURIComponent(member.name)}&position=${encodeURIComponent(member.position)}`);
+                      }}
+                      style={{
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        border: `2px solid rgba(255,255,255,0.2)`,
+                        borderRadius: '8px',
+                        padding: '16px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                        e.currentTarget.style.borderColor = colors.chiliGreen;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)';
+                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div>
+                          <div style={{ color: 'white', fontWeight: '600', marginBottom: '4px' }}>
+                            {member.name}
+                          </div>
+                          <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>
+                            {member.position}
+                          </div>
+                        </div>
+                        <ChevronRight size={20} style={{ color: colors.chiliGreen }} />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="bg-white shadow-sm p-4">
         <div className="flex items-center justify-between">
@@ -188,12 +307,12 @@ const OneOnOneList = ({ manager }) => {
             </div>
           </div>
           <button
-            onClick={() => navigate('/coaching/1on1s/new')}
+            onClick={() => setShowTeamMemberModal(true)}
             className="px-4 py-2 rounded-md text-white font-medium hover:opacity-90 transition-opacity flex items-center"
             style={{ backgroundColor: colors.chiliGreen }}
           >
             <Plus size={20} className="mr-2" />
-            New 1:1
+            Add Team Member
           </button>
         </div>
       </div>
