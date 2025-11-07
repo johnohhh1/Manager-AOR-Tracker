@@ -402,7 +402,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
   }
 
   // GM Dashboard View
-  if (manager?.isGM && currentView === 'home') {
+  if (manager?.is_gm && currentView === 'home') {
     return (
       <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
         {/* Header */}
@@ -595,51 +595,11 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
 
   // Manager Home Screen
   if (currentView === 'home') {
-    // GM with no primary_aor should use GM Dashboard
-    if (manager.is_gm && !manager.primary_aor) {
-      return (
-        <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: colors.chiliCream }}>
-          <div className="text-center p-8" style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            border: `3px solid ${colors.chiliRed}`,
-            maxWidth: '500px'
-          }}>
-            <Crown size={64} style={{ color: colors.chiliRed, margin: '0 auto 1rem' }} />
-            <h1 className="text-2xl font-bold mb-4" style={{ color: colors.chiliNavy }}>
-              GM Dashboard Coming Soon
-            </h1>
-            <p className="mb-4" style={{ color: colors.chiliBrown }}>
-              As GM/Managing Partner, you'll have access to:
-            </p>
-            <ul className="text-left mb-6 space-y-2" style={{ color: colors.chiliBrown }}>
-              <li>• Full team visibility across all 3 AORs</li>
-              <li>• Real-time manager performance metrics</li>
-              <li>• AOR assignment management</li>
-              <li>• Cross-AOR analytics and reporting</li>
-            </ul>
-            <button
-              onClick={() => window.location.href = '/'}
-              style={{
-                backgroundColor: colors.chiliRed,
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '8px',
-                fontWeight: 'bold',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              ← Back to Login
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    const dailyStats = getCompletionStats('daily');
-    const weeklyStats = getCompletionStats('weekly');
-    const aorData = managerResponsibilities[manager.primary_aor];
+    // If not GM, show normal manager dashboard
+    if (!manager.is_gm && manager.primary_aor) {
+      const dailyStats = getCompletionStats('daily');
+      const weeklyStats = getCompletionStats('weekly');
+      const aorData = managerResponsibilities[manager.primary_aor];
 
     return (
       <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
@@ -826,6 +786,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
         </div>
       </div>
     );
+    }
   }
 
   // Tasks View
