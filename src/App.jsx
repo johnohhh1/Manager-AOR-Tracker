@@ -221,13 +221,18 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
   const [localManager, setLocalManager] = useState(null);
   const manager = propManager || localManager;
   const setManager = propSetManager || setLocalManager;
-  
+
   // GM View - simulate manager data (in real app, this would come from database)
   const [managerTeam, setManagerTeam] = useState([
     { name: 'Tiffany Larkins', aor: 'culinary', completions: {} },
     { name: 'Tiff Wright', aor: 'hospitality', completions: {} },
     { name: 'Jason Roberts', aor: 'togoBar', completions: {} }
   ]);
+
+  // Guard clause - don't render anything if no manager (AFTER all hooks)
+  if (!manager) {
+    return null;
+  }
 
   // Get tasks organized by frequency
   const getTasksByFrequency = (aor) => {
@@ -265,7 +270,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
     return organized;
   };
 
-  const tasksByFrequency = manager && !manager.is_gm ? getTasksByFrequency(manager.primary_aor) : {};
+  const tasksByFrequency = (manager && !manager.is_gm && manager.primary_aor) ? getTasksByFrequency(manager.primary_aor) : {};
 
   // Report Generator
   const generateReport = () => {
@@ -590,6 +595,48 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
 
   // Manager Home Screen
   if (currentView === 'home') {
+    // GM with no primary_aor should use GM Dashboard
+    if (manager.is_gm && !manager.primary_aor) {
+      return (
+        <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: colors.chiliCream }}>
+          <div className="text-center p-8" style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            border: `3px solid ${colors.chiliRed}`,
+            maxWidth: '500px'
+          }}>
+            <Crown size={64} style={{ color: colors.chiliRed, margin: '0 auto 1rem' }} />
+            <h1 className="text-2xl font-bold mb-4" style={{ color: colors.chiliNavy }}>
+              GM Dashboard Coming Soon
+            </h1>
+            <p className="mb-4" style={{ color: colors.chiliBrown }}>
+              As GM/Managing Partner, you'll have access to:
+            </p>
+            <ul className="text-left mb-6 space-y-2" style={{ color: colors.chiliBrown }}>
+              <li>• Full team visibility across all 3 AORs</li>
+              <li>• Real-time manager performance metrics</li>
+              <li>• AOR assignment management</li>
+              <li>• Cross-AOR analytics and reporting</li>
+            </ul>
+            <button
+              onClick={() => window.location.href = '/login'}
+              style={{
+                backgroundColor: colors.chiliRed,
+                color: 'white',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              ← Back to Login
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     const dailyStats = getCompletionStats('daily');
     const weeklyStats = getCompletionStats('weekly');
     const aorData = managerResponsibilities[manager.primary_aor];
