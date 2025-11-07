@@ -212,19 +212,21 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
       {/* Header */}
-      <div className="bg-white shadow-sm p-4 flex items-center justify-between">
+      <div className="shadow-sm p-4 flex items-center justify-between" style={{
+        background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliNavy})`
+      }}>
         <div className="flex items-center">
           <button
             onClick={() => navigate('/coaching/observations')}
             className="mr-4 hover:opacity-70 transition-opacity"
           >
-            <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
+            <ChevronLeft size={24} style={{ color: 'white' }} />
           </button>
           <div>
-            <h1 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
+            <h1 className="text-xl font-bold text-white">
               {existingObservation ? 'Edit' : 'New'} Floor Observation
             </h1>
-            <p className="text-sm" style={{ color: colors.chiliBrown }}>
+            <p className="text-sm" style={{ color: colors.chiliCream }}>
               Document coaching and team performance
             </p>
           </div>
@@ -237,12 +239,15 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
           }}
           className="p-2 hover:opacity-70 transition-opacity"
         >
-          <X size={24} style={{ color: colors.chiliGray }} />
+          <X size={24} style={{ color: 'white' }} />
         </button>
       </div>
 
       {/* Progress Steps */}
-      <div className="bg-white border-b p-4">
+      <div className="border-b p-4" style={{
+        backgroundColor: 'rgba(255,255,255,0.05)',
+        borderColor: 'rgba(255,255,255,0.1)'
+      }}>
         <div className="flex justify-between max-w-2xl mx-auto">
           {steps.map((step, index) => (
             <div
@@ -336,9 +341,12 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
               const teamMembersForPosition = teamMembers.filter(tm => tm.position === positionName);
 
               return (
-              <div key={position} className="bg-white rounded-lg p-6 shadow-md">
+              <div key={position} className="rounded-lg p-6 shadow-md" style={{
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                border: `2px solid rgba(255,255,255,0.1)`
+              }}>
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-bold capitalize" style={{ color: colors.chiliNavy }}>
+                  <h3 className="font-bold capitalize text-white">
                     {position.replace(/([A-Z])/g, ' $1').trim()}
                   </h3>
 
@@ -349,10 +357,12 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       ...prev,
                       [position]: e.target.value
                     }))}
-                    className="px-3 py-1.5 border rounded-md text-sm"
+                    className="px-3 py-1.5 rounded-md text-sm"
                     style={{
                       minWidth: '200px',
-                      borderColor: colors.chiliGray
+                      backgroundColor: colors.chiliNavy,
+                      color: 'white',
+                      border: `1px solid ${colors.chiliGray}`
                     }}
                   >
                     <option value="">Select team member...</option>
@@ -367,7 +377,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                 <div className="space-y-3">
                   {behaviors.map((behavior) => (
                     <div key={behavior} className="flex items-center justify-between">
-                      <span className="text-sm" style={{ color: colors.chiliBrown }}>
+                      <span className="text-sm" style={{ color: colors.chiliCream }}>
                         {behavior}
                       </span>
                       <div className="flex gap-2">
