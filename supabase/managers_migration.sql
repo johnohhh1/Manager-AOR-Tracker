@@ -1,5 +1,6 @@
 -- Manager Accounts System Migration
 -- Creates tables for multi-manager system with AOR assignments
+-- John Olenski = GM/Managing Partner (oversees ALL AORs)
 
 -- Drop existing tables if they exist
 DROP TABLE IF EXISTS manager_aor_metrics CASCADE;
@@ -12,7 +13,7 @@ CREATE TABLE public.managers (
   name TEXT NOT NULL,
   email TEXT UNIQUE NOT NULL,
   phone TEXT,
-  primary_aor TEXT NOT NULL CHECK (primary_aor IN ('culinary', 'hospitality', 'togoBar')),
+  primary_aor TEXT CHECK (primary_aor IN ('culinary', 'hospitality', 'togoBar')),
   is_gm BOOLEAN DEFAULT false,
   hire_date DATE,
   avatar_url TEXT,
@@ -25,7 +26,7 @@ CREATE TABLE public.manager_aor_activity (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   manager_id UUID REFERENCES public.managers(id) ON DELETE CASCADE,
   current_aor TEXT NOT NULL CHECK (current_aor IN ('culinary', 'hospitality', 'togoBar')),
-  primary_aor TEXT NOT NULL CHECK (primary_aor IN ('culinary', 'hospitality', 'togoBar')),
+  primary_aor TEXT CHECK (primary_aor IN ('culinary', 'hospitality', 'togoBar')),
   session_start TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   last_activity TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -81,8 +82,10 @@ CREATE TRIGGER managers_updated_at
   EXECUTE FUNCTION public.update_managers_updated_at();
 
 -- Insert sample manager data
+-- JOHN OLENSKI = GM/Managing Partner of Chili's Auburn Hills #605
+-- He oversees ALL 3 AORs (primary_aor = NULL)
 INSERT INTO public.managers (name, email, primary_aor, is_gm, hire_date) VALUES
-('John Olenski', 'johnolenski@gmail.com', 'culinary', true, '2020-01-01'),
+('John Olenski', 'johnolenski@gmail.com', NULL, true, '2020-01-01'),
 ('Tiffany Larkins', 'tlarkins@chilis605.com', 'culinary', false, '2021-03-15'),
 ('Tiff Wright', 'twright@chilis605.com', 'hospitality', false, '2021-06-01'),
 ('Jason Roberts', 'jroberts@chilis605.com', 'togoBar', false, '2022-01-10');
@@ -91,12 +94,13 @@ INSERT INTO public.managers (name, email, primary_aor, is_gm, hire_date) VALUES
 SELECT
   name,
   email,
-  primary_aor,
+  COALESCE(primary_aor, 'ALL (GM)') as primary_aor,
   is_gm,
   CASE
+    WHEN is_gm THEN 'GM/Managing Partner - Oversees All AORs'
     WHEN primary_aor = 'culinary' THEN 'Culinary Leader / SAFE Leader'
     WHEN primary_aor = 'hospitality' THEN 'Hospitality Leader'
     WHEN primary_aor = 'togoBar' THEN 'To-Go/Bar Leader'
-  END as aor_title
+  END as role_description
 FROM public.managers
 ORDER BY is_gm DESC, name;
