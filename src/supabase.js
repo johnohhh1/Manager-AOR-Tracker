@@ -5,12 +5,34 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables!');
-  console.log('Please create a .env file with VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY');
+// Check if Supabase is configured
+const isSupabaseConfigured = supabaseUrl && supabaseAnonKey &&
+  !supabaseUrl.includes('your_supabase_project_url_here') &&
+  !supabaseAnonKey.includes('your_supabase_anon_key_here');
+
+if (!isSupabaseConfigured) {
+  console.warn('⚠️ Supabase not configured - app will work in local-only mode');
+  console.log('To enable cloud sync, add your Supabase credentials to .env file');
 }
 
-export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+// Create a mock client if Supabase is not configured
+const createMockClient = () => ({
+  from: () => ({
+    insert: async () => ({ data: null, error: { message: 'Supabase not configured' } }),
+    select: () => ({
+      eq: () => ({
+        single: async () => ({ data: null, error: { message: 'Supabase not configured' } })
+      })
+    }),
+    upsert: async () => ({ data: null, error: { message: 'Supabase not configured' } }),
+    delete: () => ({ eq: async () => ({ error: { message: 'Supabase not configured' } }) })
+  }),
+  rpc: async () => ({ data: null, error: { message: 'Supabase not configured' } })
+});
+
+export const supabase = isSupabaseConfigured
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : createMockClient();
 
 // Database helper functions
 export const db = {

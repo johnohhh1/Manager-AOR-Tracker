@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet } from 'lucide-react';
+import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet, GraduationCap } from 'lucide-react';
 
 // Official Chili's Brand Colors
 const colors = {
@@ -202,7 +202,8 @@ const getFiscalInfo = () => {
 
 const fiscalInfo = getFiscalInfo();
 
-const ManagerAORTracker = () => {
+const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager }) => {
+
   // Setup state
   const [isSetupComplete, setIsSetupComplete] = useState(false);
   const [setupForm, setSetupForm] = useState({
@@ -210,12 +211,16 @@ const ManagerAORTracker = () => {
     aor: '',
     isGM: false
   });
-  
+
   // App state
   const [currentView, setCurrentView] = useState('home');
   const [selectedFrequency, setSelectedFrequency] = useState('daily');
   const [taskCompletions, setTaskCompletions] = useState({});
-  const [manager, setManager] = useState(null);
+
+  // Use prop manager if provided, otherwise use local state
+  const [localManager, setLocalManager] = useState(null);
+  const manager = propManager || localManager;
+  const setManager = propSetManager || setLocalManager;
   
   // GM View - simulate manager data (in real app, this would come from database)
   const [managerTeam, setManagerTeam] = useState([
@@ -737,6 +742,23 @@ const ManagerAORTracker = () => {
               <div>
                 <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Quarterly Tasks</h3>
                 <p style={{ color: colors.chiliBrown }}>Quarterly Responsibilities</p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={() => window.location.href = '/coaching'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliRed }}
+          >
+            <div className="flex items-center">
+              <GraduationCap size={32} style={{ color: colors.chiliRed }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Coaching Tools</h3>
+                <p style={{ color: colors.chiliBrown }}>Floor Observations & Team Development</p>
+                <p className="text-sm font-medium" style={{ color: colors.chiliRed }}>
+                  New Feature!
+                </p>
               </div>
             </div>
           </button>
