@@ -756,7 +756,21 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               <div>
                 <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Coaching Tools</h3>
                 <p style={{ color: colors.chiliBrown }}>Floor Observations & Team Development</p>
-                <p className="text-sm font-medium" style={{ color: colors.chiliRed }}>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={() => window.location.href = '/team'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliGreen }}
+          >
+            <div className="flex items-center">
+              <Users size={32} style={{ color: colors.chiliGreen }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Team Management</h3>
+                <p style={{ color: colors.chiliBrown }}>Manage Your Team Members</p>
+                <p className="text-sm font-medium" style={{ color: colors.chiliGreen }}>
                   New Feature!
                 </p>
               </div>
