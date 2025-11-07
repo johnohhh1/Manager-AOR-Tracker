@@ -265,7 +265,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
     return organized;
   };
 
-  const tasksByFrequency = manager && !manager.isGM ? getTasksByFrequency(manager.aor) : {};
+  const tasksByFrequency = manager && !manager.is_gm ? getTasksByFrequency(manager.primary_aor) : {};
 
   // Report Generator
   const generateReport = () => {
@@ -592,7 +592,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
   if (currentView === 'home') {
     const dailyStats = getCompletionStats('daily');
     const weeklyStats = getCompletionStats('weekly');
-    const aorData = managerResponsibilities[manager.aor];
+    const aorData = managerResponsibilities[manager.primary_aor];
 
     return (
       <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
@@ -801,7 +801,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               {selectedFrequency.charAt(0).toUpperCase() + selectedFrequency.slice(1)} Tasks
             </h1>
             <p className="text-sm" style={{ color: colors.chiliBrown }}>
-              {manager.name} • {managerResponsibilities[manager.aor].title}
+              {manager.name} • {managerResponsibilities[manager.primary_aor].title}
             </p>
           </div>
         </div>
