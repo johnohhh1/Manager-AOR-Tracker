@@ -5,6 +5,11 @@ import CoachingDashboard from './components/coaching/CoachingDashboard';
 import ObservationList from './components/coaching/FloorObservation/ObservationList';
 import ObservationForm from './components/coaching/FloorObservation/ObservationForm';
 import OneOnOneList from './components/coaching/Weekly1on1/OneOnOneList';
+import OneOnOneForm from './components/coaching/Weekly1on1/OneOnOneForm';
+import TrainingScenarios from './components/coaching/TrainingScenarios';
+import CoachingGuide from './components/coaching/CoachingGuide';
+import QuickReference from './components/coaching/QuickReference';
+import Analytics from './components/coaching/Analytics';
 
 const AppFixed = () => {
   const [manager, setManager] = useState(() => {
@@ -54,57 +59,37 @@ const AppFixed = () => {
           path="/coaching/1on1s"
           element={manager ? <OneOnOneList manager={manager} /> : <Navigate to="/" replace />}
         />
-
-        {/* Placeholder routes - to be implemented in Phase 2 */}
         <Route
           path="/coaching/1on1s/new"
-          element={
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <h2>1:1 Form - Phase 2</h2>
-              <p>This feature will be implemented in Phase 2</p>
-              <button onClick={() => window.location.href = '/coaching/1on1s'}>← Back to 1:1s</button>
-            </div>
-          }
+          element={manager ? <OneOnOneForm manager={manager} /> : <Navigate to="/" replace />}
         />
+        <Route
+          path="/coaching/1on1s/:id"
+          element={manager ? <OneOnOneForm manager={manager} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Training Scenarios */}
         <Route
           path="/coaching/scenarios"
-          element={
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <h2>Training Scenarios - Phase 2</h2>
-              <p>This feature will be implemented in Phase 2</p>
-              <button onClick={() => window.location.href = '/coaching'}>← Back to Dashboard</button>
-            </div>
-          }
+          element={manager ? <TrainingScenarios manager={manager} /> : <Navigate to="/" replace />}
         />
+
+        {/* Coaching Guide */}
         <Route
           path="/coaching/guide"
-          element={
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <h2>Coaching Guide - Phase 2</h2>
-              <p>This feature will be implemented in Phase 2</p>
-              <button onClick={() => window.location.href = '/coaching'}>← Back to Dashboard</button>
-            </div>
-          }
+          element={manager ? <CoachingGuide manager={manager} /> : <Navigate to="/" replace />}
         />
+
+        {/* Quick Reference */}
         <Route
           path="/coaching/quick-reference"
-          element={
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <h2>Quick Reference - Phase 2</h2>
-              <p>This feature will be implemented in Phase 2</p>
-              <button onClick={() => window.location.href = '/coaching'}>← Back to Dashboard</button>
-            </div>
-          }
+          element={manager ? <QuickReference manager={manager} /> : <Navigate to="/" replace />}
         />
+
+        {/* Analytics */}
         <Route
           path="/coaching/analytics"
-          element={
-            <div style={{ padding: '40px', textAlign: 'center' }}>
-              <h2>Analytics - Phase 2</h2>
-              <p>This feature will be implemented in Phase 2</p>
-              <button onClick={() => window.location.href = '/coaching'}>← Back to Dashboard</button>
-            </div>
-          }
+          element={manager ? <Analytics manager={manager} /> : <Navigate to="/" replace />}
         />
 
         {/* Catch all - redirect to home */}
