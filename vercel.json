@@ -4,5 +4,9 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "VITE_SUPABASE_URL": "https://okxfbabeyolgidzwqcxw.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9reGZiYWJleW9sZ2lkendxY3h3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxNDUxNTEsImV4cCI6MjA3NzcyMTE1MX0.4e_b6-W4DOhNtmvBQZ_bcc-X0pd_lawHQiDiqvicioQ"
+  }
 }
