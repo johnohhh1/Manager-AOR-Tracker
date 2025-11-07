@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { useCoaching } from '../../../hooks/useCoaching';
+import { supabase } from '../../../supabase';
 
 // Chili's Brand Colors
 const colors = {
@@ -81,14 +82,20 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [selectedTeamMembers, setSelectedTeamMembers] = useState({});
 
-  // Load team members from Supabase
+  // Load team members from Supabase team_members table
   useEffect(() => {
     const loadTeamMembers = async () => {
       try {
-        const members = await coaching.teamMembers.getAll();
-        setTeamMembers(members || []);
+        const { data, error } = await supabase
+          .from('team_members')
+          .select('*')
+          .order('name');
+
+        if (error) throw error;
+        setTeamMembers(data || []);
       } catch (error) {
         console.error('Error loading team members:', error);
+        setTeamMembers([]);
       }
     };
     loadTeamMembers();
