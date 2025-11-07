@@ -10,6 +10,7 @@ import TrainingScenarios from './components/coaching/TrainingScenarios';
 import CoachingGuide from './components/coaching/CoachingGuide';
 import QuickReference from './components/coaching/QuickReference';
 import Analytics from './components/coaching/Analytics';
+import TeamManagement from './components/TeamManagement';
 
 const AppFixed = () => {
   const [manager, setManager] = useState(() => {
@@ -90,6 +91,12 @@ const AppFixed = () => {
         <Route
           path="/coaching/analytics"
           element={manager ? <Analytics manager={manager} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Team Management */}
+        <Route
+          path="/team"
+          element={manager ? <TeamManagement manager={manager} /> : <Navigate to="/" replace />}
         />
 
         {/* Catch all - redirect to home */}
