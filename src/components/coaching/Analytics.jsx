@@ -96,14 +96,14 @@ const Analytics = ({ manager }) => {
 
   const statCards = [
     { icon: BarChart3, label: 'Floor Observations', value: stats.observations, color: colors.chiliRed },
-    { icon: Users, label: 'Weekly 1:1s', value: stats.oneOnOnes, color: colors.chiliNavy },
+    { icon: Users, label: 'Weekly 1:1s', value: stats.oneOnOnes, color: colors.chiliGreen },
     { icon: Users, label: 'Team Members Coached', value: stats.teamMembersCoached, color: colors.chiliGreen },
     { icon: Award, label: 'Recognitions Given', value: stats.recognitions, color: colors.chiliYellow },
     { icon: TrendingUp, label: 'Coaching Priorities', value: stats.coachingPriorities, color: colors.chiliRed }
   ];
 
   return (
-    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', padding: '20px' }}>
+    <div style={{ backgroundColor: colors.chiliNavy, minHeight: '100vh', padding: '20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -115,7 +115,7 @@ const Analytics = ({ manager }) => {
             <span>Back to Dashboard</span>
           </button>
 
-          <h1 className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
+          <h1 className="text-2xl font-bold" style={{ color: colors.chiliGreen }}>
             Coaching Analytics
           </h1>
 
@@ -143,7 +143,7 @@ const Analytics = ({ manager }) => {
         {/* Loading State */}
         {loading ? (
           <div className="bg-white rounded-lg shadow p-12 text-center">
-            <p style={{ color: colors.chiliGray }}>Loading analytics...</p>
+            <p style={{ color: 'rgba(255,255,255,0.7)' }}>Loading analytics...</p>
           </div>
         ) : (
           <>
@@ -162,7 +162,7 @@ const Analytics = ({ manager }) => {
                         {card.value}
                       </div>
                     </div>
-                    <div className="text-sm font-medium" style={{ color: colors.chiliGray }}>
+                    <div className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>
                       {card.label}
                     </div>
                   </div>
@@ -172,7 +172,7 @@ const Analytics = ({ manager }) => {
 
             {/* Manager Performance */}
             <div className="bg-white rounded-lg shadow p-6 mb-6">
-              <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliNavy }}>
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliGreen }}>
                 <TrendingUp size={24} />
                 Manager Performance
               </h2>
@@ -180,8 +180,8 @@ const Analytics = ({ manager }) => {
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="font-medium" style={{ color: colors.chiliNavy }}>Floor Observations</span>
-                    <span style={{ color: colors.chiliGray }}>
+                    <span className="font-medium" style={{ color: colors.chiliGreen }}>Floor Observations</span>
+                    <span style={{ color: 'rgba(255,255,255,0.7)' }}>
                       {stats.observations} / {dateRange === 'week' ? '5' : dateRange === 'month' ? '20' : '60'} target
                     </span>
                   </div>
@@ -198,8 +198,8 @@ const Analytics = ({ manager }) => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="font-medium" style={{ color: colors.chiliNavy }}>Weekly 1:1s</span>
-                    <span style={{ color: colors.chiliGray }}>
+                    <span className="font-medium" style={{ color: colors.chiliGreen }}>Weekly 1:1s</span>
+                    <span style={{ color: 'rgba(255,255,255,0.7)' }}>
                       {stats.oneOnOnes} / {dateRange === 'week' ? '3' : dateRange === 'month' ? '12' : '36'} target
                     </span>
                   </div>
@@ -216,8 +216,8 @@ const Analytics = ({ manager }) => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="font-medium" style={{ color: colors.chiliNavy }}>Team Recognition</span>
-                    <span style={{ color: colors.chiliGray }}>
+                    <span className="font-medium" style={{ color: colors.chiliGreen }}>Team Recognition</span>
+                    <span style={{ color: 'rgba(255,255,255,0.7)' }}>
                       {stats.recognitions} given
                     </span>
                   </div>
@@ -236,18 +236,18 @@ const Analytics = ({ manager }) => {
 
             {/* Insights */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliNavy }}>
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliGreen }}>
                 <Calendar size={24} />
                 Insights & Recommendations
               </h2>
 
               <div className="space-y-4">
                 {stats.observations === 0 && (
-                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: '#f8f9fa' }}>
+                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: colors.chiliNavy }}>
                     <span style={{ color: colors.chiliRed }}>📊</span>
                     <div>
-                      <p className="font-semibold" style={{ color: colors.chiliNavy }}>No Floor Observations Yet</p>
-                      <p className="text-sm" style={{ color: colors.chiliGray }}>
+                      <p className="font-semibold" style={{ color: colors.chiliGreen }}>No Floor Observations Yet</p>
+                      <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
                         Start documenting your daily observations to track team behaviors and coaching opportunities.
                       </p>
                     </div>
@@ -255,11 +255,11 @@ const Analytics = ({ manager }) => {
                 )}
 
                 {stats.oneOnOnes === 0 && (
-                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: '#f8f9fa' }}>
-                    <span style={{ color: colors.chiliNavy }}>👥</span>
+                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: colors.chiliNavy }}>
+                    <span style={{ color: colors.chiliGreen }}>👥</span>
                     <div>
-                      <p className="font-semibold" style={{ color: colors.chiliNavy }}>Schedule Weekly 1:1s</p>
-                      <p className="text-sm" style={{ color: colors.chiliGray }}>
+                      <p className="font-semibold" style={{ color: colors.chiliGreen }}>Schedule Weekly 1:1s</p>
+                      <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
                         Regular 1:1 meetings help build relationships and drive individual development.
                       </p>
                     </div>
@@ -267,11 +267,11 @@ const Analytics = ({ manager }) => {
                 )}
 
                 {stats.recognitions > 0 && (
-                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: '#f8f9fa' }}>
+                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: colors.chiliNavy }}>
                     <span style={{ color: colors.chiliGreen }}>🔥</span>
                     <div>
-                      <p className="font-semibold" style={{ color: colors.chiliNavy }}>Great Recognition!</p>
-                      <p className="text-sm" style={{ color: colors.chiliGray }}>
+                      <p className="font-semibold" style={{ color: colors.chiliGreen }}>Great Recognition!</p>
+                      <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
                         You've given {stats.recognitions} recognition{stats.recognitions !== 1 ? 's' : ''} this {dateRange}. Keep celebrating wins!
                       </p>
                     </div>
@@ -279,11 +279,11 @@ const Analytics = ({ manager }) => {
                 )}
 
                 {stats.coachingPriorities > 5 && (
-                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: '#f8f9fa' }}>
+                  <div className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: colors.chiliNavy }}>
                     <span style={{ color: colors.chiliYellow }}>⚠️</span>
                     <div>
-                      <p className="font-semibold" style={{ color: colors.chiliNavy }}>Multiple Coaching Priorities</p>
-                      <p className="text-sm" style={{ color: colors.chiliGray }}>
+                      <p className="font-semibold" style={{ color: colors.chiliGreen }}>Multiple Coaching Priorities</p>
+                      <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
                         You have {stats.coachingPriorities} open coaching priorities. Focus on 1-2 behaviors per team member for best results.
                       </p>
                     </div>

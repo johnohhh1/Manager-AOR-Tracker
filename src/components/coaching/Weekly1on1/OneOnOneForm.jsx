@@ -769,7 +769,7 @@ const OneOnOneForm = ({ manager }) => {
   );
 
   return (
-    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', padding: '20px' }}>
+    <div style={{ backgroundColor: colors.chiliNavy, minHeight: '100vh', padding: '20px' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         {/* Header */}
         <div className="flex items-center justify-between mb-6">

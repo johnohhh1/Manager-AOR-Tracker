@@ -167,7 +167,7 @@ const OneOnOneList = ({ manager }) => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f8f9fa' }}>
+    <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
       {/* Header */}
       <div className="bg-white shadow-sm p-4">
         <div className="flex items-center justify-between">
@@ -384,7 +384,7 @@ const OneOnOneList = ({ manager }) => {
                               </h4>
                               {activeTab === 'team' && oneOnOne.manager_id !== manager.name && (
                                 <span className="text-xs px-2 py-1 rounded-full" style={{
-                                  backgroundColor: '#f8f9fa',
+                                  backgroundColor: colors.chiliNavy,
                                   color: colors.chiliBrown
                                 }}>
                                   by {oneOnOne.manager_name}
@@ -413,7 +413,7 @@ const OneOnOneList = ({ manager }) => {
                         </div>
 
                         {oneOnOne.focus_behavior && (
-                          <div className="mt-3 p-2 rounded" style={{ backgroundColor: '#f8f9fa' }}>
+                          <div className="mt-3 p-2 rounded" style={{ backgroundColor: colors.chiliNavy }}>
                             <p className="text-xs font-medium" style={{ color: colors.chiliNavy }}>
                               Development Focus:
                             </p>

@@ -195,7 +195,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f8f9fa' }}>
+    <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
       {/* Header */}
       <div className="bg-white shadow-sm p-4 flex items-center justify-between">
         <div className="flex items-center">
@@ -369,7 +369,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                   ))}
 
                   {formData.observations[position] && Object.values(formData.observations[position]).some(obs => obs.met === false) && (
-                    <div className="mt-3 p-3 rounded-md" style={{ backgroundColor: '#f8f9fa' }}>
+                    <div className="mt-3 p-3 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
                       <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
                         Coaching Notes
                       </label>
@@ -558,14 +558,14 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
             </h2>
 
             <div className="space-y-4">
-              <div className="p-4 rounded-md" style={{ backgroundColor: '#f8f9fa' }}>
+              <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
                 <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Shift Details</h4>
                 <p className="text-sm" style={{ color: colors.chiliBrown }}>
                   Date: {format(new Date(formData.shift_date), 'MMM d, yyyy')} | Type: {formData.shift_type} Shift
                 </p>
               </div>
 
-              <div className="p-4 rounded-md" style={{ backgroundColor: '#f8f9fa' }}>
+              <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
                 <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Positions Observed</h4>
                 <p className="text-sm" style={{ color: colors.chiliBrown }}>
                   {Object.keys(formData.observations).length} positions with {
@@ -577,7 +577,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
               </div>
 
               {formData.top_performer.name && (
-                <div className="p-4 rounded-md" style={{ backgroundColor: '#f8f9fa' }}>
+                <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
                   <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Top Performer</h4>
                   <p className="text-sm" style={{ color: colors.chiliBrown }}>
                     {formData.top_performer.name} ({formData.top_performer.position}) - {formData.top_performer.reason}
@@ -586,7 +586,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
               )}
 
               {formData.coaching_priorities.length > 0 && (
-                <div className="p-4 rounded-md" style={{ backgroundColor: '#f8f9fa' }}>
+                <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
                   <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Next Shift Priorities</h4>
                   <ul className="text-sm" style={{ color: colors.chiliBrown }}>
                     {formData.coaching_priorities.map((priority, index) => (

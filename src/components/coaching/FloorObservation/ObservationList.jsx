@@ -163,7 +163,7 @@ const ObservationList = ({ manager }) => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f8f9fa' }}>
+    <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
       {/* Header */}
       <div className="bg-white shadow-sm p-4">
         <div className="flex items-center justify-between">
@@ -367,7 +367,7 @@ const ObservationList = ({ manager }) => {
 
                   {/* Coaching Priorities Preview */}
                   {observation.coaching_priorities?.length > 0 && (
-                    <div className="p-3 rounded-md" style={{ backgroundColor: '#f8f9fa' }}>
+                    <div className="p-3 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
                       <p className="text-xs font-medium mb-1" style={{ color: colors.chiliNavy }}>
                         Next Shift Priorities:
                       </p>
