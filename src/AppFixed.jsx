@@ -69,16 +69,16 @@ const AppFixed = () => {
   return (
     <Router>
       <Routes>
-        {/* Manager Login - Entry Point */}
-        <Route
-          path="/login"
-          element={!manager ? <ManagerLogin setManager={setManager} setSessionToken={setSessionToken} /> : <Navigate to="/" replace />}
-        />
-
-        {/* Main AOR Tracker - pass manager, setManager, and sessionToken */}
+        {/* Manager Login - DEFAULT ENTRY POINT */}
         <Route
           path="/"
-          element={manager ? <ManagerAORTracker manager={manager} setManager={setManager} sessionToken={sessionToken} /> : <Navigate to="/login" replace />}
+          element={!manager ? <ManagerLogin setManager={setManager} setSessionToken={setSessionToken} /> : <Navigate to="/dashboard" replace />}
+        />
+
+        {/* Main AOR Tracker Dashboard */}
+        <Route
+          path="/dashboard"
+          element={manager ? <ManagerAORTracker manager={manager} setManager={setManager} sessionToken={sessionToken} /> : <Navigate to="/" replace />}
         />
 
         {/* Coaching Dashboard */}

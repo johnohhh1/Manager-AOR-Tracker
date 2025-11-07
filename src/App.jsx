@@ -619,7 +619,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               <li>• Cross-AOR analytics and reporting</li>
             </ul>
             <button
-              onClick={() => window.location.href = '/login'}
+              onClick={() => window.location.href = '/'}
               style={{
                 backgroundColor: colors.chiliRed,
                 color: 'white',

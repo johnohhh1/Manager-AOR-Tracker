@@ -74,12 +74,8 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
         primary_aor: manager.primary_aor
       });
 
-      // Navigate based on role
-      if (manager.is_gm) {
-        navigate('/gm-dashboard');
-      } else {
-        navigate('/manager-dashboard');
-      }
+      // Navigate to dashboard (same for all roles for now)
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error creating session:', error);
       alert('Failed to log in. Please try again.');
