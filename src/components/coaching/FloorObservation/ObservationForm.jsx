@@ -275,7 +275,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
               >
                 {index < currentStep ? '✓' : index + 1}
               </div>
-              <span className="text-xs text-center" style={{ color: colors.chiliBrown }}>
+              <span className="text-xs text-center text-white">
                 {step}
               </span>
             </div>
