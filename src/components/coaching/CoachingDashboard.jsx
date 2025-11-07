@@ -150,7 +150,7 @@ const CoachingDashboard = ({ manager }) => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f8f9fa' }}>
       {/* Header */}
       <div
         className="text-white p-6"
@@ -241,7 +241,7 @@ const CoachingDashboard = ({ manager }) => {
             </h2>
             <div className="space-y-3">
               {recentActivity.map(activity => (
-                <div key={activity.id} className="flex items-start p-3 rounded-lg" style={{ backgroundColor: colors.chiliCream }}>
+                <div key={activity.id} className="flex items-start p-3 rounded-lg" style={{ backgroundColor: '#f8f9fa' }}>
                   <div className="mr-3" style={{ color: colors.chiliNavy }}>
                     {getActivityIcon(activity.activity_type)}
                   </div>

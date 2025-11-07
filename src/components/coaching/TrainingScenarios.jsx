@@ -352,7 +352,7 @@ const TrainingScenarios = ({ manager }) => {
     : SCENARIOS.filter(s => s.position === filter);
 
   return (
-    <div style={{ backgroundColor: colors.chiliCream, minHeight: '100vh', padding: '20px' }}>
+    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', padding: '20px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
