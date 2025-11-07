@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, UserPlus, Trash2, Upload, Download } from 'lucide-react';
 import { supabase } from '../supabase';
+import * as XLSX from 'xlsx';
 
 const colors = {
   chiliRed: 'rgb(237, 28, 36)',
@@ -99,11 +100,13 @@ const INITIAL_TEAM_DATA = [
 
 const TeamManagement = ({ manager }) => {
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPosition, setFilterPosition] = useState('All');
+  const [uploading, setUploading] = useState(false);
   const [newMember, setNewMember] = useState({
     name: '',
     phone: '',
@@ -186,6 +189,75 @@ const TeamManagement = ({ manager }) => {
     }
   };
 
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const data = await file.arrayBuffer();
+      const workbook = XLSX.read(data);
+      const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      // Parse Excel data - adjust field names based on your Excel structure
+      const teamData = jsonData
+        .filter(row => row['All Employees'] && row['All Employees'] !== 'Name') // Skip header rows
+        .map(row => {
+          // Extract position from "Schedules" column
+          let position = 'Server'; // default
+          const schedules = row['__EMPTY_3'] || '';
+
+          if (schedules.includes('Server')) position = 'Server';
+          else if (schedules.includes('Host')) position = 'Host';
+          else if (schedules.includes('Bar')) position = 'Bartender';
+          else if (schedules.includes('Kitchen')) position = 'Kitchen';
+          else if (schedules.includes('Bus')) position = 'Busser';
+          else if (schedules.includes('Runner') || schedules.includes('Food Runner')) position = 'Runner';
+          else if (schedules.includes('To Go')) position = 'To-Go';
+          else if (schedules.includes('QA')) position = 'QA';
+          else if (schedules.includes('Dish')) position = 'Dishwasher';
+          else if (schedules.includes('Manager')) position = 'Manager';
+          else if (schedules.includes('Shift Leader')) position = 'Shift Leader';
+          else if (schedules.includes('Night Cleaner')) position = 'Night Cleaner';
+
+          return {
+            name: row['All Employees'],
+            phone: row['__EMPTY'] || '-',
+            email: row['__EMPTY_1'] || '-',
+            position: position
+          };
+        })
+        .filter(member => member.name && member.name.trim() !== '');
+
+      if (teamData.length === 0) {
+        alert('No valid team members found in the Excel file');
+        return;
+      }
+
+      const confirmImport = window.confirm(
+        `Found ${teamData.length} team members in the file. Import them?`
+      );
+
+      if (!confirmImport) return;
+
+      const { error } = await supabase
+        .from('team_members')
+        .insert(teamData);
+
+      if (error) throw error;
+
+      await loadTeamMembers();
+      alert(`Successfully imported ${teamData.length} team members!`);
+      event.target.value = ''; // Reset file input
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      alert('Failed to import Excel file: ' + error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const filteredMembers = teamMembers.filter(member => {
     const matchesSearch = member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          member.email.toLowerCase().includes(searchQuery.toLowerCase());
@@ -252,14 +324,34 @@ const TeamManagement = ({ manager }) => {
             </div>
 
             <div className="flex gap-2">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".xls,.xlsx"
+                onChange={handleFileUpload}
+                style={{ display: 'none' }}
+              />
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
+                style={{
+                  backgroundColor: uploading ? colors.chiliGray : colors.chiliYellow,
+                  color: colors.chiliNavy,
+                  opacity: uploading ? 0.6 : 1
+                }}
+              >
+                <Upload size={20} />
+                {uploading ? 'Uploading...' : 'Upload Excel File'}
+              </button>
               {teamMembers.length === 0 && (
                 <button
                   onClick={handleImportInitialData}
                   className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
-                  style={{ backgroundColor: colors.chiliYellow, color: colors.chiliNavy }}
+                  style={{ backgroundColor: colors.chiliRed, color: 'white' }}
                 >
-                  <Upload size={20} />
-                  Import Excel Data ({INITIAL_TEAM_DATA.length})
+                  <Download size={20} />
+                  Quick Import ({INITIAL_TEAM_DATA.length})
                 </button>
               )}
               <button
