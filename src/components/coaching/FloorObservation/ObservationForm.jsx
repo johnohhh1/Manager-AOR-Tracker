@@ -78,6 +78,21 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
   const coaching = useCoaching();
   const [currentStep, setCurrentStep] = useState(0);
   const [saving, setSaving] = useState(false);
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [selectedTeamMembers, setSelectedTeamMembers] = useState({});
+
+  // Load team members from Supabase
+  useEffect(() => {
+    const loadTeamMembers = async () => {
+      try {
+        const members = await coaching.teamMembers.getAll();
+        setTeamMembers(members || []);
+      } catch (error) {
+        console.error('Error loading team members:', error);
+      }
+    };
+    loadTeamMembers();
+  }, []);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -307,11 +322,47 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
               Position Observations
             </h2>
 
-            {Object.entries(positionBehaviors).map(([position, behaviors]) => (
+            {Object.entries(positionBehaviors).map(([position, behaviors]) => {
+              // Map position keys to friendly names for filtering
+              const positionNameMap = {
+                host: 'Host',
+                server: 'Server',
+                bartender: 'Bartender',
+                cook: 'Cook',
+                togoSpecialist: 'To-Go Specialist',
+                busser: 'Busser'
+              };
+              const positionName = positionNameMap[position] || position;
+              const teamMembersForPosition = teamMembers.filter(tm => tm.position === positionName);
+
+              return (
               <div key={position} className="bg-white rounded-lg p-6 shadow-md">
-                <h3 className="font-bold mb-4 capitalize" style={{ color: colors.chiliNavy }}>
-                  {position.replace(/([A-Z])/g, ' $1').trim()}
-                </h3>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-bold capitalize" style={{ color: colors.chiliNavy }}>
+                    {position.replace(/([A-Z])/g, ' $1').trim()}
+                  </h3>
+
+                  {/* Team Member Dropdown */}
+                  <select
+                    value={selectedTeamMembers[position] || ''}
+                    onChange={(e) => setSelectedTeamMembers(prev => ({
+                      ...prev,
+                      [position]: e.target.value
+                    }))}
+                    className="px-3 py-1.5 border rounded-md text-sm"
+                    style={{
+                      minWidth: '200px',
+                      borderColor: colors.chiliGray
+                    }}
+                  >
+                    <option value="">Select team member...</option>
+                    {teamMembersForPosition.map(tm => (
+                      <option key={tm.id} value={tm.name}>
+                        {tm.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
                 <div className="space-y-3">
                   {behaviors.map((behavior) => (
@@ -384,7 +435,8 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                   )}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
