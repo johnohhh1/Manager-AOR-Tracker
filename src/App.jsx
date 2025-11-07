@@ -204,14 +204,6 @@ const fiscalInfo = getFiscalInfo();
 
 const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager }) => {
 
-  // Setup state
-  const [isSetupComplete, setIsSetupComplete] = useState(false);
-  const [setupForm, setSetupForm] = useState({
-    managerName: '',
-    aor: '',
-    isGM: false
-  });
-
   // App state
   const [currentView, setCurrentView] = useState('home');
   const [selectedFrequency, setSelectedFrequency] = useState('daily');
@@ -317,89 +309,6 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
     const completed = Object.values(targetCompletions[key] || {}).filter(Boolean).length;
     return { completed, total: tasks.length };
   };
-
-  // Setup Screen
-  if (!isSetupComplete) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: colors.chiliCream }}>
-        <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-          <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold mb-2" style={{ color: colors.chiliNavy }}>
-              🌶️ Manager AOR Tracker
-            </h1>
-            <p className="text-sm" style={{ color: colors.chiliBrown }}>
-              Let's get you set up!
-            </p>
-          </div>
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliNavy }}>
-                Your Name *
-              </label>
-              <input
-                type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                style={{ '--tw-ring-color': colors.chiliRed }}
-                placeholder="Enter your name"
-                value={setupForm.managerName}
-                onChange={(e) => setSetupForm(prev => ({ ...prev, managerName: e.target.value }))}
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliNavy }}>
-                Your Role *
-              </label>
-              <select
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2"
-                style={{ '--tw-ring-color': colors.chiliRed }}
-                value={setupForm.isGM ? 'gm' : setupForm.aor}
-                onChange={(e) => {
-                  if (e.target.value === 'gm') {
-                    setSetupForm(prev => ({ ...prev, aor: '', isGM: true }));
-                  } else {
-                    setSetupForm(prev => ({ ...prev, aor: e.target.value, isGM: false }));
-                  }
-                }}
-              >
-                <option value="">Choose your role...</option>
-                <option value="gm">General Manager (View All)</option>
-                <option value="culinary">Culinary Leader / SAFE Leader</option>
-                <option value="hospitality">Hospitality Leader</option>
-                <option value="togoBar">To-Go Leader / Bar Leader</option>
-              </select>
-            </div>
-            
-            <button
-              onClick={() => {
-                if (!setupForm.managerName || (!setupForm.aor && !setupForm.isGM)) {
-                  alert('❌ Please fill in all fields');
-                  return;
-                }
-                setManager({
-                  name: setupForm.managerName,
-                  aor: setupForm.aor,
-                  isGM: setupForm.isGM
-                });
-                setIsSetupComplete(true);
-                
-                if (setupForm.isGM) {
-                  alert(`🌶️ Welcome ${setupForm.managerName}! Your GM Dashboard is ready!`);
-                } else {
-                  alert(`🌶️ Welcome ${setupForm.managerName}! Your ${managerResponsibilities[setupForm.aor].title} tracker is ready!`);
-                }
-              }}
-              className="w-full py-2 px-4 rounded-md text-white font-medium hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: colors.chiliRed }}
-            >
-              Start Tracking
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   // GM Dashboard View
   if (manager?.is_gm && currentView === 'home') {
