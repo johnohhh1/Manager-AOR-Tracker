@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, UserPlus, Trash2, Upload, Download } from 'lucide-react';
-import { supabase } from '../supabaseClient';
+import { supabase } from '../supabase';
 
 const colors = {
   chiliRed: 'rgb(237, 28, 36)',
