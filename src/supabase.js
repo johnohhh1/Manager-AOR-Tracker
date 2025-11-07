@@ -22,10 +22,13 @@ const createMockClient = () => ({
     select: () => ({
       eq: () => ({
         single: async () => ({ data: null, error: { message: 'Supabase not configured' } })
-      })
+      }),
+      order: () => ({ data: null, error: { message: 'Supabase not configured' } })
     }),
     upsert: async () => ({ data: null, error: { message: 'Supabase not configured' } }),
-    delete: () => ({ eq: async () => ({ error: { message: 'Supabase not configured' } }) })
+    delete: () => ({
+      eq: async () => ({ error: { message: 'Supabase not configured' } })
+    })
   }),
   rpc: async () => ({ data: null, error: { message: 'Supabase not configured' } })
 });
