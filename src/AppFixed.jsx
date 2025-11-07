@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ManagerAORTracker from './App';
+import ManagerLogin from './components/ManagerLogin';
 import CoachingDashboard from './components/coaching/CoachingDashboard';
 import ObservationList from './components/coaching/FloorObservation/ObservationList';
 import ObservationForm from './components/coaching/FloorObservation/ObservationForm';
@@ -29,10 +30,16 @@ const AppFixed = () => {
   return (
     <Router>
       <Routes>
+        {/* Manager Login - Entry Point */}
+        <Route
+          path="/login"
+          element={!manager ? <ManagerLogin setManager={setManager} /> : <Navigate to="/" replace />}
+        />
+
         {/* Main AOR Tracker - pass both manager and setManager */}
         <Route
           path="/"
-          element={<ManagerAORTracker manager={manager} setManager={setManager} />}
+          element={manager ? <ManagerAORTracker manager={manager} setManager={setManager} /> : <Navigate to="/login" replace />}
         />
 
         {/* Coaching Dashboard */}
@@ -99,8 +106,8 @@ const AppFixed = () => {
           element={manager ? <TeamManagement manager={manager} /> : <Navigate to="/" replace />}
         />
 
-        {/* Catch all - redirect to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Catch all - redirect to login if no manager, otherwise home */}
+        <Route path="*" element={<Navigate to={manager ? "/" : "/login"} replace />} />
       </Routes>
     </Router>
   );

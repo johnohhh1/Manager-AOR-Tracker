@@ -125,7 +125,11 @@ const ManagerLogin = ({ setManager }) => {
         ) : (
           <div className="grid gap-4">
             {managers.map(manager => {
-              const aor = aorTitles[manager.primary_aor];
+              const aor = manager.primary_aor ? aorTitles[manager.primary_aor] : null;
+              const displayTitle = manager.is_gm
+                ? { title: 'General Manager / Managing Partner', shortTitle: 'GM', icon: '👑' }
+                : aor;
+
               return (
                 <button
                   key={manager.id}
@@ -160,12 +164,14 @@ const ManagerLogin = ({ setManager }) => {
                         )}
                       </div>
 
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-2xl">{aor.icon}</span>
-                        <p style={{ color: colors.chiliBrown, fontWeight: '500' }}>
-                          {aor.title}
-                        </p>
-                      </div>
+                      {displayTitle && (
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-2xl">{displayTitle.icon}</span>
+                          <p style={{ color: colors.chiliBrown, fontWeight: '500' }}>
+                            {displayTitle.title}
+                          </p>
+                        </div>
+                      )}
 
                       {manager.email && (
                         <p className="text-sm mt-2" style={{ color: colors.chiliGray }}>
