@@ -207,9 +207,93 @@ export const db = {
         .delete()
         .eq('gm_id', gmId)
         .eq('member_id', memberId);
-      
+
       if (error) throw error;
       return true;
+    }
+  },
+
+  // Session management functions (replaces localStorage)
+  sessions: {
+    // Generate a unique session token
+    generateToken() {
+      return `${Date.now()}-${Math.random().toString(36).substring(2)}`;
+    },
+
+    // Create a new session
+    async create(managerId, currentAor = null) {
+      const token = this.generateToken();
+      const { data, error} = await supabase
+        .from('manager_sessions')
+        .insert({
+          manager_id: managerId,
+          session_token: token,
+          current_aor: currentAor,
+          device_info: navigator.userAgent
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+
+    // Get session by token
+    async getByToken(token) {
+      const { data, error } = await supabase
+        .from('manager_sessions')
+        .select(`
+          *,
+          manager:manager_id(*)
+        `)
+        .eq('session_token', token)
+        .gt('expires_at', new Date().toISOString())
+        .single();
+
+      if (error && error.code !== 'PGRST116') throw error;
+      return data;
+    },
+
+    // Update session activity and extend expiration
+    async updateActivity(token, currentAor = null) {
+      const updates = {
+        last_activity: new Date().toISOString(),
+        expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+      };
+
+      if (currentAor) {
+        updates.current_aor = currentAor;
+      }
+
+      const { error } = await supabase
+        .from('manager_sessions')
+        .update(updates)
+        .eq('session_token', token);
+
+      if (error) throw error;
+    },
+
+    // End session (logout)
+    async end(token) {
+      const { error } = await supabase
+        .from('manager_sessions')
+        .delete()
+        .eq('session_token', token);
+
+      if (error) throw error;
+    },
+
+    // Get all active sessions for a manager
+    async getActiveSessions(managerId) {
+      const { data, error } = await supabase
+        .from('manager_sessions')
+        .select('*')
+        .eq('manager_id', managerId)
+        .gt('expires_at', new Date().toISOString())
+        .order('last_activity', { ascending: false });
+
+      if (error) throw error;
+      return data || [];
     }
   }
 };

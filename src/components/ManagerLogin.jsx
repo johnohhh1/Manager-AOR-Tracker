@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Users, Crown, Shield } from 'lucide-react';
-import { supabase } from '../supabase';
+import { supabase, db } from '../supabase';
 
 const colors = {
   chiliRed: 'rgb(237, 28, 36)',
@@ -31,7 +31,7 @@ const aorTitles = {
   }
 };
 
-const ManagerLogin = ({ setManager }) => {
+const ManagerLogin = ({ setManager, setSessionToken }) => {
   const navigate = useNavigate();
   const [managers, setManagers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,26 +58,31 @@ const ManagerLogin = ({ setManager }) => {
   };
 
   const selectManager = async (manager) => {
-    // Store in localStorage and state
-    localStorage.setItem('currentManager', JSON.stringify(manager));
-    setManager(manager);
-
-    // Track activity
     try {
+      // Create session in Supabase
+      const session = await db.sessions.create(manager.id, manager.primary_aor);
+
+      // Store only the token in localStorage
+      localStorage.setItem('session_token', session.session_token);
+      setSessionToken(session.session_token);
+      setManager(manager);
+
+      // Track activity in manager_aor_activity
       await supabase.from('manager_aor_activity').insert({
         manager_id: manager.id,
         current_aor: manager.primary_aor,
         primary_aor: manager.primary_aor
       });
-    } catch (error) {
-      console.error('Error tracking login:', error);
-    }
 
-    // Navigate based on role
-    if (manager.is_gm) {
-      navigate('/gm-dashboard');
-    } else {
-      navigate('/manager-dashboard');
+      // Navigate based on role
+      if (manager.is_gm) {
+        navigate('/gm-dashboard');
+      } else {
+        navigate('/manager-dashboard');
+      }
+    } catch (error) {
+      console.error('Error creating session:', error);
+      alert('Failed to log in. Please try again.');
     }
   };
 
