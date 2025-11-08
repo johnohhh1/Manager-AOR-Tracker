@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ManagerAORTracker from './App';
 import ManagerLogin from './components/ManagerLogin';
+import AppHeader from './components/AppHeader';
 import CoachingDashboard from './components/coaching/CoachingDashboard';
 import ObservationList from './components/coaching/FloorObservation/ObservationList';
 import ObservationForm from './components/coaching/FloorObservation/ObservationForm';
@@ -68,6 +69,7 @@ const AppFixed = () => {
 
   return (
     <Router>
+      {manager && <AppHeader manager={manager} />}
       <Routes>
         {/* Manager Login - DEFAULT ENTRY POINT */}
         <Route

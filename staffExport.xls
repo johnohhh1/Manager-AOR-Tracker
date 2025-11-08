@@ -1,0 +1,1899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40">
+	<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+		<Author/>
+		<Title/>
+		<Description/>
+		<Subject/>
+	</DocumentProperties>
+	<Styles>
+		<Style ss:ID="HyperlinkId" ss:Name="Hyperlink">
+			<Font ss:Color="#0000ff"/>
+		</Style>
+		<Style ss:ID="1">
+			<NumberFormat ss:Format="yyyy-M-d HH:mm:ss AM/PM"/>
+		</Style>
+		<Style ss:ID="29">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="30">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="25">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="26">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="21">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Bold="1" ss:Color="#000000"/>
+			<Interior ss:Color="#c0c0c0" ss:Pattern="Solid"/>
+		</Style>
+		<Style ss:ID="23">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="9.0" ss:Bold="1" ss:Color="#000000"/>
+			<Interior ss:Color="#c0c0c0" ss:Pattern="Solid"/>
+		</Style>
+		<Style ss:ID="27">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top"/>
+			<Borders>
+				<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="28">
+			<Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#000000"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="20">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom"/>
+				<Border ss:Position="Top"/>
+				<Border ss:Position="Left"/>
+				<Border ss:Position="Right"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="16.0" ss:Bold="1" ss:Color="#000000"/>
+		</Style>
+		<Style ss:ID="22">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="10.0" ss:Bold="1" ss:Color="#000000"/>
+			<Interior ss:Color="#c0c0c0" ss:Pattern="Solid"/>
+		</Style>
+		<Style ss:ID="24">
+			<Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
+			<Borders>
+				<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1" ss:Color="#ffffff"/>
+				<Border ss:Position="DiagonalLeft"/>
+			</Borders>
+			<Font ss:FontName="sans-serif" ss:Size="9.0" ss:Bold="1" ss:Color="#000000"/>
+			<Interior ss:Color="#c0c0c0" ss:Pattern="Solid"/>
+		</Style>
+	</Styles>
+	<Names>
+		<NamedRange ss:Name="__bookmark_1" ss:RefersTo="Report!R2C1:R87C10"/>
+	</Names>
+
+<Worksheet ss:Name="Report">
+	<ss:Table>
+		<ss:Column ss:Width="113.28" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="75.648" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="62.976" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="126.08" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="125.952" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="25.216" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="58.752" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="84.096" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="8.32" ss:AutoFitWidth="0"/>
+		<ss:Column ss:Width="75.648" ss:AutoFitWidth="0"/>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="20" ss:MergeAcross="9">
+				<Data ss:Type="String">All Employees</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="22">
+				<Data ss:Type="String">Name</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="22">
+				<Data ss:Type="String">Phone</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="22" ss:MergeAcross="1">
+				<Data ss:Type="String">Email</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="22" ss:MergeAcross="1">
+				<Data ss:Type="String">Schedules</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="22" ss:MergeAcross="2">
+				<Data ss:Type="String">Jobs</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="24">
+				<Data ss:Type="String">Permission Set</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Aarica Mccray</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 376-1436</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOODSERVER 1, FOH TRAINEE-SERVER, FOOD RUNNER, BARTENDER1, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Alana Jonutz</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(402) 415-4032</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">ajonutz1357@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOOD RUNNER, FOH TRAINEE-OTHER, MEETINGS-OTHER, FOODSERVER 1, FOH TRAINEE-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Alex Fillmore</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 933-5015</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">afileo73@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOH TRAINEE-SERVER, FOODSERVER 2, BARTENDER2, FOODSERVER 1, BARTENDER1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Alexus Bass</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 823-9432</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">alexusbass9@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Host</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (HOST 1, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Alicia Amador</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 875-9767</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Saharared52@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (FOODSERVER 1, FOH TRAINEE-SERVER, BARTENDER1, FOH TRAINEE- FOH BAR)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Allison OConnor-Foss</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 466-4642</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">allisonoconnorfoss@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Host</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (HOST 1, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Alyssa Regan</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 210-9056</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">reganalyssa21@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">QA</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOH EXPEDITOR 1, FOOD RUNNER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Andrew Hyttinen</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 983-7424</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">drewhyt@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (To Go, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (TO-GO, BUSSER 2, FOOD RUNNER, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Antonio Rosas-Ocampo</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(313) 213-4282</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">tonitorosas56@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Bus, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">6 Jobs (MEETINGS-SRVR and BAR, BUSSER 2, TO-GO, HOST 1, FOH TRAINEE-OTHER, FOOD RUNNER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Ashley Blackwell</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 873-6671</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Ashleyblackwell2021@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOODSERVER 1, FOOD RUNNER, TO-GO, MEETINGS-OTHER, BARTENDER2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Autumn Morse</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 571-6797</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Morseautumn03@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Host</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (HOST 1, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Autumn Nelson</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(947) 999-6129</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">autumnnelson804@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Host, Bus)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (HOST 1, BUSSER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Autumn Roll</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 272-4774</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (FOODSERVER 1, FOOD RUNNER, FOH TRAINEE-SERVER, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Bailey Booker</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 930-2489</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">baileybooker11@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">14 Jobs (HOST 1, TO-GO, FOH TRAINER -OTHER, COOK, NIGHT CLEANERS, FOH EXPEDITOR 1, BUSSER 2, FOODSERVER 1, FOH TRAINEE-SERVER, HOH Clean, MEETINGS-OTHER, BARTENDER1, BARTENDER2, BAR-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Blake Jadczak</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 318-5779</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">bjadczak827@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">5 Schedules (QA, To Go, Kitchen, Bus, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">8 Jobs (TO-GO, HOST 1, COOK, FOOD RUNNER, NIGHT CLEANERS, BUSSER 2, MEETINGS-OTHER, FOH EXPEDITOR 1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Brenda Batrez</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 825-0236</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">brendaly6464@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, To Go)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">6 Jobs (MEETINGS-SRVR and BAR, TO-GO, FOH TRAINEE-OTHER, FOODSERVER 1, FOH TRAINEE-SERVER, FOODSERVER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Brie Uhley</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Shift Leader</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">9 Jobs (COOK, NIGHT CLEANERS, FOH EXPEDITOR 1, TO-GO, HOH Clean, MEETINGS-OTHER, BUSSER 2, SHIFT SUPPORT, KEY SOLO OPENER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">TM w/ Logbook</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Canon Stoecker</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(989) 378-4136</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">notdanosuu@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Food Runner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOOD RUNNER, MEETINGS-SRVR and BAR, BUSSER 2, FOH TRAINEE-OTHER, FOH EXPEDITOR 1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Charizma Northern</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 252-8090</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">charizma.northern17@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOODSERVER 1, FOH TRAINEE-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Chase Petersen</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 884-8964</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Cpetersen1199@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bus)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (BUSSER 2, FOH TRAINER -OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Christopher JonesBarnes</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">COOK</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Chrys-Tal or Ms Murphy Murphy</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(947) 239-5256</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">cristal85.cm@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Night Cleaner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">7 Jobs (MEETINGS-SRVR and BAR, BUSSER 2, HOH Clean, NIGHT CLEANERS, HOST 1, FOOD RUNNER, BUSSER 1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Cici Dobbs</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 602-7131</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">cicidobbs@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOODSERVER 1, FOH TRAINEE-SERVER, MEETINGS-SRVR and BAR, FOOD RUNNER, BARTENDER1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Connor Trojanowski</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(313) 739-4477</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Connor8403@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Food Runner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOOD RUNNER, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Cresta Ishler</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(567) 461-8764</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">ishlercresta@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOODSERVER 1, FOOD RUNNER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Dennis Lehman</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 215-6690</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">dennis.lehman2007@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Bus, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (BUSSER 2, BUSSER 1, FOH TRAINEE-OTHER, FOOD RUNNER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Devon Steed</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 277-1929</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">devondteed25@yahoo.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Dish</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">DISHWASHER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Edwin Mendoza Perdomo</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 933-8481</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">edwin782018@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">7 Jobs (HOST 1, FOOD RUNNER, FOH EXPEDITOR 1, BUSSER 2, MEETINGS-OTHER, FOODSERVER 1, FOH TRAINEE-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">elisia Mauricio</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 277-9105</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">elisiamauricio427@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (FOODSERVER 1, BARTENDER1, FOODSERVER 2, FOH TRAINER-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Elizabeth Avila</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 982-3877</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">avila2elizabeth@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">8 Jobs (MEETINGS-SRVR and BAR, HOST 1, FOH TRAINEE-OTHER, BUSSER 2, FOOD RUNNER, HOH Clean, FOODSERVER 1, FOH TRAINEE-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Emma Tomas</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 214-5488</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">emmanicole1317@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOODSERVER 1, BARTENDER1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Emmanuel Arellano</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 466-4011</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">auburnhillschilis@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Kitchen, Dish)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (COOK, DISHWASHER, NIGHT CLEANERS, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Esteban Torres</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 953-7826</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">camaron13.at@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (COOK, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Felipe Ochoa</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Kitchen, Dish)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (DISHWASHER, HOH Clean)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Gene Cottingham</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 747-1941</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">imemc7374@yahoo.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (COOK, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Guadalupe Ramos Ochoa</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 499-4584</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">guadalupeochoa502@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (COOK, NIGHT CLEANERS, PREP 1, MEETINGS-OTHER, COOK SR)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Hector Tiscareno</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 250-0701</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">hecto.tiscareno@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (COOK, NIGHT CLEANERS, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Herwin Albarracin</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Night Cleaner, Kitchen)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (COOK, HOH Clean)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Hope Ridner</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 786-7575</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Hoperidner23@yahoo.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOODSERVER 1, FOH TRAINEE-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Irina Marmueva</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 222-5511</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">famous5610@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">To Go</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">10 Jobs (NIGHT CLEANERS, PREP 1, COOK, SILVERWARE ROLLER, TO-GO, HOST 1, FOOD RUNNER, FOH EXPEDITOR 1, FOH TRAINER -OTHER, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Jason Ramos Ochoa</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 986-6712</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">jasonramosochoa86@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Host</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (HOST 1, NIGHT CLEANERS, PREP 1, BUSSER 2, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Jason Roberts</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 915-8176</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">robertsjason983@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">MANAGER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Jaxson greenwood</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 296-5202</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">greenwoodjax12@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Bus</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (BUSSER 2, BUSSER 1, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Jeff Fordyce</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 929-2886</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">zrek8282@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Night Cleaner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">NIGHT CLEANERS</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">JJ Mendez</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 222-2190</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">jjvitale9@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Bus, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">6 Jobs (BUSSER 1, BARTENDER2, BUSSER 2, FOH TRAINEE-OTHER, FOOD RUNNER, NIGHT CLEANERS)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Johanna Ramos</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 396-9080</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">johannaochoa245@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">QA</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">9 Jobs (COOK, NIGHT CLEANERS, PREP 1, TO-GO, FOH EXPEDITOR 1, SHIFT SUPPORT, FOODSERVER 1, FOOD RUNNER, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">John Olenski</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(832) 756-5450</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">johnolenski@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">MANAGER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">GM/MP</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Jose Abarca-Chavez</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 904-4119</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (COOK, NIGHT CLEANERS, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Jose Carrasco</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(702) 572-7331</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Ccja27452377@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Kitchen, Dish)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (COOK, DISHWASHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Josh Mabbitt</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 719-4442</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">kingmabbitt9692@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">COOK</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Juan Ochoa</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 260-0249</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">famous5610@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (COOK, NIGHT CLEANERS, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Kara Gallegly</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(810) 834-4092</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">karag123@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (FOODSERVER 1, FOH TRAINER-SERVER, BARTENDER1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Kermit Manigault</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(943) 266-0276</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">manigaultjavonte@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (HOST 1, BUSSER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Kuumba Touray</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 759-6373</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Kuumbaktouray@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Host</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">HOST 1</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Lauren Parrott</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 222-9735</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">laurenparrott05@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (FOOD RUNNER, FOH TRAINEE-OTHER, FOODSERVER 1, FOH TRAINEE-SERVER, FOODSERVER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Lela Huff</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 402-3470</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">lelahuff07@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">FOODSERVER 1</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Leslie Bernal martinez</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 622-9024</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Jadu.blossom25@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Bus</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (BUSSER 1, BUSSER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Leslie Richmond</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(810) 201-0223</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Murfee2221922@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Food Runner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">FOOD RUNNER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Lettie Talley</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(810) 294-9627</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">careerminded10@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (FOODSERVER 1, HOST 1, FOH TRAINEE-OTHER, FOH TRAINEE-SERVER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Lilli Stivers</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 924-0883</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">lil.stivs13@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">To Go</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (FOODSERVER 1, MEETINGS-SRVR and BAR, TO-GO, FOOD RUNNER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Lynda Bernard</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(313) 741-9460</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">lynberna7school@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Host, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (FOOD RUNNER, FOH TRAINEE-OTHER, HOST 1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Matthew Staines</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(111) 111-1111</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Silverware, Shift Leader)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (PUBLIC RELATIONS, NIGHT CLEANERS, SILVERWARE ROLLER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Mike D Drapinski</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 860-2234</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Night Cleaner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">NIGHT CLEANERS</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Nick Contreras</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(404) 637-5987</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">-</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (FOODSERVER 1, BARTENDER1, FOOD RUNNER, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Nicole Sullivan</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 980-4405</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">nicolesullivan7640@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">12 Jobs (FOODSERVER 1, TO-GO, FOH EXPEDITOR 1, BARTENDER1, ADMIN ASST, SHIFT SUPPORT, FOH TRAINER - BAR, FOH TRAINER-SERVER, FOOD RUNNER, NIGHT CLEANERS, HOST 1, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Pedro Zambrano</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 877-2518</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Pedrocuauro94@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (BOH TRAINEE, COOK)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Pierre Wallace</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 515-3777</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">pierre.wallace17@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Food Runner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">FOOD RUNNER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Pratheepan Sivanathan</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(737) 336-5698</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">spratheepan@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (COOK, NIGHT CLEANERS, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Riley Otzenberger</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 804-0054</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">rileyotzenberger0407@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">4 Schedules (Kitchen, Dish, Bus, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">7 Jobs (MEETINGS-SRVR and BAR, FOOD RUNNER, BUSSER 2, DISHWASHER, HOH Clean, NIGHT CLEANERS, COOK)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Ruperto Ramos</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 499-2686</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (COOK, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Sadie Siemen</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(810) 867-0720</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">sadiesiemen@oakland.edu</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Host, Bus)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (BUSSER 1, HOST 1, FOH TRAINEE-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Sam Barkley</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 781-6206</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">sambarkley557@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Food Runner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (BUSSER 1, BUSSER 2, FOOD RUNNER, FOH TRAINER -OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Sandra Zamora</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 250-0701</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">zsandra32@yahoo.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Kitchen</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (COOK, PREP 1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Selena Barnstable</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 749-0116</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Lenabearv07@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Food Runner</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (FOODSERVER 1, FOH TRAINEE-OTHER, FOOD RUNNER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Selvon or sel Davis</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 630-4665</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">selvondavis19@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Bus</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">3 Jobs (FOOD RUNNER, FOH TRAINEE-OTHER, BUSSER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Sydney Shefferly</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 894-4256</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">sydneyshefferly1@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">FOODSERVER 1</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Tarzar Jackson</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 285-8155</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">tarzaranthonyjackson@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Host, Food Runner)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">5 Jobs (BUSSER 1, BUSSER 2, FOH TRAINEE-OTHER, FOOD RUNNER, HOST 1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Tiffany Rodriguez</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(313) 912-5662</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">sweetnessalways89@yahoo.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">MANAGER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Tiffany Wright</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(586) 722-4594</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Tiffany.noel.wright@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">MANAGER</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Manager</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Tracy Anderson</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 945-2771</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">c00605mgr@chilis.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Shift Leader, QA)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">9 Jobs (TO-GO, HOST 1, SHIFT SUPPORT, FOH EXPEDITOR 1, NIGHT CLEANERS, KEY SOLO OPENER, AreaTrainingCaptain, TRAINING TEAM, ADMIN ASST)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Schedule Writer</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Tyanna Denny</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(313) 439-5868</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">darealparismarie2002@icloud.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Server</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">FOODSERVER 1</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Ulysses Scott</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 222-2168</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">ulyscottv156@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">Bus</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">4 Jobs (HOST 1, FOH TRAINEE-OTHER, FOOD RUNNER, BUSSER 2)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">Valerie Raiss</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 568-3938</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">Valerie.raiss@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">8 Jobs (TO-GO, FOODSERVER 1, FOH TRAINER-SERVER, BARTENDER1, FOH EXPEDITOR 1, FOOD RUNNER, NIGHT CLEANERS, MEETINGS-OTHER)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="27">
+				<Data ss:Type="String">will Scruggs</Data>
+			</Cell>
+			<Cell ss:Index="2" ss:StyleID="27">
+				<Data ss:Type="String">(248) 678-5283</Data>
+			</Cell>
+			<Cell ss:Index="3" ss:StyleID="27" ss:MergeAcross="1">
+				<Data ss:Type="String">williebear94@gmail.com</Data>
+			</Cell>
+			<Cell ss:Index="5" ss:StyleID="28" ss:MergeAcross="1">
+				<Data ss:Type="String">2 Schedules (Server, Bar)</Data>
+			</Cell>
+			<Cell ss:Index="7" ss:StyleID="28" ss:MergeAcross="2">
+				<Data ss:Type="String">2 Jobs (FOODSERVER 1, BARTENDER1)</Data>
+			</Cell>
+			<Cell ss:Index="10" ss:StyleID="27">
+				<Data ss:Type="String">Team Member</Data>
+			</Cell>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="29"/>
+			<Cell ss:Index="2" ss:StyleID="29"/>
+			<Cell ss:Index="3" ss:StyleID="29" ss:MergeAcross="1"/>
+			<Cell ss:Index="5" ss:StyleID="29" ss:MergeAcross="1"/>
+			<Cell ss:Index="7" ss:StyleID="29" ss:MergeAcross="2"/>
+			<Cell ss:Index="10" ss:StyleID="29"/>
+		</Row>
+		<Row ss:AutoFitHeight="1">
+			<Cell ss:Index="1" ss:StyleID="30" ss:MergeAcross="2">
+				<Data ss:Type="String">Nov 7, 2025 6:58 AM</Data>
+			</Cell>
+			<Cell ss:Index="4" ss:StyleID="29" ss:MergeAcross="1"/>
+			<Cell ss:Index="6" ss:StyleID="30" ss:MergeAcross="1">
+				<Data ss:Type="String">1</Data>
+			</Cell>
+			<Cell ss:Index="8" ss:StyleID="30">
+				<Data ss:Type="String">/</Data>
+			</Cell>
+			<Cell ss:Index="9" ss:StyleID="30" ss:MergeAcross="1">
+				<Data ss:Type="String">1</Data>
+			</Cell>
+		</Row>
+	</ss:Table>
+	<WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+		<PageSetup>
+			<PageMargins x:Bottom="0.25" x:Left="0.25" x:Right="0.25" x:Top="0.25"/>
+			<Layout x:Orientation="Landscape"/>
+		</PageSetup>
+		<Print>
+			<PaperSizeIndex>1</PaperSizeIndex>
+		</Print>
+	</WorksheetOptions>
+</Worksheet>
+</Workbook>
