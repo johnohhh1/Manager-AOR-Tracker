@@ -152,37 +152,41 @@ const CoachingGuide = ({ manager }) => {
       </div>
 
       <div>
-        <h3 className="text-xl font-bold mb-4" style={{ color: colors.chiliGreen }}>
+        <h3 className="text-3xl font-bold mb-6" style={{ color: colors.chiliGreen }}>
           When to Coach
         </h3>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-6">
           {GUIDE_DATA.overview.when.map((item, index) => (
-            <div key={index} className="p-4 rounded-lg border-l-4" style={{
+            <div key={index} className="p-5 rounded-lg border-l-4" style={{
               backgroundColor: 'rgba(255,255,255,0.05)',
-              borderColor: colors.chiliRed
+              borderColor: colors.chiliRed,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
             }}>
-              <h4 className="font-bold mb-1" style={{ color: colors.chiliGreen }}>{item.title}</h4>
-              <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{item.desc}</p>
+              <h4 className="font-bold mb-2 text-lg" style={{ color: colors.chiliGreen }}>{item.title}</h4>
+              <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>{item.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h3 className="text-xl font-bold mb-4" style={{ color: colors.chiliGreen }}>
+        <h3 className="text-3xl font-bold mb-6 mt-8" style={{ color: colors.chiliGreen }}>
           How to Coach
         </h3>
         <div className="p-6 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-          <ol className="space-y-3">
+          <ol className="space-y-5">
             {GUIDE_DATA.overview.how.map((step, index) => (
-              <li key={index} className="flex items-start gap-3">
+              <li key={index} className="flex items-start gap-4">
                 <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold"
-                  style={{ backgroundColor: colors.chiliRed }}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
+                  style={{
+                    backgroundColor: colors.chiliRed,
+                    boxShadow: '0 4px 12px rgba(237, 28, 36, 0.4)'
+                  }}
                 >
                   {index + 1}
                 </div>
-                <span className="pt-1" style={{ color: 'rgba(255,255,255,0.7)' }}>{step}</span>
+                <span className="pt-2 text-lg" style={{ color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>{step}</span>
               </li>
             ))}
           </ol>
@@ -207,14 +211,18 @@ const CoachingGuide = ({ manager }) => {
 
         {/* Observable Behaviors */}
         <div>
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliGreen }}>
-            <Target size={24} />
+          <h3 className="text-2xl font-bold mb-6 flex items-center gap-3" style={{ color: colors.chiliGreen }}>
+            <Target size={28} />
             Observable Behaviors
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {data.behaviors.map((behavior, index) => (
-              <div key={index} className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                <h4 className="font-bold mb-2" style={{ color: colors.chiliRed }}>✅ {behavior.title}</h4>
+              <div key={index} className="p-5 rounded-lg border-l-4" style={{
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                borderColor: colors.chiliGreen,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+              }}>
+                <h4 className="font-bold mb-3 text-lg" style={{ color: colors.chiliRed }}>✅ {behavior.title}</h4>
                 <ul className="space-y-1">
                   {behavior.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
@@ -230,32 +238,36 @@ const CoachingGuide = ({ manager }) => {
 
         {/* Coaching Scenarios */}
         <div>
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliGreen }}>
-            <BookOpen size={24} />
+          <h3 className="text-2xl font-bold mb-6 flex items-center gap-3" style={{ color: colors.chiliGreen }}>
+            <BookOpen size={28} />
             Coaching Scenarios
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {data.scenarios.map((scenario, index) => (
-              <div key={index} className="p-5 rounded-lg shadow" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                <h4 className="font-bold mb-3" style={{ color: colors.chiliRed }}>
+              <div key={index} className="p-6 rounded-lg border-l-4" style={{
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                borderColor: colors.chiliRed,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+              }}>
+                <h4 className="font-bold mb-4 text-lg" style={{ color: colors.chiliRed }}>
                   Scenario {index + 1}: {scenario.title}
                 </h4>
 
-                <div className="space-y-3 text-sm">
+                <div className="space-y-4 text-base">
                   <div>
                     <span className="font-semibold" style={{ color: colors.chiliGreen }}>WHAT YOU SEE: </span>
-                    <span style={{ color: 'rgba(255,255,255,0.7)' }}>{scenario.see}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.85)' }}>{scenario.see}</span>
                   </div>
 
                   <div>
                     <span className="font-semibold" style={{ color: colors.chiliGreen }}>COACHING: </span>
-                    <span style={{ color: 'rgba(255,255,255,0.7)' }}>{scenario.coach}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.85)' }}>{scenario.coach}</span>
                   </div>
 
                   {scenario.practice && (
                     <div>
                       <span className="font-semibold" style={{ color: colors.chiliGreen }}>PRACTICE: </span>
-                      <span style={{ color: 'rgba(255,255,255,0.7)' }}>{scenario.practice}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.85)' }}>{scenario.practice}</span>
                     </div>
                   )}
                 </div>
@@ -266,16 +278,20 @@ const CoachingGuide = ({ manager }) => {
 
         {/* Recognition Examples */}
         <div>
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliGreen }}>
-            <Award size={24} />
+          <h3 className="text-2xl font-bold mb-6 flex items-center gap-3" style={{ color: colors.chiliGreen }}>
+            <Award size={28} />
             Recognition Examples
           </h3>
-          <div className="p-5 rounded-lg space-y-2" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
+          <div className="p-6 rounded-lg border-l-4 space-y-4" style={{
+            backgroundColor: 'rgba(255,255,255,0.05)',
+            borderColor: colors.chiliYellow,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+          }}>
             {data.recognition.map((rec, index) => (
-              <div key={index} className="flex items-start gap-2">
-                <span style={{ color: colors.chiliGreen }}>🔥</span>
-                <span style={{ color: 'rgba(255,255,255,0.7)' }}>
-                  <strong>[Name]</strong> {rec}
+              <div key={index} className="flex items-start gap-3">
+                <span className="text-xl" style={{ color: colors.chiliGreen }}>🔥</span>
+                <span className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                  <strong style={{ color: colors.chiliYellow }}>[Name]</strong> {rec}
                 </span>
               </div>
             ))}
@@ -306,16 +322,17 @@ const CoachingGuide = ({ manager }) => {
         </div>
 
         {/* Position Tabs */}
-        <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
+        <div className="flex gap-3 mb-8 overflow-x-auto pb-2">
           {positions.map(pos => (
             <button
               key={pos}
               onClick={() => setSelectedPosition(pos)}
-              className="px-4 py-2 rounded-lg whitespace-nowrap text-sm font-medium"
+              className="px-6 py-3 rounded-full whitespace-nowrap font-bold transition-all transform hover:scale-105"
               style={{
                 backgroundColor: selectedPosition === pos ? colors.chiliRed : 'rgba(255,255,255,0.1)',
-                color: selectedPosition === pos ? 'white' : colors.chiliNavy,
-                border: `2px solid ${selectedPosition === pos ? colors.chiliRed : colors.chiliGray}`
+                color: 'white',
+                border: `2px solid ${selectedPosition === pos ? colors.chiliRed : 'rgba(255,255,255,0.2)'}`,
+                boxShadow: selectedPosition === pos ? '0 4px 12px rgba(237, 28, 36, 0.4)' : 'none'
               }}
             >
               {pos === 'overview' ? '📋 Overview' : pos}
