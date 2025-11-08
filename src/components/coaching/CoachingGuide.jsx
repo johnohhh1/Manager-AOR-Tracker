@@ -157,7 +157,10 @@ const CoachingGuide = ({ manager }) => {
         </h3>
         <div className="grid md:grid-cols-2 gap-4">
           {GUIDE_DATA.overview.when.map((item, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg border-l-4" style={{ borderColor: colors.chiliRed }}>
+            <div key={index} className="p-4 rounded-lg border-l-4" style={{
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              borderColor: colors.chiliRed
+            }}>
               <h4 className="font-bold mb-1" style={{ color: colors.chiliGreen }}>{item.title}</h4>
               <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{item.desc}</p>
             </div>
@@ -169,7 +172,7 @@ const CoachingGuide = ({ manager }) => {
         <h3 className="text-xl font-bold mb-4" style={{ color: colors.chiliGreen }}>
           How to Coach
         </h3>
-        <div className="bg-white p-6 rounded-lg">
+        <div className="p-6 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
           <ol className="space-y-3">
             {GUIDE_DATA.overview.how.map((step, index) => (
               <li key={index} className="flex items-start gap-3">
@@ -193,7 +196,7 @@ const CoachingGuide = ({ manager }) => {
 
     return (
       <div className="space-y-6">
-        <div className="text-center py-6 bg-white rounded-lg">
+        <div className="text-center py-6 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
           <h2 className="text-3xl font-bold" style={{ color: colors.chiliRed }}>
             {positionKey}
           </h2>
@@ -210,7 +213,7 @@ const CoachingGuide = ({ manager }) => {
           </h3>
           <div className="space-y-4">
             {data.behaviors.map((behavior, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg">
+              <div key={index} className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
                 <h4 className="font-bold mb-2" style={{ color: colors.chiliRed }}>✅ {behavior.title}</h4>
                 <ul className="space-y-1">
                   {behavior.items.map((item, i) => (
@@ -233,7 +236,7 @@ const CoachingGuide = ({ manager }) => {
           </h3>
           <div className="space-y-4">
             {data.scenarios.map((scenario, index) => (
-              <div key={index} className="bg-white p-5 rounded-lg shadow">
+              <div key={index} className="p-5 rounded-lg shadow" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
                 <h4 className="font-bold mb-3" style={{ color: colors.chiliRed }}>
                   Scenario {index + 1}: {scenario.title}
                 </h4>
@@ -267,7 +270,7 @@ const CoachingGuide = ({ manager }) => {
             <Award size={24} />
             Recognition Examples
           </h3>
-          <div className="bg-white p-5 rounded-lg space-y-2">
+          <div className="p-5 rounded-lg space-y-2" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
             {data.recognition.map((rec, index) => (
               <div key={index} className="flex items-start gap-2">
                 <span style={{ color: colors.chiliGreen }}>🔥</span>
@@ -289,7 +292,7 @@ const CoachingGuide = ({ manager }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate('/coaching')}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg"
           >
             <ArrowLeft size={20} />
             <span>Back to Dashboard</span>
@@ -310,7 +313,7 @@ const CoachingGuide = ({ manager }) => {
               onClick={() => setSelectedPosition(pos)}
               className="px-4 py-2 rounded-lg whitespace-nowrap text-sm font-medium"
               style={{
-                backgroundColor: selectedPosition === pos ? colors.chiliRed : 'white',
+                backgroundColor: selectedPosition === pos ? colors.chiliRed : 'rgba(255,255,255,0.1)',
                 color: selectedPosition === pos ? 'white' : colors.chiliNavy,
                 border: `2px solid ${selectedPosition === pos ? colors.chiliRed : colors.chiliGray}`
               }}
@@ -326,7 +329,7 @@ const CoachingGuide = ({ manager }) => {
         </div>
 
         {/* Coaching Tips Footer */}
-        <div className="mt-8 bg-white p-6 rounded-lg">
+        <div className="mt-8 p-6 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
           <h3 className="text-lg font-bold mb-4" style={{ color: colors.chiliRed }}>
             Coaching Best Practices
           </h3>
