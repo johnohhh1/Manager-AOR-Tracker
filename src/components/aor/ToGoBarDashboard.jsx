@@ -22,7 +22,7 @@ const ToGoBarDashboard = ({ manager, onBack }) => {
         {/* Header */}
         <div className="bg-white shadow-sm p-4 flex items-center sticky top-0 z-10">
           <button onClick={onBack} className="mr-4">
-            <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
+            <ChevronLeft size={24} style={{ color: 'white' }} />
           </button>
           <div>
             <h1 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
@@ -252,7 +252,7 @@ const ToGoBarDashboard = ({ manager, onBack }) => {
     <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
       <div className="bg-white shadow-sm p-4 flex items-center sticky top-0 z-10">
         <button onClick={() => setView('main')} className="mr-4">
-          <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
+          <ChevronLeft size={24} style={{ color: 'white' }} />
         </button>
         <h1 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
           {view.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}

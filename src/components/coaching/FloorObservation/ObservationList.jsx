@@ -165,20 +165,24 @@ const ObservationList = ({ manager }) => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
       {/* Header */}
-      <div className="bg-white shadow-sm p-4">
+      <div className="p-4" style={{
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <button
               onClick={() => navigate('/coaching')}
               className="mr-4 hover:opacity-70 transition-opacity"
             >
-              <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
+              <ChevronLeft size={24} style={{ color: 'rgba(255, 255, 255, 0.9)' }} />
             </button>
             <div>
-              <h1 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
+              <h1 className="text-xl font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 Floor Observations
               </h1>
-              <p className="text-sm" style={{ color: colors.chiliBrown }}>
+              <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Track coaching and team performance
               </p>
             </div>
@@ -196,13 +200,17 @@ const ObservationList = ({ manager }) => {
 
       {/* Stats Bar */}
       {!loading && (
-        <div className="bg-white border-b p-4">
+        <div className="p-4" style={{
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03))',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+        }}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
+              <div className="text-2xl font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 {stats.totalObservations}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Total Observations
               </div>
             </div>
@@ -210,7 +218,7 @@ const ObservationList = ({ manager }) => {
               <div className="text-2xl font-bold" style={{ color: colors.chiliRed }}>
                 {stats.coachingOpportunities}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Coaching Given
               </div>
             </div>
@@ -218,7 +226,7 @@ const ObservationList = ({ manager }) => {
               <div className="text-2xl font-bold" style={{ color: colors.chiliGreen }}>
                 {stats.recognitionsGiven}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Recognitions
               </div>
             </div>
@@ -226,7 +234,7 @@ const ObservationList = ({ manager }) => {
               <div className="text-2xl font-bold" style={{ color: colors.chiliYellow }}>
                 {stats.positionsCovered.size}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Positions Covered
               </div>
             </div>
@@ -235,7 +243,11 @@ const ObservationList = ({ manager }) => {
       )}
 
       {/* Filters */}
-      <div className="p-4 bg-white border-b">
+      <div className="p-4" style={{
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03))',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}>
         <div className="flex flex-wrap gap-4">
           {/* Date Range Filter */}
           <div className="flex gap-2">
@@ -243,12 +255,28 @@ const ObservationList = ({ manager }) => {
               <button
                 key={range}
                 onClick={() => setFilterDateRange(range)}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
-                  filterDateRange === range
-                    ? 'text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-                style={filterDateRange === range ? { backgroundColor: colors.chiliNavy } : {}}
+                className="px-3 py-1 rounded-md text-sm font-medium transition-all"
+                style={filterDateRange === range
+                  ? {
+                      backgroundColor: colors.chiliRed,
+                      color: 'white'
+                    }
+                  : {
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      color: 'rgba(255, 255, 255, 0.7)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)'
+                    }
+                }
+                onMouseEnter={(e) => {
+                  if (filterDateRange !== range) {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (filterDateRange !== range) {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                  }
+                }}
               >
                 {range.charAt(0).toUpperCase() + range.slice(1)}
               </button>
@@ -259,30 +287,54 @@ const ObservationList = ({ manager }) => {
           <select
             value={filterShift}
             onChange={(e) => setFilterShift(e.target.value)}
-            className="px-3 py-1 border rounded-md text-sm"
+            className="px-3 py-1 rounded-md text-sm"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              backdropFilter: 'blur(10px)'
+            }}
           >
-            <option value="all">All Shifts</option>
-            <option value="AM">AM Only</option>
-            <option value="PM">PM Only</option>
-            <option value="Close">Close Only</option>
+            <option value="all" style={{ backgroundColor: colors.chiliNavy }}>All Shifts</option>
+            <option value="AM" style={{ backgroundColor: colors.chiliNavy }}>AM Only</option>
+            <option value="PM" style={{ backgroundColor: colors.chiliNavy }}>PM Only</option>
+            <option value="Close" style={{ backgroundColor: colors.chiliNavy }}>Close Only</option>
           </select>
 
           {/* Search */}
           <div className="flex-1 relative">
-            <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2" style={{ color: colors.chiliGray }} />
+            <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
             <input
               type="text"
               placeholder="Search observations..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-3 py-1 border rounded-md text-sm"
+              className="w-full pl-10 pr-3 py-1 rounded-md text-sm"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                color: 'rgba(255, 255, 255, 0.9)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(10px)'
+              }}
             />
           </div>
 
           {/* Export Button */}
           <button
             onClick={() => alert('Export feature coming soon!')}
-            className="px-3 py-1 border rounded-md text-sm font-medium hover:bg-gray-50 flex items-center"
+            className="px-3 py-1 rounded-md text-sm font-medium flex items-center transition-all"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            }}
           >
             <Download size={16} className="mr-1" />
             Export
@@ -294,17 +346,21 @@ const ObservationList = ({ manager }) => {
       <div className="p-4">
         {loading ? (
           <div className="text-center py-8">
-            <div className="text-lg" style={{ color: colors.chiliBrown }}>
+            <div className="text-lg" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
               Loading observations...
             </div>
           </div>
         ) : filteredObservations.length === 0 ? (
-          <div className="bg-white rounded-lg p-8 text-center">
-            <Eye size={48} className="mx-auto mb-4" style={{ color: colors.chiliGray }} />
-            <h3 className="text-lg font-bold mb-2" style={{ color: colors.chiliNavy }}>
+          <div className="rounded-lg p-8 text-center" style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }}>
+            <Eye size={48} className="mx-auto mb-4" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
+            <h3 className="text-lg font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
               No Observations Found
             </h3>
-            <p className="text-sm mb-4" style={{ color: colors.chiliBrown }}>
+            <p className="text-sm mb-4" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
               {observations.length === 0
                 ? 'Start by creating your first floor observation'
                 : 'Try adjusting your filters or search terms'}
@@ -324,14 +380,27 @@ const ObservationList = ({ manager }) => {
             {filteredObservations.map(observation => (
               <div
                 key={observation.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                className="rounded-lg overflow-hidden cursor-pointer transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}
                 onClick={() => navigate(`/coaching/observations/${observation.id}`)}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08))';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                }}
               >
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold" style={{ color: colors.chiliNavy }}>
+                        <h3 className="font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                           {format(new Date(observation.shift_date), 'EEEE, MMM d')}
                         </h3>
                         <span
@@ -342,7 +411,7 @@ const ObservationList = ({ manager }) => {
                         </span>
                       </div>
                       {manager.isGM && (
-                        <p className="text-sm" style={{ color: colors.chiliBrown }}>
+                        <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           By: {observation.manager_name}
                         </p>
                       )}
@@ -351,14 +420,14 @@ const ObservationList = ({ manager }) => {
                       {observation.top_performer?.name && (
                         <div className="flex items-center">
                           <Award size={16} className="mr-1" style={{ color: colors.chiliYellow }} />
-                          <span style={{ color: colors.chiliBrown }}>
+                          <span style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                             {observation.top_performer.name}
                           </span>
                         </div>
                       )}
                       <div className="flex items-center">
-                        <Users size={16} className="mr-1" style={{ color: colors.chiliNavy }} />
-                        <span style={{ color: colors.chiliBrown }}>
+                        <Users size={16} className="mr-1" style={{ color: 'rgba(255, 255, 255, 0.7)' }} />
+                        <span style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                           {Object.keys(observation.observations || {}).length} Positions
                         </span>
                       </div>
@@ -367,11 +436,14 @@ const ObservationList = ({ manager }) => {
 
                   {/* Coaching Priorities Preview */}
                   {observation.coaching_priorities?.length > 0 && (
-                    <div className="p-3 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
-                      <p className="text-xs font-medium mb-1" style={{ color: colors.chiliNavy }}>
+                    <div className="p-3 rounded-md" style={{
+                      backgroundColor: 'rgba(237, 28, 36, 0.15)',
+                      border: '1px solid rgba(237, 28, 36, 0.3)'
+                    }}>
+                      <p className="text-xs font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                         Next Shift Priorities:
                       </p>
-                      <ul className="text-xs" style={{ color: colors.chiliBrown }}>
+                      <ul className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                         {observation.coaching_priorities.slice(0, 2).map((priority, idx) => (
                           <li key={idx}>• {priority}</li>
                         ))}
@@ -384,7 +456,7 @@ const ObservationList = ({ manager }) => {
 
                   {/* Metrics Preview */}
                   {observation.metrics && (
-                    <div className="mt-3 flex gap-4 text-xs" style={{ color: colors.chiliBrown }}>
+                    <div className="mt-3 flex gap-4 text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                       {observation.metrics.sales && (
                         <span>Sales: ${observation.metrics.sales}</span>
                       )}
@@ -408,8 +480,21 @@ const ObservationList = ({ manager }) => {
         <div className="p-4">
           <button
             onClick={() => navigate('/coaching/observations/analytics')}
-            className="w-full py-3 rounded-md border-2 font-medium hover:bg-white transition-all flex items-center justify-center"
-            style={{ borderColor: colors.chiliNavy, color: colors.chiliNavy }}
+            className="w-full py-3 rounded-md font-medium transition-all flex items-center justify-center"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              color: 'rgba(255, 255, 255, 0.9)',
+              border: '2px solid rgba(255, 255, 255, 0.3)',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            }}
           >
             <TrendingUp size={20} className="mr-2" />
             View Analytics & Trends

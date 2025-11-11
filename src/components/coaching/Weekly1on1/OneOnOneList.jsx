@@ -173,7 +173,15 @@ const OneOnOneList = ({ manager }) => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
+    <>
+      <style>
+        {`
+          input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+          }
+        `}
+      </style>
+      <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
       {/* Team Member Selection Modal */}
       {showTeamMemberModal && (
         <div style={{
@@ -288,20 +296,22 @@ const OneOnOneList = ({ manager }) => {
       )}
 
       {/* Header */}
-      <div className="bg-white shadow-sm p-4">
+      <div className="shadow-sm p-4" style={{
+        background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliNavy})`
+      }}>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <button
               onClick={() => navigate('/coaching')}
-              className="mr-4 hover:opacity-70 transition-opacity"
+              className="bg-white bg-opacity-20 p-2 rounded-md mr-3 hover:bg-opacity-30 transition-all cursor-pointer"
             >
-              <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
+              <ChevronLeft size={20} style={{ color: 'white' }} />
             </button>
             <div>
-              <h1 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
+              <h1 className="text-xl font-bold" style={{ color: 'white' }}>
                 Weekly 1:1s
               </h1>
-              <p className="text-sm" style={{ color: colors.chiliBrown }}>
+              <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                 Team member development conversations
               </p>
             </div>
@@ -319,13 +329,17 @@ const OneOnOneList = ({ manager }) => {
 
       {/* Stats Bar */}
       {!loading && (
-        <div className="bg-white border-b p-4">
+        <div className="p-4" style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+        }}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
               <div className="text-2xl font-bold" style={{ color: colors.chiliGreen }}>
                 {stats.thisWeek}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 This Week
               </div>
             </div>
@@ -333,7 +347,7 @@ const OneOnOneList = ({ manager }) => {
               <div className="text-2xl font-bold" style={{ color: stats.overdue > 0 ? colors.chiliRed : colors.chiliGreen }}>
                 {stats.overdue}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Overdue
               </div>
             </div>
@@ -341,7 +355,7 @@ const OneOnOneList = ({ manager }) => {
               <div className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
                 {stats.totalTeam}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Team Members
               </div>
             </div>
@@ -349,7 +363,7 @@ const OneOnOneList = ({ manager }) => {
               <div className="text-2xl font-bold" style={{ color: colors.chiliYellow }}>
                 {stats.averageRating}
               </div>
-              <div className="text-xs" style={{ color: colors.chiliBrown }}>
+              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                 Avg Rating
               </div>
             </div>
@@ -358,27 +372,29 @@ const OneOnOneList = ({ manager }) => {
       )}
 
       {/* Tab Switcher */}
-      <div className="bg-white border-b p-4">
+      <div className="p-4" style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}>
         <div className="flex gap-2">
           <button
             onClick={() => setActiveTab('my')}
-            className={`px-4 py-2 rounded-md font-medium transition-all ${
-              activeTab === 'my'
-                ? 'text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-            style={activeTab === 'my' ? { backgroundColor: colors.chiliNavy } : {}}
+            className="px-4 py-2 rounded-md font-medium transition-all"
+            style={activeTab === 'my'
+              ? { backgroundColor: colors.chiliRed, color: 'white' }
+              : { backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'rgba(255, 255, 255, 0.7)' }
+            }
           >
             My 1:1s
           </button>
           <button
             onClick={() => setActiveTab('team')}
-            className={`px-4 py-2 rounded-md font-medium transition-all ${
-              activeTab === 'team'
-                ? 'text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-            style={activeTab === 'team' ? { backgroundColor: colors.chiliNavy } : {}}
+            className="px-4 py-2 rounded-md font-medium transition-all"
+            style={activeTab === 'team'
+              ? { backgroundColor: colors.chiliRed, color: 'white' }
+              : { backgroundColor: 'rgba(255, 255, 255, 0.1)', color: 'rgba(255, 255, 255, 0.7)' }
+            }
           >
             Team 1:1s (All Visible)
           </button>
@@ -386,29 +402,43 @@ const OneOnOneList = ({ manager }) => {
       </div>
 
       {/* Filters */}
-      <div className="p-4 bg-white border-b">
+      <div className="p-4" style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}>
         <div className="flex flex-wrap gap-4">
           {/* Position Filter */}
           <select
             value={filterPosition}
             onChange={(e) => setFilterPosition(e.target.value)}
-            className="px-3 py-1 border rounded-md text-sm"
+            className="px-3 py-1 rounded-md text-sm"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
           >
-            <option value="all">All Positions</option>
+            <option value="all" style={{ backgroundColor: colors.chiliNavy }}>All Positions</option>
             {getPositions().map(pos => (
-              <option key={pos} value={pos}>{pos}</option>
+              <option key={pos} value={pos} style={{ backgroundColor: colors.chiliNavy }}>{pos}</option>
             ))}
           </select>
 
           {/* Search */}
           <div className="flex-1 relative">
-            <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2" style={{ color: colors.chiliGray }} />
+            <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
             <input
               type="text"
               placeholder="Search team members or development focuses..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-3 py-1 border rounded-md text-sm"
+              className="w-full pl-10 pr-3 py-1 rounded-md text-sm"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
             />
           </div>
         </div>
@@ -418,7 +448,7 @@ const OneOnOneList = ({ manager }) => {
       <div className="p-4">
         {loading ? (
           <div className="text-center py-8">
-            <div className="text-lg" style={{ color: colors.chiliBrown }}>
+            <div className="text-lg" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
               Loading 1:1s...
             </div>
           </div>
@@ -426,7 +456,7 @@ const OneOnOneList = ({ manager }) => {
           <>
             {/* Team Members Grid */}
             <div className="mb-6">
-              <h3 className="text-lg font-bold mb-3" style={{ color: colors.chiliNavy }}>
+              <h3 className="text-lg font-bold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 Team Members
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -435,15 +465,29 @@ const OneOnOneList = ({ manager }) => {
                   return (
                     <div
                       key={member.id}
-                      className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                      className="rounded-lg p-4 transition-all cursor-pointer"
+                      style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.12)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
                       onClick={() => navigate(`/coaching/1on1s/new?teamMemberId=${member.id}`)}
                     >
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h4 className="font-bold" style={{ color: colors.chiliNavy }}>
+                          <h4 className="font-bold" style={{ color: 'white' }}>
                             {member.name}
                           </h4>
-                          <p className="text-sm" style={{ color: colors.chiliBrown }}>
+                          <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                             {member.position}
                           </p>
                         </div>
@@ -459,7 +503,7 @@ const OneOnOneList = ({ manager }) => {
                       </div>
 
                       {lastMeeting ? (
-                        <p className="text-xs" style={{ color: colors.chiliGray }}>
+                        <p className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                           Last 1:1: {format(new Date(lastMeeting.date), 'MMM d')}
                         </p>
                       ) : (
@@ -469,8 +513,20 @@ const OneOnOneList = ({ manager }) => {
                       )}
 
                       <button
-                        className="mt-3 w-full py-1 text-xs font-medium rounded border hover:bg-gray-50"
-                        style={{ borderColor: colors.chiliNavy, color: colors.chiliNavy }}
+                        className="mt-3 w-full py-1 text-xs font-medium rounded border transition-colors"
+                        style={{
+                          borderColor: colors.chiliGreen,
+                          color: colors.chiliGreen,
+                          backgroundColor: 'transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = colors.chiliGreen;
+                          e.currentTarget.style.color = 'white';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                          e.currentTarget.style.color = colors.chiliGreen;
+                        }}
                       >
                         Schedule 1:1
                       </button>
@@ -483,7 +539,7 @@ const OneOnOneList = ({ manager }) => {
             {/* Recent 1:1s List */}
             {filteredOneOnOnes.length > 0 && (
               <div>
-                <h3 className="text-lg font-bold mb-3" style={{ color: colors.chiliNavy }}>
+                <h3 className="text-lg font-bold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                   Recent 1:1s
                 </h3>
                 <div className="space-y-3">
@@ -492,25 +548,39 @@ const OneOnOneList = ({ manager }) => {
                     return (
                       <div
                         key={oneOnOne.id}
-                        className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                        className="rounded-lg p-4 transition-all cursor-pointer"
+                        style={{
+                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          backdropFilter: 'blur(10px)',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
+                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.12)';
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.08)';
+                          e.currentTarget.style.transform = 'translateY(0)';
+                        }}
                         onClick={() => navigate(`/coaching/1on1s/${oneOnOne.id}`)}
                       >
                         <div className="flex items-start justify-between">
                           <div>
                             <div className="flex items-center gap-2 mb-1">
-                              <h4 className="font-bold" style={{ color: colors.chiliNavy }}>
+                              <h4 className="font-bold" style={{ color: 'white' }}>
                                 {teamMember?.name || 'Unknown'}
                               </h4>
                               {activeTab === 'team' && oneOnOne.manager_id !== manager.name && (
                                 <span className="text-xs px-2 py-1 rounded-full" style={{
                                   backgroundColor: colors.chiliNavy,
-                                  color: colors.chiliBrown
+                                  color: 'white'
                                 }}>
                                   by {oneOnOne.manager_name}
                                 </span>
                               )}
                             </div>
-                            <p className="text-sm" style={{ color: colors.chiliBrown }}>
+                            <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                               {format(new Date(oneOnOne.meeting_date), 'EEEE, MMM d')} • {teamMember?.position}
                             </p>
                           </div>
@@ -524,7 +594,7 @@ const OneOnOneList = ({ manager }) => {
                                   typeof val === 'number'
                                 ).length || 0}
                               </div>
-                              <div className="text-xs" style={{ color: colors.chiliGray }}>
+                              <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                                 Avg Rating
                               </div>
                             </div>
@@ -532,11 +602,11 @@ const OneOnOneList = ({ manager }) => {
                         </div>
 
                         {oneOnOne.focus_behavior && (
-                          <div className="mt-3 p-2 rounded" style={{ backgroundColor: colors.chiliNavy }}>
-                            <p className="text-xs font-medium" style={{ color: colors.chiliNavy }}>
+                          <div className="mt-3 p-2 rounded" style={{ backgroundColor: colors.chiliRed }}>
+                            <p className="text-xs font-medium" style={{ color: 'white' }}>
                               Development Focus:
                             </p>
-                            <p className="text-sm" style={{ color: colors.chiliBrown }}>
+                            <p className="text-sm" style={{ color: 'white' }}>
                               {oneOnOne.focus_behavior}
                             </p>
                           </div>
@@ -545,7 +615,7 @@ const OneOnOneList = ({ manager }) => {
                         {oneOnOne.wins && oneOnOne.wins.length > 0 && (
                           <div className="mt-2 flex items-center">
                             <Star size={16} className="mr-1" style={{ color: colors.chiliYellow }} />
-                            <span className="text-xs" style={{ color: colors.chiliBrown }}>
+                            <span className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                               {oneOnOne.wins.length} wins recognized
                             </span>
                           </div>
@@ -559,12 +629,16 @@ const OneOnOneList = ({ manager }) => {
 
             {/* Empty State */}
             {filteredOneOnOnes.length === 0 && !loading && (
-              <div className="bg-white rounded-lg p-8 text-center">
-                <Users size={48} className="mx-auto mb-4" style={{ color: colors.chiliGray }} />
-                <h3 className="text-lg font-bold mb-2" style={{ color: colors.chiliNavy }}>
+              <div className="rounded-lg p-8 text-center" style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.15)'
+              }}>
+                <Users size={48} className="mx-auto mb-4" style={{ color: 'rgba(255, 255, 255, 0.5)' }} />
+                <h3 className="text-lg font-bold mb-2" style={{ color: 'white' }}>
                   No 1:1s Found
                 </h3>
-                <p className="text-sm mb-4" style={{ color: colors.chiliBrown }}>
+                <p className="text-sm mb-4" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                   {teamMembers.length === 0
                     ? 'Add team members to start scheduling 1:1s'
                     : 'Schedule your first 1:1 with a team member'}
@@ -582,6 +656,7 @@ const OneOnOneList = ({ manager }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

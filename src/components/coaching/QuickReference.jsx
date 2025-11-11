@@ -53,7 +53,7 @@ const QuickReference = ({ manager }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate('/coaching')}
-            style={{ ...styles.buttonOutline, display: 'flex', alignItems: 'center', gap: spacing.sm }}
+            className="bg-white bg-opacity-20 px-4 py-2 rounded-md hover:bg-opacity-30 transition-all cursor-pointer flex items-center gap-2" style={{ color: 'white' }}
           >
             <ArrowLeft size={20} />
             <span>Back to Dashboard</span>

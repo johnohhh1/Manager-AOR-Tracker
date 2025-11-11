@@ -282,7 +282,7 @@ const OneOnOneForm = ({ manager }) => {
               <span
                 className="text-xs mt-1 text-center"
                 style={{
-                  color: index === currentStep ? colors.chiliNavy : colors.chiliGray,
+                  color: index === currentStep ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.6)',
                   fontWeight: index === currentStep ? 'bold' : 'normal'
                 }}
               >
@@ -306,24 +306,28 @@ const OneOnOneForm = ({ manager }) => {
 
   const renderStep0 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
+      <h3 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
         Select Team Member
       </h3>
 
       <div>
-        <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliNavy }}>
+        <label className="block text-sm font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
           Team Member *
         </label>
         <select
           value={formData.team_member_id}
           onChange={handleTeamMemberChange}
           className="w-full px-4 py-2 border rounded-lg"
-          style={{ borderColor: colors.chiliGray }}
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           required
         >
-          <option value="">Select a team member...</option>
+          <option value="" style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>Select a team member...</option>
           {teamMembersList.map(member => (
-            <option key={member.id} value={member.id}>
+            <option key={member.id} value={member.id} style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>
               {member.name} - {member.position}
             </option>
           ))}
@@ -332,7 +336,7 @@ const OneOnOneForm = ({ manager }) => {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliNavy }}>
+          <label className="block text-sm font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
             Meeting Date *
           </label>
           <input
@@ -340,13 +344,17 @@ const OneOnOneForm = ({ manager }) => {
             value={formData.meeting_date}
             onChange={(e) => setFormData(prev => ({ ...prev, meeting_date: e.target.value }))}
             className="w-full px-4 py-2 border rounded-lg"
-            style={{ borderColor: colors.chiliGray }}
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliNavy }}>
+          <label className="block text-sm font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
             Fiscal Period/Week
           </label>
           <div className="flex gap-2">
@@ -356,7 +364,11 @@ const OneOnOneForm = ({ manager }) => {
               value={formData.fiscal_period}
               onChange={(e) => setFormData(prev => ({ ...prev, fiscal_period: e.target.value }))}
               className="w-1/2 px-4 py-2 border rounded-lg"
-              style={{ borderColor: colors.chiliGray }}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
             />
             <input
               type="text"
@@ -364,7 +376,11 @@ const OneOnOneForm = ({ manager }) => {
               value={formData.fiscal_week}
               onChange={(e) => setFormData(prev => ({ ...prev, fiscal_week: e.target.value }))}
               className="w-1/2 px-4 py-2 border rounded-lg"
-              style={{ borderColor: colors.chiliGray }}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
             />
           </div>
         </div>
@@ -374,31 +390,41 @@ const OneOnOneForm = ({ manager }) => {
 
   const renderStep1 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
+      <h3 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
         Metrics & Wins
       </h3>
 
       {/* Metrics */}
       <div>
-        <h4 className="font-semibold mb-3" style={{ color: colors.chiliNavy }}>Performance Metrics</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Performance Metrics</h4>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm mb-1">Sales/Performance Score</label>
+            <label className="block text-sm mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Sales/Performance Score</label>
             <input
               type="text"
               value={formData.metrics.performance || ''}
               onChange={(e) => updateMetric('performance', e.target.value)}
               className="w-full px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder="82%"
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Attendance</label>
+            <label className="block text-sm mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Attendance</label>
             <input
               type="text"
               value={formData.metrics.attendance || ''}
               onChange={(e) => updateMetric('attendance', e.target.value)}
               className="w-full px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder="100%"
             />
           </div>
@@ -407,7 +433,7 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Wins */}
       <div>
-        <h4 className="font-semibold mb-3" style={{ color: colors.chiliNavy }}>Team Member Wins</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Team Member Wins</h4>
         {formData.wins.map((win, index) => (
           <div key={index} className="flex gap-2 mb-2">
             <input
@@ -415,6 +441,11 @@ const OneOnOneForm = ({ manager }) => {
               value={win}
               onChange={(e) => updateArrayItem('wins', index, e.target.value)}
               className="flex-1 px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder="What went well this week?"
             />
             {formData.wins.length > 1 && (
@@ -438,7 +469,7 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Manager Recognition */}
       <div>
-        <h4 className="font-semibold mb-3" style={{ color: colors.chiliNavy }}>Manager Recognition</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Manager Recognition</h4>
         {formData.manager_recognition.map((item, index) => (
           <div key={index} className="flex gap-2 mb-2">
             <input
@@ -446,6 +477,11 @@ const OneOnOneForm = ({ manager }) => {
               value={item}
               onChange={(e) => updateArrayItem('manager_recognition', index, e.target.value)}
               className="flex-1 px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder="Specific recognition..."
             />
             {formData.manager_recognition.length > 1 && (
@@ -469,7 +505,7 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Guest Compliments */}
       <div>
-        <h4 className="font-semibold mb-3" style={{ color: colors.chiliNavy }}>Guest Compliments</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Guest Compliments</h4>
         {formData.guest_compliments.map((item, index) => (
           <div key={index} className="flex gap-2 mb-2">
             <input
@@ -477,6 +513,11 @@ const OneOnOneForm = ({ manager }) => {
               value={item}
               onChange={(e) => updateArrayItem('guest_compliments', index, e.target.value)}
               className="flex-1 px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder="Guest feedback..."
             />
             {formData.guest_compliments.length > 1 && (
@@ -502,61 +543,76 @@ const OneOnOneForm = ({ manager }) => {
 
   const renderStep2 = () => {
     if (!selectedTeamMember) {
-      return <div>Please select a team member first</div>;
+      return <div style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Please select a team member first</div>;
     }
 
     const behaviors = POSITION_BEHAVIORS[selectedTeamMember.position] || [];
 
     return (
       <div className="space-y-6">
-        <h3 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
+        <h3 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
           ChiliHead Hospitality Behaviors - {selectedTeamMember.position}
         </h3>
 
-        <div className="text-sm mb-4" style={{ color: colors.chiliGray }}>
+        <div className="text-sm mb-4" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
           <strong>Rating Scale:</strong> 1 = Needs Improvement | 2 = Below Standard | 3 = Meets Standard | 4 = Exceeds | 5 = Role Model
         </div>
 
         {behaviors.map(behavior => (
-          <div key={behavior.key} className="border rounded-lg p-4" style={{ borderColor: colors.chiliGray }}>
-            <h4 className="font-semibold mb-3" style={{ color: colors.chiliNavy }}>
+          <div key={behavior.key} className="border rounded-lg p-4" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+            <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
               {behavior.label}
             </h4>
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs mb-1">Self-Rating</label>
+                <label className="block text-xs mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Self-Rating</label>
                 <select
                   value={formData.behavior_ratings[behavior.key]?.self || 3}
                   onChange={(e) => updateBehaviorRating(behavior.key, 'self', parseInt(e.target.value))}
                   className="w-full px-3 py-2 border rounded"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white'
+                  }}
                 >
                   {[1, 2, 3, 4, 5].map(n => (
-                    <option key={n} value={n}>{n}</option>
+                    <option key={n} value={n} style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>{n}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs mb-1">Manager Rating</label>
+                <label className="block text-xs mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Manager Rating</label>
                 <select
                   value={formData.behavior_ratings[behavior.key]?.manager || 3}
                   onChange={(e) => updateBehaviorRating(behavior.key, 'manager', parseInt(e.target.value))}
                   className="w-full px-3 py-2 border rounded"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white'
+                  }}
                 >
                   {[1, 2, 3, 4, 5].map(n => (
-                    <option key={n} value={n}>{n}</option>
+                    <option key={n} value={n} style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>{n}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs mb-1">Notes</label>
+                <label className="block text-xs mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Notes</label>
                 <input
                   type="text"
                   value={formData.behavior_ratings[behavior.key]?.notes || ''}
                   onChange={(e) => updateBehaviorRating(behavior.key, 'notes', e.target.value)}
                   className="w-full px-3 py-2 border rounded"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white'
+                  }}
                   placeholder="Discussion notes..."
                 />
               </div>
@@ -569,23 +625,28 @@ const OneOnOneForm = ({ manager }) => {
 
   const renderStep3 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
+      <h3 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
         Development Focus
       </h3>
 
       <div>
-        <label className="block font-medium mb-2">Focus Behavior for This Week</label>
+        <label className="block font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Focus Behavior for This Week</label>
         <input
           type="text"
           value={formData.focus_behavior}
           onChange={(e) => setFormData(prev => ({ ...prev, focus_behavior: e.target.value }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           placeholder="One behavior to level up..."
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-2">What does success look like?</label>
+        <label className="block font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>What does success look like?</label>
         <textarea
           value={formData.action_plan.success_looks_like}
           onChange={(e) => setFormData(prev => ({
@@ -593,13 +654,18 @@ const OneOnOneForm = ({ manager }) => {
             action_plan: { ...prev.action_plan, success_looks_like: e.target.value }
           }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           rows="3"
           placeholder="Define success criteria..."
         />
       </div>
 
       <div>
-        <label className="block font-medium mb-2">What support do you need?</label>
+        <label className="block font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>What support do you need?</label>
         <textarea
           value={formData.action_plan.support_needed}
           onChange={(e) => setFormData(prev => ({
@@ -607,17 +673,22 @@ const OneOnOneForm = ({ manager }) => {
             action_plan: { ...prev.action_plan, support_needed: e.target.value }
           }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           rows="2"
           placeholder="Support needed from manager..."
         />
       </div>
 
       {/* Cross-Training */}
-      <div className="border-t pt-6">
-        <h4 className="font-semibold mb-3" style={{ color: colors.chiliNavy }}>Cross-Training</h4>
+      <div className="border-t pt-6" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Cross-Training</h4>
 
         <div>
-          <label className="block text-sm mb-2">Interested in which position?</label>
+          <label className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Interested in which position?</label>
           <input
             type="text"
             value={formData.cross_training_status.interested_in}
@@ -626,12 +697,17 @@ const OneOnOneForm = ({ manager }) => {
               cross_training_status: { ...prev.cross_training_status, interested_in: e.target.value }
             }))}
             className="w-full px-3 py-2 border rounded"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
             placeholder="Position name..."
           />
         </div>
 
         <div className="mt-3">
-          <label className="block text-sm mb-2">Target Certification Date</label>
+          <label className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Target Certification Date</label>
           <input
             type="date"
             value={formData.cross_training_status.target_date}
@@ -640,6 +716,11 @@ const OneOnOneForm = ({ manager }) => {
               cross_training_status: { ...prev.cross_training_status, target_date: e.target.value }
             }))}
             className="w-full px-3 py-2 border rounded"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
           />
         </div>
       </div>
@@ -648,16 +729,16 @@ const OneOnOneForm = ({ manager }) => {
 
   const renderStep4 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
+      <h3 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
         Schedule & Open Feedback
       </h3>
 
       {/* Schedule */}
       <div>
-        <h4 className="font-semibold mb-3">Schedule</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Schedule</h4>
 
         <div className="flex items-center gap-4 mb-3">
-          <label className="flex items-center">
+          <label className="flex items-center" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
             <input
               type="checkbox"
               checked={formData.enough_hours}
@@ -668,12 +749,17 @@ const OneOnOneForm = ({ manager }) => {
           </label>
 
           <div className="flex items-center gap-2">
-            <label className="text-sm">Avg hours/week:</label>
+            <label className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Avg hours/week:</label>
             <input
               type="number"
               value={formData.avg_hours}
               onChange={(e) => setFormData(prev => ({ ...prev, avg_hours: e.target.value }))}
               className="w-20 px-2 py-1 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder="30"
             />
           </div>
@@ -683,6 +769,11 @@ const OneOnOneForm = ({ manager }) => {
           value={formData.schedule_notes}
           onChange={(e) => setFormData(prev => ({ ...prev, schedule_notes: e.target.value }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           rows="2"
           placeholder="Schedule preferences or availability changes..."
         />
@@ -690,12 +781,17 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Open Feedback */}
       <div>
-        <h4 className="font-semibold mb-3">Open Feedback</h4>
-        <label className="block text-sm mb-2">What's on your mind?</label>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Open Feedback</h4>
+        <label className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>What's on your mind?</label>
         <textarea
           value={formData.open_feedback}
           onChange={(e) => setFormData(prev => ({ ...prev, open_feedback: e.target.value }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           rows="4"
           placeholder="Team member questions, concerns, feedback..."
         />
@@ -703,11 +799,16 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Manager Feedback */}
       <div>
-        <label className="block text-sm mb-2">Manager Feedback & Action Items</label>
+        <label className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Manager Feedback & Action Items</label>
         <textarea
           value={formData.manager_feedback}
           onChange={(e) => setFormData(prev => ({ ...prev, manager_feedback: e.target.value }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
           rows="3"
           placeholder="Manager response and action items..."
         />
@@ -717,21 +818,26 @@ const OneOnOneForm = ({ manager }) => {
 
   const renderStep5 = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
+      <h3 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
         Goals & Commitments
       </h3>
 
       {/* Team Member Commits */}
       <div>
-        <h4 className="font-semibold mb-3">Team Member Commits To:</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Team Member Commits To:</h4>
         {formData.team_member_commits.map((commit, index) => (
           <div key={index} className="mb-2">
-            <label className="block text-xs mb-1">{index + 1}.</label>
+            <label className="block text-xs mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>{index + 1}.</label>
             <input
               type="text"
               value={commit}
               onChange={(e) => updateArrayItem('team_member_commits', index, e.target.value)}
               className="w-full px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder={`Commitment ${index + 1}...`}
             />
           </div>
@@ -740,15 +846,20 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Manager Commits */}
       <div>
-        <h4 className="font-semibold mb-3">Manager Commits To:</h4>
+        <h4 className="font-semibold mb-3" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Manager Commits To:</h4>
         {formData.manager_commits.map((commit, index) => (
           <div key={index} className="mb-2">
-            <label className="block text-xs mb-1">{index + 1}.</label>
+            <label className="block text-xs mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>{index + 1}.</label>
             <input
               type="text"
               value={commit}
               onChange={(e) => updateArrayItem('manager_commits', index, e.target.value)}
               className="w-full px-3 py-2 border rounded"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: 'white'
+              }}
               placeholder={`Commitment ${index + 1}...`}
             />
           </div>
@@ -757,12 +868,17 @@ const OneOnOneForm = ({ manager }) => {
 
       {/* Next Meeting */}
       <div>
-        <label className="block font-medium mb-2">Next 1:1 Date</label>
+        <label className="block font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Next 1:1 Date</label>
         <input
           type="date"
           value={formData.next_meeting_date}
           onChange={(e) => setFormData(prev => ({ ...prev, next_meeting_date: e.target.value }))}
           className="w-full px-4 py-2 border rounded-lg"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'white'
+          }}
         />
       </div>
     </div>
@@ -775,13 +891,18 @@ const OneOnOneForm = ({ manager }) => {
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate('/coaching/1on1s')}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              color: 'white'
+            }}
           >
             <ArrowLeft size={20} />
             <span>Back to 1:1s</span>
           </button>
 
-          <h1 className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
+          <h1 className="text-2xl font-bold" style={{ color: 'white' }}>
             {id ? 'Edit' : 'New'} Weekly 1:1
           </h1>
 
@@ -810,7 +931,7 @@ const OneOnOneForm = ({ manager }) => {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-between mt-8 pt-6 border-t">
+          <div className="flex justify-between mt-8 pt-6 border-t" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
             <button
               onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
               disabled={currentStep === 0}
