@@ -83,7 +83,7 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
   };
 
   return (
-    <div style={{ backgroundColor: colors.chiliCream, minHeight: '100vh' }}>
+    <div style={{ minHeight: '100vh' }}>
       {/* Header */}
       <div style={{
         background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliNavy})`,
@@ -98,28 +98,23 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
 
       {/* Manager Selection */}
       <div className="p-6 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: colors.chiliNavy }}>
+        <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'white' }}>
           <Users className="inline mr-2" size={28} />
-          Select Your Profile
+          SELECT YOUR PROFILE
         </h2>
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="text-lg" style={{ color: colors.chiliBrown }}>
+            <div className="text-lg" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
               Loading manager profiles...
             </div>
           </div>
         ) : managers.length === 0 ? (
-          <div className="text-center py-12" style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '2rem',
-            border: `3px solid ${colors.chiliRed}`
-          }}>
-            <p className="text-lg mb-4" style={{ color: colors.chiliNavy }}>
+          <div className="text-center py-12 bg-white rounded-lg p-6 shadow-md">
+            <p className="text-lg mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
               No managers found. Please run the database migration first.
             </p>
-            <p className="text-sm" style={{ color: colors.chiliBrown }}>
+            <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
               Run <code>supabase/managers_migration.sql</code> in your Supabase SQL Editor
             </p>
           </div>
@@ -135,29 +130,24 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
                 <button
                   key={manager.id}
                   onClick={() => selectManager(manager)}
+                  className="bg-white rounded-lg p-6 shadow-md"
                   style={{
-                    backgroundColor: 'white',
                     border: `3px solid ${manager.is_gm ? colors.chiliRed : colors.chiliNavy}`,
-                    borderRadius: '12px',
-                    padding: '1.5rem',
                     textAlign: 'left',
                     cursor: 'pointer',
-                    transition: 'all 0.2s',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                    transition: 'all 0.2s'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.02)';
-                    e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
                   }}
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
+                        <h3 className="text-2xl font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                           {manager.name}
                         </h3>
                         {manager.is_gm && (
@@ -168,14 +158,14 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
                       {displayTitle && (
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-2xl">{displayTitle.icon}</span>
-                          <p style={{ color: colors.chiliBrown, fontWeight: '500' }}>
+                          <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontWeight: '500' }}>
                             {displayTitle.title}
                           </p>
                         </div>
                       )}
 
                       {manager.email && (
-                        <p className="text-sm mt-2" style={{ color: colors.chiliGray }}>
+                        <p className="text-sm mt-2" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {manager.email}
                         </p>
                       )}
@@ -185,12 +175,13 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
                       backgroundColor: manager.is_gm ? colors.chiliRed : colors.chiliGreen,
                       color: 'white',
                       padding: '0.5rem 1.25rem',
-                      borderRadius: '8px',
+                      borderRadius: '100px',
                       fontWeight: 'bold',
                       fontSize: '0.875rem',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.5rem'
+                      gap: '0.5rem',
+                      boxShadow: '-4px 4px 0px 0px rgba(0, 0, 0, 0.25)'
                     }}>
                       {manager.is_gm ? (
                         <>
@@ -198,7 +189,7 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
                           GM
                         </>
                       ) : (
-                        'Manager'
+                        'MANAGER'
                       )}
                     </div>
                   </div>
@@ -210,19 +201,16 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
 
         {/* Admin Quick Access (only show if managers exist) */}
         {!loading && managers.length > 0 && managers.some(m => m.is_gm) && (
-          <div style={{
-            marginTop: '3rem',
-            padding: '1.5rem',
-            backgroundColor: 'rgba(237, 28, 36, 0.1)',
-            borderRadius: '12px',
-            border: `2px dashed ${colors.chiliRed}`
-          }}>
+          <div className="bg-white rounded-lg p-6 shadow-md mt-8"
+            style={{
+              border: `2px solid ${colors.chiliRed}`
+            }}>
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-bold mb-1" style={{ color: colors.chiliRed }}>
                   🔧 GM Quick Actions
                 </h3>
-                <p className="text-sm" style={{ color: colors.chiliBrown }}>
+                <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                   Manage manager assignments and team settings
                 </p>
               </div>
@@ -239,11 +227,12 @@ const ManagerLogin = ({ setManager, setSessionToken }) => {
                   backgroundColor: colors.chiliRed,
                   color: 'white',
                   padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
+                  borderRadius: '100px',
                   fontWeight: 'bold',
                   border: 'none',
                   cursor: 'pointer',
-                  fontSize: '0.875rem'
+                  fontSize: '0.875rem',
+                  boxShadow: '-4px 4px 0px 0px rgba(0, 0, 0, 0.25)'
                 }}
               >
                 Admin Panel →
