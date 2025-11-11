@@ -287,14 +287,17 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
       <div className="p-6 max-w-4xl mx-auto">
         {/* Step 0: Basic Info */}
         {currentStep === 0 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
-            <h2 className="text-lg font-bold mb-4" style={{ color: colors.chiliNavy }}>
-              Shift Information
+          <div className="rounded-lg p-6 shadow-md" style={{
+            backgroundColor: 'rgba(255,255,255,0.05)',
+            border: '2px solid rgba(255,255,255,0.1)'
+          }}>
+            <h2 className="text-lg font-bold mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+              SHIFT INFORMATION
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliBrown }}>
+                <label className="block text-sm font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                   <Calendar size={16} className="inline mr-1" />
                   Shift Date
                 </label>
@@ -303,12 +306,17 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                   value={formData.shift_date}
                   onChange={(e) => setFormData(prev => ({ ...prev, shift_date: e.target.value }))}
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
-                  style={{ '--tw-ring-color': colors.chiliRed }}
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white',
+                    '--tw-ring-color': colors.chiliRed
+                  }}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2" style={{ color: colors.chiliBrown }}>
+                <label className="block text-sm font-medium mb-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                   <Clock size={16} className="inline mr-1" />
                   Shift Type
                 </label>
@@ -316,11 +324,16 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                   value={formData.shift_type}
                   onChange={(e) => setFormData(prev => ({ ...prev, shift_type: e.target.value }))}
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
-                  style={{ '--tw-ring-color': colors.chiliRed }}
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white',
+                    '--tw-ring-color': colors.chiliRed
+                  }}
                 >
-                  <option value="AM">AM Shift</option>
-                  <option value="PM">PM Shift</option>
-                  <option value="Close">Close Shift</option>
+                  <option value="AM" style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>AM Shift</option>
+                  <option value="PM" style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>PM Shift</option>
+                  <option value="Close" style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>Close Shift</option>
                 </select>
               </div>
             </div>
@@ -330,8 +343,8 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
         {/* Step 1: Position Observations */}
         {currentStep === 1 && (
           <div className="space-y-4">
-            <h2 className="text-lg font-bold" style={{ color: colors.chiliNavy }}>
-              Position Observations
+            <h2 className="text-lg font-bold" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+              POSITION OBSERVATIONS
             </h2>
 
             {Object.entries(positionBehaviors).map(([position, behaviors]) => {
@@ -367,14 +380,14 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                     className="px-3 py-1.5 rounded-md text-sm"
                     style={{
                       minWidth: '200px',
-                      backgroundColor: colors.chiliNavy,
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
                       color: 'white',
-                      border: `1px solid ${colors.chiliGray}`
+                      border: '1px solid rgba(255, 255, 255, 0.2)'
                     }}
                   >
-                    <option value="">Select team member...</option>
+                    <option value="" style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>Select team member...</option>
                     {teamMembersForPosition.map(tm => (
-                      <option key={tm.id} value={tm.name}>
+                      <option key={tm.id} value={tm.name} style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>
                         {tm.name}
                       </option>
                     ))}
@@ -384,7 +397,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                 <div className="space-y-3">
                   {behaviors.map((behavior) => (
                     <div key={behavior} className="flex items-center justify-between">
-                      <span className="text-sm" style={{ color: colors.chiliCream }}>
+                      <span className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                         {behavior}
                       </span>
                       <div className="flex gap-2">
@@ -437,8 +450,11 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                   ))}
 
                   {formData.observations[position] && Object.values(formData.observations[position]).some(obs => obs.met === false) && (
-                    <div className="mt-3 p-3 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
-                      <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                    <div className="mt-3 p-3 rounded-md" style={{
+                      backgroundColor: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(255,255,255,0.1)'
+                    }}>
+                      <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                         Coaching Notes
                       </label>
                       <textarea
@@ -447,6 +463,11 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                         placeholder="What coaching was provided?"
                         value={formData.observations[position]?.coaching_notes || ''}
                         onChange={(e) => handlePositionObservation(position, 'coaching_notes', e.target.value)}
+                        style={{
+                          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          color: 'white'
+                        }}
                       />
                     </div>
                   )}
@@ -460,13 +481,16 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
         {/* Step 2: Metrics & Performance */}
         {currentStep === 2 && (
           <div className="space-y-4">
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="font-bold mb-4" style={{ color: colors.chiliNavy }}>
+            <div className="rounded-lg p-6 shadow-md" style={{
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              border: '2px solid rgba(255,255,255,0.1)'
+            }}>
+              <h3 className="font-bold mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 Shift Metrics
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Sales
                   </label>
                   <input
@@ -478,10 +502,15 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       metrics: { ...prev.metrics, sales: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Labor %
                   </label>
                   <input
@@ -493,10 +522,15 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       metrics: { ...prev.metrics, labor: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Guest Count
                   </label>
                   <input
@@ -508,10 +542,15 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       metrics: { ...prev.metrics, guest_count: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Table Turns
                   </label>
                   <input
@@ -523,19 +562,27 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       metrics: { ...prev.metrics, table_turns: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="font-bold mb-4 flex items-center" style={{ color: colors.chiliNavy }}>
+            <div className="rounded-lg p-6 shadow-md" style={{
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              border: '2px solid rgba(255,255,255,0.1)'
+            }}>
+              <h3 className="font-bold mb-4 flex items-center" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 <Award size={20} className="mr-2" style={{ color: colors.chiliYellow }} />
                 Top Performer
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Team Member Name
                   </label>
                   <input
@@ -547,10 +594,15 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       top_performer: { ...prev.top_performer, name: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Position
                   </label>
                   <input
@@ -562,10 +614,15 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       top_performer: { ...prev.top_performer, position: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1" style={{ color: colors.chiliBrown }}>
+                  <label className="block text-sm font-medium mb-1" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                     Recognition Reason
                   </label>
                   <input
@@ -577,6 +634,11 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                       top_performer: { ...prev.top_performer, reason: e.target.value }
                     }))}
                     className="w-full px-3 py-2 border rounded-md"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: 'white'
+                    }}
                   />
                 </div>
               </div>
@@ -587,8 +649,11 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
         {/* Step 3: Coaching Notes */}
         {currentStep === 3 && (
           <div className="space-y-4">
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="font-bold mb-4 flex items-center" style={{ color: colors.chiliNavy }}>
+            <div className="rounded-lg p-6 shadow-md" style={{
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              border: '2px solid rgba(255,255,255,0.1)'
+            }}>
+              <h3 className="font-bold mb-4 flex items-center" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 <AlertTriangle size={20} className="mr-2" style={{ color: colors.chiliYellow }} />
                 Coaching Priorities for Next Shift
               </h3>
@@ -601,11 +666,19 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                   ...prev,
                   coaching_priorities: e.target.value.split('\n').filter(item => item.trim())
                 }))}
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: 'white'
+                }}
               />
             </div>
 
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <h3 className="font-bold mb-4" style={{ color: colors.chiliNavy }}>
+            <div className="rounded-lg p-6 shadow-md" style={{
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              border: '2px solid rgba(255,255,255,0.1)'
+            }}>
+              <h3 className="font-bold mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
                 Manager Notes
               </h3>
               <textarea
@@ -614,6 +687,11 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                 placeholder="Additional observations, concerns, or notes..."
                 value={formData.manager_notes}
                 onChange={(e) => setFormData(prev => ({ ...prev, manager_notes: e.target.value }))}
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: 'white'
+                }}
               />
             </div>
           </div>
@@ -621,22 +699,31 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
 
         {/* Step 4: Review & Save */}
         {currentStep === 4 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
-            <h2 className="text-lg font-bold mb-4" style={{ color: colors.chiliNavy }}>
+          <div className="rounded-lg p-6 shadow-md" style={{
+            backgroundColor: 'rgba(255,255,255,0.05)',
+            border: '2px solid rgba(255,255,255,0.1)'
+          }}>
+            <h2 className="text-lg font-bold mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
               Review Observation Summary
             </h2>
 
             <div className="space-y-4">
-              <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
-                <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Shift Details</h4>
-                <p className="text-sm" style={{ color: colors.chiliBrown }}>
+              <div className="p-4 rounded-md" style={{
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)'
+              }}>
+                <h4 className="font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Shift Details</h4>
+                <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                   Date: {format(new Date(formData.shift_date), 'MMM d, yyyy')} | Type: {formData.shift_type} Shift
                 </p>
               </div>
 
-              <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
-                <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Positions Observed</h4>
-                <p className="text-sm" style={{ color: colors.chiliBrown }}>
+              <div className="p-4 rounded-md" style={{
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)'
+              }}>
+                <h4 className="font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Positions Observed</h4>
+                <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                   {Object.keys(formData.observations).length} positions with {
                     Object.values(formData.observations).reduce((acc, pos) =>
                       acc + Object.values(pos).filter(obs => typeof obs === 'object' && obs.met === false).length, 0
@@ -646,18 +733,24 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
               </div>
 
               {formData.top_performer.name && (
-                <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
-                  <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Top Performer</h4>
-                  <p className="text-sm" style={{ color: colors.chiliBrown }}>
+                <div className="p-4 rounded-md" style={{
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.15)'
+                }}>
+                  <h4 className="font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Top Performer</h4>
+                  <p className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                     {formData.top_performer.name} ({formData.top_performer.position}) - {formData.top_performer.reason}
                   </p>
                 </div>
               )}
 
               {formData.coaching_priorities.length > 0 && (
-                <div className="p-4 rounded-md" style={{ backgroundColor: colors.chiliNavy }}>
-                  <h4 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>Next Shift Priorities</h4>
-                  <ul className="text-sm" style={{ color: colors.chiliBrown }}>
+                <div className="p-4 rounded-md" style={{
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.15)'
+                }}>
+                  <h4 className="font-bold mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>Next Shift Priorities</h4>
+                  <ul className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
                     {formData.coaching_priorities.map((priority, index) => (
                       <li key={index}>• {priority}</li>
                     ))}
