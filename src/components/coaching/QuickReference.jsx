@@ -1,15 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Eye, MessageCircle, Target, CheckSquare, Award, AlertCircle } from 'lucide-react';
-
-const colors = {
-  chiliRed: 'rgb(237, 28, 36)',
-  chiliNavy: 'rgb(34, 35, 91)',
-  chiliGreen: 'rgb(116, 158, 51)',
-  chiliYellow: 'rgb(255, 198, 11)',
-  chiliCream: 'rgb(248, 247, 245)',
-  chiliGray: 'rgb(161, 159, 154)'
-};
+import { colors, styles, radius, spacing, shadows } from '../../styles/design-system';
 
 const QuickReference = ({ manager }) => {
   const navigate = useNavigate();
@@ -55,19 +47,19 @@ const QuickReference = ({ manager }) => {
   };
 
   return (
-    <div style={{ backgroundColor: colors.chiliNavy, minHeight: '100vh', padding: '20px' }}>
+    <div style={{ ...styles.pageContainer }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate('/coaching')}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white"
+            style={{ ...styles.buttonOutline, display: 'flex', alignItems: 'center', gap: spacing.sm }}
           >
             <ArrowLeft size={20} />
             <span>Back to Dashboard</span>
           </button>
 
-          <h1 className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
+          <h1 className="text-2xl font-bold" style={{ color: colors.textPrimary }}>
             Quick Reference Card
           </h1>
 
@@ -89,7 +81,7 @@ const QuickReference = ({ manager }) => {
                 >
                   {index + 1}
                 </div>
-                <div className="font-semibold text-sm" style={{ color: colors.chiliNavy }}>{step}</div>
+                <div className="font-semibold text-sm" style={{ color: colors.textPrimary }}>{step}</div>
               </div>
             ))}
           </div>
@@ -97,7 +89,7 @@ const QuickReference = ({ manager }) => {
 
         {/* Position-Specific Focus */}
         <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliNavy }}>
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.textPrimary }}>
             <Eye size={24} />
             Position-Specific Coaching Focus
           </h2>
@@ -112,7 +104,7 @@ const QuickReference = ({ manager }) => {
                   {pos.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
                       <CheckSquare size={16} style={{ color: colors.chiliGreen, flexShrink: 0, marginTop: '2px' }} />
-                      <span style={{ color: colors.chiliGray }}>{item}</span>
+                      <span style={{ color: colors.textSecondary }}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -123,7 +115,7 @@ const QuickReference = ({ manager }) => {
 
         {/* Coaching Starters */}
         <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliNavy }}>
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.textPrimary }}>
             <MessageCircle size={24} />
             Coaching Starters
           </h2>
@@ -134,7 +126,7 @@ const QuickReference = ({ manager }) => {
               </h3>
               <ul className="space-y-2 text-sm">
                 {coachingPhrases.positive.map((phrase, i) => (
-                  <li key={i} style={{ color: colors.chiliGray }}>• {phrase}</li>
+                  <li key={i} style={{ color: colors.textSecondary }}>• {phrase}</li>
                 ))}
               </ul>
             </div>
@@ -145,7 +137,7 @@ const QuickReference = ({ manager }) => {
               </h3>
               <ul className="space-y-2 text-sm">
                 {coachingPhrases.redirect.map((phrase, i) => (
-                  <li key={i} style={{ color: colors.chiliGray }}>• {phrase}</li>
+                  <li key={i} style={{ color: colors.textSecondary }}>• {phrase}</li>
                 ))}
               </ul>
             </div>
@@ -156,7 +148,7 @@ const QuickReference = ({ manager }) => {
               </h3>
               <ul className="space-y-2 text-sm">
                 {coachingPhrases.development.map((phrase, i) => (
-                  <li key={i} style={{ color: colors.chiliGray }}>• {phrase}</li>
+                  <li key={i} style={{ color: colors.textSecondary }}>• {phrase}</li>
                 ))}
               </ul>
             </div>
@@ -165,7 +157,7 @@ const QuickReference = ({ manager }) => {
 
         {/* Common Scenarios */}
         <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliNavy }}>
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.textPrimary }}>
             <AlertCircle size={24} />
             Common Coaching Scenarios
           </h2>
@@ -180,7 +172,7 @@ const QuickReference = ({ manager }) => {
                       </span>
                     </div>
                     <div className="flex-1">
-                      <span className="text-sm" style={{ color: colors.chiliGray }}>
+                      <span className="text-sm" style={{ color: colors.textSecondary }}>
                         → {scenario.fix}
                       </span>
                     </div>
@@ -193,7 +185,7 @@ const QuickReference = ({ manager }) => {
 
         {/* Daily Manager Self-Check */}
         <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.chiliNavy }}>
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: colors.textPrimary }}>
             <CheckSquare size={24} />
             Daily Manager Self-Check
           </h2>
@@ -213,7 +205,7 @@ const QuickReference = ({ manager }) => {
                     className="w-5 h-5 rounded"
                     style={{ accentColor: colors.chiliGreen }}
                   />
-                  <span style={{ color: colors.chiliGray }}>{item}</span>
+                  <span style={{ color: colors.textSecondary }}>{item}</span>
                 </label>
               ))}
             </div>
@@ -254,7 +246,7 @@ const QuickReference = ({ manager }) => {
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <h4 className="font-semibold mb-2" style={{ color: colors.chiliGreen }}>DO ✓</h4>
-                <ul className="space-y-1" style={{ color: colors.chiliGray }}>
+                <ul className="space-y-1" style={{ color: colors.textSecondary }}>
                   <li>• Coach privately</li>
                   <li>• Praise publicly</li>
                   <li>• Ask questions first</li>
@@ -264,7 +256,7 @@ const QuickReference = ({ manager }) => {
               </div>
               <div>
                 <h4 className="font-semibold mb-2" style={{ color: colors.chiliRed }}>DON'T ✗</h4>
-                <ul className="space-y-1" style={{ color: colors.chiliGray }}>
+                <ul className="space-y-1" style={{ color: colors.textSecondary }}>
                   <li>• Wait until after shift</li>
                   <li>• Coach in front of guests</li>
                   <li>• Assume they know why</li>

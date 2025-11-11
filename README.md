@@ -153,22 +153,34 @@ floor_observations   # Coaching observations with follow-up
 
 ## 🎨 Design System
 
-### Color Palette (Chili's Official)
+### Stunning Dark Mode UI
+Inspired by **chilis.com** and modern glassmorphism - this isn't your typical manager app:
+
+#### Visual Style
+- **Dark Navy Gradient Backgrounds** - Deep `#22235B` → `#171742` → `#0F1230`
+- **Glassmorphic Cards** - Semi-transparent with blur effects and depth
+- **Chili's Signature Shadows** - `-4px 4px 0px` offset shadow from chilis.com
+- **Bold Gradients** - Red→Yellow header gradients with animated pulse
+- **Glowing Elements** - Progress bars, buttons, and accents glow with brand colors
+- **Montserrat Font** - Bold, uppercase typography matching Chili's brand
+
+#### Color Palette (Official Chili's)
 ```javascript
-chiliRed: 'rgb(237, 28, 36)'      // Primary brand
-chiliNavy: 'rgb(34, 35, 91)'      // Dark backgrounds
-chiliYellow: 'rgb(255, 198, 11)'  // Warnings/highlights
-chiliGreen: 'rgb(116, 158, 51)'   // Success states
-chiliCream: 'rgb(248, 247, 245)'  // Light backgrounds
-chiliBrown: 'rgb(60, 58, 53)'     // Body text
-chiliGray: 'rgb(161, 159, 154)'   // Secondary text
+chiliRed: '#E81B23'              // Primary brand (brighter for dark mode)
+chiliNavy: '#22235B'             // Card backgrounds
+chiliYellow: '#FFC60B'           // Warnings/highlights
+chiliGreen: '#74B831'            // Success states
+chiliGreenBright: '#8DD645'      // Accents
 ```
 
-### Dark Mode
-Matches the **ChiliHead Hospitality poster aesthetic**:
-- Navy backgrounds with red accents
-- Cream text on dark surfaces
-- High contrast for kitchen tablet visibility
+#### Key Features
+- **Pill-Shaped Buttons** - 100px border-radius like chilis.com
+- **Hover Animations** - Cards lift with enhanced shadows
+- **Gradient Accents** - Red→Yellow→Green bars on hover
+- **Custom Scrollbar** - Red gradient with signature shadow
+- **No White Backgrounds** - Everything is dark glassmorphic
+
+See [STYLE_GUIDE.md](STYLE_GUIDE.md) for complete design rules and code examples.
 
 ---
 

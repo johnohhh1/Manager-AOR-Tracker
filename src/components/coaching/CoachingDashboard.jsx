@@ -15,17 +15,7 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { useCoaching } from '../../hooks/useCoaching';
-
-// Chili's Brand Colors
-const colors = {
-  chiliRed: 'rgb(237, 28, 36)',
-  chiliNavy: 'rgb(34, 35, 91)',
-  chiliYellow: 'rgb(255, 198, 11)',
-  chiliGreen: 'rgb(116, 158, 51)',
-  chiliCream: 'rgb(248, 247, 245)',
-  chiliBrown: 'rgb(60, 58, 53)',
-  chiliGray: 'rgb(161, 159, 154)'
-};
+import { colors, styles, radius, spacing, shadows } from '../../styles/design-system';
 
 const CoachingDashboard = ({ manager }) => {
   const navigate = useNavigate();
@@ -150,14 +140,9 @@ const CoachingDashboard = ({ manager }) => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: colors.chiliNavy }}>
+    <div style={{ ...styles.pageContainer }}>
       {/* Header */}
-      <div
-        className="text-white p-6"
-        style={{
-          background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliNavy})`
-        }}
-      >
+      <div style={{ ...styles.header }}>
         <div className="flex items-center mb-4">
           <GraduationCap size={32} className="mr-3" />
           <div>
@@ -241,21 +226,21 @@ const CoachingDashboard = ({ manager }) => {
             </h2>
             <div className="space-y-3">
               {recentActivity.map(activity => (
-                <div key={activity.id} className="flex items-start p-3 rounded-lg" style={{ backgroundColor: colors.chiliNavy }}>
-                  <div className="mr-3" style={{ color: colors.chiliNavy }}>
+                <div key={activity.id} className="flex items-start p-3 rounded-lg" style={{ backgroundColor: colors.bgLight }}>
+                  <div className="mr-3" style={{ color: colors.chiliRed }}>
                     {getActivityIcon(activity.activity_type)}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-sm" style={{ color: colors.chiliNavy }}>
+                      <span className="font-medium text-sm" style={{ color: colors.textPrimary }}>
                         {getActivityLabel(activity.activity_type)}
                       </span>
-                      <span className="text-xs" style={{ color: colors.chiliGray }}>
+                      <span className="text-xs" style={{ color: colors.textMuted }}>
                         {format(new Date(activity.activity_date), 'MMM d')}
                       </span>
                     </div>
                     {activity.team_member && (
-                      <span className="text-xs" style={{ color: colors.chiliBrown }}>
+                      <span className="text-xs" style={{ color: colors.textSecondary }}>
                         {activity.team_member.name} - {activity.team_member.position}
                       </span>
                     )}
@@ -266,11 +251,8 @@ const CoachingDashboard = ({ manager }) => {
 
             <button
               onClick={() => navigate('/coaching/analytics')}
-              className="mt-4 w-full py-2 text-center text-sm font-medium rounded-md hover:opacity-90 transition-opacity"
-              style={{
-                backgroundColor: colors.chiliNavy,
-                color: 'white'
-              }}
+              className="mt-4 w-full"
+              style={{ ...styles.buttonPrimary }}
             >
               View All Activity
             </button>

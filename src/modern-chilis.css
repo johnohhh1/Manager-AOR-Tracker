@@ -1,0 +1,659 @@
+/* ========================================
+   CHILI'S MANAGER AOR TRACKER
+   Based on actual chilis.com design system
+   Bold, energetic, visually stunning
+   ======================================== */
+
+:root {
+  /* Official Chili's Colors from chilis.com */
+  --chili-navy: #22235B;
+  --chili-navy-dark: #171742;
+  --chili-navy-darker: #0F1230;
+  --chili-red: #E81B23;
+  --chili-red-dark: #C01118;
+  --chili-red-darker: #A00E15;
+  --chili-yellow: #FFC60B;
+  --chili-yellow-dark: #E6B100;
+  --chili-cream: #EEECE7;
+  --chili-green: #74B831;
+  --chili-green-bright: #8DD645;
+
+  /* Dark theme backgrounds - RICH COLORS */
+  --bg-primary: linear-gradient(135deg, #22235B 0%, #171742 50%, #0F1230 100%);
+  --bg-card-glass: rgba(34, 35, 91, 0.6);
+  --bg-card-solid: rgba(34, 35, 91, 0.85);
+  --bg-card-dark: rgba(15, 18, 48, 0.7);
+
+  /* Text colors */
+  --text-light: rgba(255, 255, 255, 0.98);
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --text-subtle: rgba(255, 255, 255, 0.55);
+
+  /* Chili's signature button shadow */
+  --shadow-chilis: -4px 4px 0px 0px rgba(0, 0, 0, 0.25);
+  --shadow-chilis-hover: -6px 6px 0px 0px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+  --shadow-glow-red: 0 0 30px rgba(232, 27, 35, 0.5);
+  --shadow-glow-yellow: 0 0 30px rgba(255, 198, 11, 0.4);
+  --shadow-glow-green: 0 0 30px rgba(116, 184, 49, 0.4);
+
+  /* Borders */
+  --border-light: rgba(255, 255, 255, 0.15);
+  --border-medium: rgba(255, 255, 255, 0.25);
+  --border-accent: rgba(232, 27, 35, 0.6);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Border Radius - Chili's uses rounded pills */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-pill: 100px;
+}
+
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--bg-primary);
+  background-attachment: fixed;
+  color: var(--text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+/* ========== HEADER - BOLD RED/YELLOW GRADIENT ========== */
+.min-h-screen > div:first-child {
+  background: linear-gradient(135deg, var(--chili-red) 0%, var(--chili-red-dark) 40%, var(--chili-yellow) 100%) !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-glow-red);
+  position: relative;
+  overflow: hidden;
+}
+
+.min-h-screen > div:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 198, 11, 0.3), transparent 40%),
+    radial-gradient(circle at 80% 50%, rgba(232, 27, 35, 0.4), transparent 40%);
+  pointer-events: none;
+  animation: headerPulse 6s ease-in-out infinite;
+}
+
+@keyframes headerPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.min-h-screen > div:first-child > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== FISCAL INFO BAR ========== */
+.min-h-screen > div:nth-child(2) {
+  background: var(--bg-card-solid) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: var(--shadow-card);
+  border: 2px solid var(--border-light) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+/* ========== GLASSMORPHIC CARDS - CHILI'S STYLE ========== */
+.bg-white {
+  background: var(--bg-card-glass) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid var(--border-light) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Shine effect on hover */
+.bg-white::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.bg-white:hover::before {
+  opacity: 1;
+  animation: shine 1.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% { transform: translate(-100%, -100%); }
+  100% { transform: translate(100%, 100%); }
+}
+
+.bg-white:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-card-lg), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-color: var(--border-accent) !important;
+  background: rgba(34, 35, 91, 0.75) !important;
+}
+
+/* Card headers */
+.bg-white > div[style*="backgroundColor"] {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  background: linear-gradient(135deg, var(--chili-navy) 0%, var(--chili-navy-dark) 100%) !important;
+  padding: var(--space-xl) !important;
+  box-shadow: inset 0 -2px 0 var(--border-light);
+}
+
+/* ========== STAT CARDS - WITH BOLD COLORS ========== */
+.grid > .bg-white {
+  position: relative;
+  padding: var(--space-xl) !important;
+  background: var(--bg-card-glass) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+/* Bold colored left border with glow */
+.border-l-4 {
+  border-left-width: 5px !important;
+  border-left-style: solid !important;
+  position: relative;
+}
+
+.border-l-4::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 60%;
+  background: inherit;
+  filter: blur(10px);
+  opacity: 0.8;
+}
+
+/* Huge bold numbers */
+.border-l-4 h3 {
+  font-size: 3.5rem !important;
+  font-weight: 900 !important;
+  line-height: 0.9 !important;
+  margin-bottom: var(--space-md);
+  color: var(--text-light) !important;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.02em;
+}
+
+.border-l-4 p {
+  font-size: 0.875rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted) !important;
+}
+
+/* ========== MENU BUTTONS - CHILI'S SIGNATURE STYLE ========== */
+.space-y-4 > button {
+  background: var(--bg-card-glass) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--space-2xl) var(--space-xl) !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-card) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid var(--border-light) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient accent bar */
+.space-y-4 > button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--chili-red), var(--chili-yellow), var(--chili-green));
+  opacity: 0;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px currentColor;
+}
+
+.space-y-4 > button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-chilis-hover), var(--shadow-card-lg), var(--shadow-glow-red) !important;
+  background: rgba(34, 35, 91, 0.8) !important;
+  border-color: var(--border-accent) !important;
+}
+
+.space-y-4 > button:hover::before {
+  opacity: 1;
+  width: 10px;
+}
+
+.space-y-4 > button:active {
+  transform: translate(0, 0);
+  box-shadow: var(--shadow-card) !important;
+}
+
+.space-y-4 > button h3 {
+  font-size: 1.75rem !important;
+  font-weight: 900 !important;
+  color: var(--text-light) !important;
+  margin-bottom: var(--space-sm);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.space-y-4 > button p:first-of-type {
+  color: var(--text-muted) !important;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: var(--space-xs);
+}
+
+.space-y-4 > button p:last-of-type {
+  font-size: 0.875rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+}
+
+/* ========== PROGRESS BARS - GLOWING & ANIMATED ========== */
+.w-full.bg-gray-200 {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: var(--radius-pill) !important;
+  height: 14px !important;
+  overflow: visible;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.w-full.bg-gray-200 > div {
+  border-radius: var(--radius-pill) !important;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 0 20px currentColor, 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer + pulse */
+.w-full.bg-gray-200 > div::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ========== TASK ITEMS - WITH DEPTH ========== */
+.space-y-2 > div {
+  background: var(--bg-card-glass) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: var(--space-lg) !important;
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid var(--border-light) !important;
+  position: relative;
+}
+
+.space-y-2 > div:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-chilis), var(--shadow-card-lg) !important;
+  border-color: var(--border-medium) !important;
+  background: rgba(34, 35, 91, 0.75) !important;
+}
+
+/* Completed tasks - GREEN GLOW */
+.bg-green-50 {
+  background: rgba(116, 184, 49, 0.2) !important;
+  border-color: var(--chili-green) !important;
+  box-shadow: var(--shadow-glow-green), inset 0 1px 0 rgba(116, 184, 49, 0.3) !important;
+}
+
+.bg-green-50:hover {
+  box-shadow: var(--shadow-chilis), var(--shadow-glow-green), var(--shadow-card-lg) !important;
+}
+
+/* Checkboxes - Chili's style */
+input[type="checkbox"] {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 3px solid var(--border-medium);
+  background: rgba(0, 0, 0, 0.2);
+  appearance: none;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  transform: scale(1.15);
+  background: linear-gradient(135deg, var(--chili-green), var(--chili-green-bright));
+  border-color: var(--chili-green-bright);
+  box-shadow: 0 0 20px var(--shadow-glow-green), var(--shadow-chilis);
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+label span {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+/* ========== BUTTONS - CHILI'S SIGNATURE SHADOW ========== */
+button {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 800;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+button:hover {
+  transform: translate(-2px, -2px);
+  filter: brightness(1.1);
+}
+
+button:active {
+  transform: translate(0, 0);
+}
+
+/* Red buttons - CHILI'S SIGNATURE */
+button[style*="backgroundColor: rgb(237, 28, 36)"],
+button[style*="backgroundColor: rgb(232, 27, 35)"] {
+  background: linear-gradient(135deg, var(--chili-red) 0%, var(--chili-red-dark) 100%) !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-glow-red) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 0.875rem 2rem !important;
+  font-size: 0.9375rem !important;
+}
+
+button[style*="backgroundColor: rgb(237, 28, 36)"]:hover,
+button[style*="backgroundColor: rgb(232, 27, 35)"]:hover {
+  box-shadow: var(--shadow-chilis-hover), var(--shadow-glow-red), 0 0 40px rgba(232, 27, 35, 0.6) !important;
+}
+
+/* Green buttons */
+.bg-green-600 {
+  background: linear-gradient(135deg, var(--chili-green) 0%, var(--chili-green-bright) 100%) !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-glow-green) !important;
+  border-radius: var(--radius-pill) !important;
+}
+
+.bg-green-600:hover {
+  box-shadow: var(--shadow-chilis-hover), var(--shadow-glow-green), 0 0 40px rgba(116, 184, 49, 0.6) !important;
+}
+
+/* Ghost buttons */
+button[style*="bg-opacity-20"] {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 3px solid var(--border-medium) !important;
+  color: white !important;
+  box-shadow: var(--shadow-card) !important;
+  border-radius: var(--radius-pill) !important;
+}
+
+button[style*="bg-opacity-20"]:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: white !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-card) !important;
+}
+
+/* ========== PILL TABS - CHILI'S STYLE ========== */
+.flex-wrap > button {
+  padding: var(--space-md) var(--space-2xl) !important;
+  border-radius: var(--radius-pill) !important;
+  font-weight: 800 !important;
+  font-size: 0.875rem !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active pill - RED */
+.flex-wrap > button[style*="backgroundColor: rgb(237, 28, 36)"] {
+  background: linear-gradient(135deg, var(--chili-red) 0%, var(--chili-red-dark) 100%) !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-glow-red) !important;
+  border: none !important;
+  color: white !important;
+}
+
+/* Inactive pill - GLASS */
+.flex-wrap > button:not([style*="backgroundColor: rgb(237, 28, 36)"]) {
+  background: var(--bg-card-glass) !important;
+  backdrop-filter: blur(16px) !important;
+  color: var(--text-muted) !important;
+  border: 3px solid var(--border-light) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.flex-wrap > button:not([style*="backgroundColor: rgb(237, 28, 36)"]):hover {
+  border-color: var(--border-accent) !important;
+  box-shadow: var(--shadow-chilis), var(--shadow-card-lg) !important;
+  transform: translate(-2px, -2px);
+  color: var(--text-light) !important;
+  background: rgba(34, 35, 91, 0.8) !important;
+}
+
+/* ========== TEAM CARDS ========== */
+.shadow-md {
+  box-shadow: var(--shadow-card) !important;
+}
+
+.grid.grid-cols-1.md\\:grid-cols-3 > div {
+  padding: var(--space-lg);
+  background: var(--bg-card-glass);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-light);
+  transition: all 0.3s;
+  box-shadow: var(--shadow-card);
+}
+
+.grid.grid-cols-1.md\\:grid-cols-3 > div:hover {
+  background: rgba(34, 35, 91, 0.8);
+  transform: translate(-2px, -2px) scale(1.03);
+  box-shadow: var(--shadow-chilis), var(--shadow-card-lg);
+  border-color: var(--border-accent);
+}
+
+/* Big stat numbers with GLOW */
+.text-3xl.font-bold {
+  font-size: 3rem !important;
+  font-weight: 900 !important;
+  line-height: 0.9 !important;
+  text-shadow: 0 0 30px currentColor, 0 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.02em;
+}
+
+/* ========== ICONS ========== */
+svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: all 0.2s;
+}
+
+svg:hover {
+  filter: drop-shadow(0 0 16px currentColor) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* ========== TYPOGRAPHY - MONTSERRAT BOLD ========== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text-light);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 3rem; text-transform: uppercase; }
+h2 { font-size: 2.25rem; text-transform: uppercase; }
+h3 { font-size: 1.75rem; }
+
+p {
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Fix ALL text visibility on dark backgrounds - MAKE IT WHITE */
+[style*="color: rgb(237, 28, 36)"],
+[style*="color: rgb(232, 27, 35)"],
+[style*="color:rgb(237, 28, 36)"],
+[style*="color:rgb(232, 27, 35)"],
+[style*="color: rgb(34, 35, 91)"],
+[style*="color:rgb(34, 35, 91)"],
+[style*="color: rgb(60, 58, 53)"],
+[style*="color:rgb(60, 58, 53)"],
+li, span, p, div {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Headers stay bright white */
+h1, h2, h3, h4, h5, h6 {
+  color: white !important;
+}
+
+/* Bullet points bright */
+ul li::marker {
+  color: var(--chili-yellow) !important;
+}
+
+/* Fix back button visibility */
+button[style*="background"] svg,
+button svg {
+  color: white !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Make sure all buttons on colored backgrounds have white text/icons */
+button * {
+  color: white !important;
+}
+
+/* ========== SCROLLBAR - CHILI'S THEMED ========== */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--chili-red), var(--chili-red-dark));
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-chilis);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--chili-red), var(--chili-yellow));
+  box-shadow: var(--shadow-chilis-hover), 0 0 20px var(--shadow-glow-red);
+}
+
+/* ========== FOCUS STATES ========== */
+*:focus-visible {
+  outline: 4px solid var(--border-accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--shadow-glow-red);
+  }
+  50% {
+    box-shadow: 0 0 50px var(--shadow-glow-red), 0 0 80px var(--shadow-glow-red);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+  }
+
+  .space-y-4 > button {
+    padding: var(--space-lg) !important;
+  }
+
+  .space-y-4 > button h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .border-l-4 h3 {
+    font-size: 2.75rem !important;
+  }
+
+  .text-3xl.font-bold {
+    font-size: 2.25rem !important;
+  }
+}

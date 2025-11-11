@@ -13,6 +13,7 @@ import CoachingGuide from './components/coaching/CoachingGuide';
 import QuickReference from './components/coaching/QuickReference';
 import Analytics from './components/coaching/Analytics';
 import TeamManagement from './components/TeamManagement';
+import OracleAlohaGuide from './components/OracleAlohaGuide';
 import { db } from './supabase';
 
 const AppFixed = () => {
@@ -145,6 +146,12 @@ const AppFixed = () => {
         <Route
           path="/team"
           element={manager ? <TeamManagement manager={manager} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Oracle/Aloha Quick Reference Guide */}
+        <Route
+          path="/oracle-aloha"
+          element={manager ? <OracleAlohaGuide onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
         />
 
         {/* Catch all - redirect to login if no manager, otherwise home */}

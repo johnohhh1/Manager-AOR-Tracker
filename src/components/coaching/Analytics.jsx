@@ -3,15 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, TrendingUp, Users, Award, Calendar, BarChart3 } from 'lucide-react';
 import { useCoaching } from '../../hooks/useCoaching';
 import { format, subDays, startOfWeek, endOfWeek } from 'date-fns';
-
-const colors = {
-  chiliRed: 'rgb(237, 28, 36)',
-  chiliNavy: 'rgb(34, 35, 91)',
-  chiliGreen: 'rgb(116, 158, 51)',
-  chiliYellow: 'rgb(255, 198, 11)',
-  chiliCream: 'rgb(248, 247, 245)',
-  chiliGray: 'rgb(161, 159, 154)'
-};
+import { colors, styles, radius, spacing, shadows } from '../../styles/design-system';
 
 const Analytics = ({ manager }) => {
   const navigate = useNavigate();
@@ -103,37 +95,42 @@ const Analytics = ({ manager }) => {
   ];
 
   return (
-    <div style={{ backgroundColor: colors.chiliNavy, minHeight: '100vh', padding: '20px' }}>
+    <div style={{ ...styles.pageContainer }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <button
-            onClick={() => navigate('/coaching')}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white"
-          >
-            <ArrowLeft size={20} />
-            <span>Back to Dashboard</span>
-          </button>
+        <div style={{ ...styles.header, marginBottom: spacing.xl }}>
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => navigate('/coaching')}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg"
+              style={{
+                backgroundColor: colors.whiteAlpha(0.2),
+                border: `2px solid ${colors.whiteAlpha(0.3)}`,
+                color: colors.white,
+                fontWeight: '600'
+              }}
+            >
+              <ArrowLeft size={20} />
+              <span>Back to Dashboard</span>
+            </button>
 
-          <h1 className="text-2xl font-bold" style={{ color: colors.chiliGreen }}>
-            Coaching Analytics
-          </h1>
+            <h1 className="text-3xl font-bold" style={{ color: colors.white }}>
+              <BarChart3 size={32} style={{ display: 'inline-block', marginRight: '12px', verticalAlign: 'middle' }} />
+              Coaching Analytics
+            </h1>
 
-          <div style={{ width: '120px' }}></div>
+            <div style={{ width: '140px' }}></div>
+          </div>
         </div>
 
         {/* Date Range Selector */}
-        <div className="flex gap-2 mb-6">
+        <div className="flex gap-3 mb-6">
           {['week', 'month', 'quarter'].map(range => (
             <button
               key={range}
               onClick={() => setDateRange(range)}
-              className="px-4 py-2 rounded-lg font-medium"
-              style={{
-                backgroundColor: dateRange === range ? colors.chiliRed : 'white',
-                color: dateRange === range ? 'white' : colors.chiliNavy,
-                border: `2px solid ${dateRange === range ? colors.chiliRed : colors.chiliGray}`
-              }}
+              className="px-6 py-3 rounded-full font-bold"
+              style={dateRange === range ? styles.pillActive : styles.pillInactive}
             >
               {range.charAt(0).toUpperCase() + range.slice(1)}
             </button>
@@ -142,8 +139,8 @@ const Analytics = ({ manager }) => {
 
         {/* Loading State */}
         {loading ? (
-          <div className="bg-white rounded-lg shadow p-12 text-center">
-            <p style={{ color: 'rgba(255,255,255,0.7)' }}>Loading analytics...</p>
+          <div style={{ ...styles.card, padding: spacing['2xl'], textAlign: 'center' }}>
+            <p style={{ color: colors.textMuted }}>Loading analytics...</p>
           </div>
         ) : (
           <>
@@ -152,17 +149,17 @@ const Analytics = ({ manager }) => {
               {statCards.map((card, index) => {
                 const Icon = card.icon;
                 return (
-                  <div key={index} className="bg-white rounded-lg shadow p-5">
+                  <div key={index} style={{
+                    ...styles.statCard,
+                    borderLeftColor: card.color
+                  }}>
                     <div className="flex items-center justify-between mb-3">
                       <Icon size={28} style={{ color: card.color }} />
-                      <div
-                        className="text-3xl font-bold"
-                        style={{ color: card.color }}
-                      >
+                      <div style={{ ...styles.statNumber, color: card.color }}>
                         {card.value}
                       </div>
                     </div>
-                    <div className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                    <div style={{ ...styles.statLabel, color: colors.textMuted }}>
                       {card.label}
                     </div>
                   </div>

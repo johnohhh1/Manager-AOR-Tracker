@@ -1,23 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet, GraduationCap, BarChart2 } from 'lucide-react';
-import CulinaryDashboard from './components/aor/CulinaryDashboard';
-import HospitalityDashboard from './components/aor/HospitalityDashboard';
-import ToGoBarDashboard from './components/aor/ToGoBarDashboard';
-
-// Official Chili's Brand Colors
-const colors = {
-  chiliRed: 'rgb(237, 28, 36)',
-  chiliRedAlt: 'rgb(232, 27, 35)',
-  chiliNavy: 'rgb(34, 35, 91)',
-  chiliNavyAlt: 'rgb(23, 37, 84)',
-  chiliYellow: 'rgb(255, 198, 11)',
-  chiliYellowAlt: 'rgb(254, 198, 13)',
-  chiliGreen: 'rgb(116, 158, 51)',
-  chiliGreenAlt: 'rgb(108, 192, 74)',
-  chiliCream: 'rgb(248, 247, 245)',
-  chiliBrown: 'rgb(60, 58, 53)',
-  chiliGray: 'rgb(161, 159, 154)'
-};
+import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet, GraduationCap, Book } from 'lucide-react';
+import { colors, styles, radius, spacing, shadows } from './styles/design-system';
 
 // Manager AOR Responsibilities from updated spreadsheet
 const managerResponsibilities = {
@@ -303,11 +286,11 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
   const getCompletionStats = (frequency, aor = null, completionsData = null) => {
     const today = new Date().toISOString().split('T')[0];
     const key = `${frequency}_${today}`;
-    const targetAor = aor || manager?.aor;
+    const targetAor = aor || manager?.primary_aor;
     const targetCompletions = completionsData || taskCompletions;
-    
+
     if (!targetAor) return { completed: 0, total: 0 };
-    
+
     const tasks = getTasksByFrequency(targetAor)[frequency] || [];
     const completed = Object.values(targetCompletions[key] || {}).filter(Boolean).length;
     return { completed, total: tasks.length };
@@ -316,9 +299,9 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
   // GM Dashboard View
   if (manager?.is_gm && currentView === 'home') {
     return (
-      <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+      <div style={{ ...styles.pageContainer }}>
         {/* Header */}
-        <div className="text-white p-6" style={{ background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliRedAlt}, ${colors.chiliYellow})` }}>
+        <div style={{ ...styles.header }}>
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center">
               <button 
@@ -366,8 +349,8 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
         </div>
 
         {/* Fiscal Info */}
-        <div className="bg-white border-b-4 border-opacity-90 p-4 text-center" style={{ borderColor: colors.chiliNavy }}>
-          <p className="font-bold text-lg" style={{ color: colors.chiliNavy }}>
+        <div style={{ ...styles.fiscalBar, justifyContent: 'center' }}>
+          <p className="font-bold text-lg" style={{ color: colors.white }}>
             Fiscal Period {fiscalInfo.period} • Week {fiscalInfo.week} of {fiscalInfo.totalWeeks}
           </p>
         </div>
@@ -514,9 +497,9 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
       const aorData = managerResponsibilities[manager.primary_aor];
 
     return (
-      <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+      <div style={{ ...styles.pageContainer }}>
         {/* Header */}
-        <div className="text-white p-6" style={{ background: `linear-gradient(135deg, ${colors.chiliRed}, ${colors.chiliRedAlt}, ${colors.chiliYellow})` }}>
+        <div style={{ ...styles.header }}>
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center">
               <button 
@@ -564,8 +547,8 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
         </div>
 
         {/* Fiscal Info */}
-        <div className="bg-white border-b-4 border-opacity-90 p-4 text-center" style={{ borderColor: colors.chiliNavy }}>
-          <p className="font-bold text-lg" style={{ color: colors.chiliNavy }}>
+        <div style={{ ...styles.fiscalBar, justifyContent: 'center' }}>
+          <p className="font-bold text-lg" style={{ color: colors.white }}>
             Fiscal Period {fiscalInfo.period} • Week {fiscalInfo.week} of {fiscalInfo.totalWeeks}
           </p>
         </div>
@@ -680,23 +663,6 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
           </button>
 
           <button
-            onClick={() => setCurrentView('aor-dashboard')}
-            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
-            style={{ borderColor: colors.chiliYellow }}
-          >
-            <div className="flex items-center">
-              <BarChart2 size={32} style={{ color: colors.chiliYellow }} className="mr-4" />
-              <div>
-                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>My AOR Dashboard</h3>
-                <p style={{ color: colors.chiliBrown }}>Track Your Area Metrics & Goals</p>
-                <p className="text-sm font-medium" style={{ color: colors.chiliYellow }}>
-                  New Feature!
-                </p>
-              </div>
-            </div>
-          </button>
-
-          <button
             onClick={() => window.location.href = '/team'}
             className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
             style={{ borderColor: colors.chiliGreen }}
@@ -709,6 +675,20 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
                 <p className="text-sm font-medium" style={{ color: colors.chiliGreen }}>
                   New Feature!
                 </p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={() => window.location.href = '/oracle-aloha'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliYellow }}
+          >
+            <div className="flex items-center">
+              <Book size={32} style={{ color: colors.chiliYellow }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Oracle & Aloha Quick Reference</h3>
+                <p style={{ color: colors.chiliBrown }}>Step-by-step procedures for Oracle, Aloha & MenuLink</p>
               </div>
             </div>
           </button>
@@ -727,7 +707,7 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
     const progress = (stats.completed / stats.total) * 100;
 
     return (
-      <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+      <div style={{ ...styles.pageContainer }}>
         {/* Header */}
         <div className="bg-white shadow-sm p-4 flex items-center">
           <button onClick={() => setCurrentView('home')} className="mr-4 cursor-pointer hover:opacity-70 transition-opacity">
@@ -779,12 +759,8 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               <button
                 key={freq}
                 onClick={() => setSelectedFrequency(freq)}
-                className={`px-4 py-2 rounded-md font-medium cursor-pointer ${
-                  selectedFrequency === freq 
-                    ? 'text-white' 
-                    : 'bg-white text-gray-700 border border-gray-300'
-                }`}
-                style={selectedFrequency === freq ? { backgroundColor: colors.chiliRed } : {}}
+                className="cursor-pointer"
+                style={selectedFrequency === freq ? { ...styles.pillActive } : { ...styles.pillInactive }}
               >
                 {freq.charAt(0).toUpperCase() + freq.slice(1)}
               </button>
@@ -824,51 +800,6 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               </div>
             );
           })}
-        </div>
-      </div>
-    );
-  }
-
-  // AOR Dashboard View
-  if (currentView === 'aor-dashboard') {
-    // Route to the correct dashboard based on manager's AOR
-    if (manager.primary_aor === 'culinary') {
-      return <CulinaryDashboard manager={manager} onBack={() => setCurrentView('home')} />;
-    }
-    if (manager.primary_aor === 'hospitality') {
-      return <HospitalityDashboard manager={manager} onBack={() => setCurrentView('home')} />;
-    }
-    if (manager.primary_aor === 'togoBar') {
-      return <ToGoBarDashboard manager={manager} onBack={() => setCurrentView('home')} />;
-    }
-    // If GM (no primary_aor), show message
-    return (
-      <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
-        <div className="bg-white shadow-sm p-4 flex items-center">
-          <button onClick={() => setCurrentView('home')} className="mr-4">
-            <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
-          </button>
-          <h1 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
-            AOR Dashboard
-          </h1>
-        </div>
-        <div className="p-4">
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-6xl mb-4">🎯</div>
-            <h2 className="text-2xl font-bold mb-2" style={{ color: colors.chiliNavy }}>
-              GM Dashboard
-            </h2>
-            <p style={{ color: colors.chiliBrown }}>
-              As General Manager, you oversee all AORs. Access individual AOR metrics from the home screen.
-            </p>
-            <button
-              onClick={() => setCurrentView('home')}
-              className="mt-6 px-6 py-3 rounded-lg font-bold text-white"
-              style={{ backgroundColor: colors.chiliRed }}
-            >
-              Back to Home
-            </button>
-          </div>
         </div>
       </div>
     );

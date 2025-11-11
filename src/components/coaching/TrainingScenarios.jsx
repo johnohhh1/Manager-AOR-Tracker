@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Play, CheckCircle, Clock } from 'lucide-react';
-
-const colors = {
-  chiliRed: 'rgb(237, 28, 36)',
-  chiliNavy: 'rgb(34, 35, 91)',
-  chiliGreen: 'rgb(116, 158, 51)',
-  chiliCream: 'rgb(248, 247, 245)',
-  chiliGray: 'rgb(161, 159, 154)'
-};
+import { colors, styles, radius, spacing, shadows } from '../../styles/design-system';
 
 const SCENARIOS = [
   {
@@ -352,19 +345,19 @@ const TrainingScenarios = ({ manager }) => {
     : SCENARIOS.filter(s => s.position === filter);
 
   return (
-    <div style={{ backgroundColor: colors.chiliNavy, minHeight: '100vh', padding: '20px' }}>
+    <div style={{ ...styles.pageContainer }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => navigate('/coaching')}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white"
+            style={{ ...styles.buttonOutline, display: 'flex', alignItems: 'center', gap: spacing.sm }}
           >
             <ArrowLeft size={20} />
             <span>Back to Dashboard</span>
           </button>
 
-          <h1 className="text-2xl font-bold" style={{ color: colors.chiliNavy }}>
+          <h1 className="text-2xl font-bold" style={{ color: colors.textPrimary }}>
             Training Scenarios
           </h1>
 
@@ -430,12 +423,8 @@ const TrainingScenarios = ({ manager }) => {
             <button
               key={pos}
               onClick={() => setFilter(pos)}
-              className="px-4 py-2 rounded-lg whitespace-nowrap text-sm"
-              style={{
-                backgroundColor: filter === pos ? colors.chiliRed : 'white',
-                color: filter === pos ? 'white' : colors.chiliNavy,
-                border: `2px solid ${filter === pos ? colors.chiliRed : colors.chiliGray}`
-              }}
+              className="whitespace-nowrap"
+              style={filter === pos ? { ...styles.pillActive } : { ...styles.pillInactive }}
             >
               {pos}
             </button>
@@ -455,16 +444,16 @@ const TrainingScenarios = ({ manager }) => {
                   <div className="text-xs font-semibold mb-1" style={{ color: colors.chiliRed }}>
                     {scenario.position}
                   </div>
-                  <h3 className="font-bold" style={{ color: colors.chiliNavy }}>
+                  <h3 className="font-bold" style={{ color: colors.textPrimary }}>
                     Scenario {scenario.id}: {scenario.title}
                   </h3>
                 </div>
                 <Play size={20} style={{ color: colors.chiliRed }} />
               </div>
-              <p className="text-sm mb-3" style={{ color: colors.chiliGray }}>
+              <p className="text-sm mb-3" style={{ color: colors.textSecondary }}>
                 {scenario.context}
               </p>
-              <div className="text-xs" style={{ color: colors.chiliGray }}>
+              <div className="text-xs" style={{ color: colors.textMuted }}>
                 Click to view full details →
               </div>
             </div>
@@ -487,14 +476,14 @@ const TrainingScenarios = ({ manager }) => {
                     <div className="text-sm font-semibold mb-1" style={{ color: colors.chiliRed }}>
                       {selectedScenario.position} • Scenario {selectedScenario.id}
                     </div>
-                    <h2 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
+                    <h2 className="text-xl font-bold" style={{ color: colors.textPrimary }}>
                       {selectedScenario.title}
                     </h2>
                   </div>
                   <button
                     onClick={() => setSelectedScenario(null)}
                     className="text-2xl font-bold hover:opacity-70"
-                    style={{ color: colors.chiliGray }}
+                    style={{ color: colors.textMuted }}
                   >
                     ×
                   </button>
@@ -504,15 +493,15 @@ const TrainingScenarios = ({ manager }) => {
               <div className="p-6 space-y-6">
                 {/* Context */}
                 <div>
-                  <h3 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>
+                  <h3 className="font-bold mb-2" style={{ color: colors.textPrimary }}>
                     Context
                   </h3>
-                  <p style={{ color: colors.chiliGray }}>{selectedScenario.context}</p>
+                  <p style={{ color: colors.textSecondary }}>{selectedScenario.context}</p>
                 </div>
 
                 {/* Manager Role */}
                 <div>
-                  <h3 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>
+                  <h3 className="font-bold mb-2" style={{ color: colors.textPrimary }}>
                     Manager Plays
                   </h3>
                   <p style={{ color: colors.chiliGray }}>{selectedScenario.managerRole}</p>
@@ -520,14 +509,14 @@ const TrainingScenarios = ({ manager }) => {
 
                 {/* What to Observe */}
                 <div>
-                  <h3 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>
+                  <h3 className="font-bold mb-2" style={{ color: colors.textPrimary }}>
                     What to Observe
                   </h3>
                   <ul className="space-y-1">
                     {selectedScenario.observe.map((item, index) => (
                       <li key={index} className="flex items-start gap-2">
                         <span style={{ color: colors.chiliRed }}>•</span>
-                        <span style={{ color: colors.chiliGray }}>{item}</span>
+                        <span style={{ color: colors.textSecondary }}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -535,14 +524,14 @@ const TrainingScenarios = ({ manager }) => {
 
                 {/* Coaching Focus */}
                 <div>
-                  <h3 className="font-bold mb-2" style={{ color: colors.chiliNavy }}>
+                  <h3 className="font-bold mb-2" style={{ color: colors.textPrimary }}>
                     Coaching Focus
                   </h3>
                   <ul className="space-y-2">
                     {selectedScenario.coaching.map((item, index) => (
                       <li key={index} className="flex items-start gap-2">
                         <span style={{ color: colors.chiliRed }}>•</span>
-                        <span style={{ color: colors.chiliGray }}>{item}</span>
+                        <span style={{ color: colors.textSecondary }}>{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -553,7 +542,7 @@ const TrainingScenarios = ({ manager }) => {
                   <h3 className="font-bold mb-2" style={{ color: colors.chiliGreen }}>
                     ✓ Excellent Looks Like
                   </h3>
-                  <p className="italic" style={{ color: colors.chiliGray }}>
+                  <p className="italic" style={{ color: colors.textSecondary }}>
                     {selectedScenario.excellent}
                   </p>
                 </div>

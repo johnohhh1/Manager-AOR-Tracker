@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, Flame, CheckSquare, Shield, DollarSign, Users, Calendar, Clipboard } from 'lucide-react';
 import { supabase } from '../../supabase';
-
-const colors = {
-  chiliRed: 'rgb(237, 28, 36)',
-  chiliNavy: 'rgb(34, 35, 91)',
-  chiliYellow: 'rgb(255, 198, 11)',
-  chiliGreen: 'rgb(116, 158, 51)',
-  chiliCream: 'rgb(248, 247, 245)',
-  chiliBrown: 'rgb(60, 58, 53)',
-  chiliGray: 'rgb(161, 159, 154)'
-};
+import { colors, styles, radius, spacing, shadows } from '../../styles/design-system';
 
 const CulinaryDashboard = ({ manager, onBack }) => {
   const [view, setView] = useState('main');
@@ -27,7 +18,7 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
   if (view === 'main') {
     return (
-      <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+      <div style={{ ...styles.pageContainer }}>
         {/* Header */}
         <div className="bg-white shadow-sm p-4 flex items-center sticky top-0 z-10">
           <button onClick={onBack} className="mr-4">
@@ -72,11 +63,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
         <div className="p-4 space-y-3">
           <button
             onClick={() => setView('five-to-drive')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -101,11 +89,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
           <button
             onClick={() => setView('kitchensync')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -130,11 +115,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
           <button
             onClick={() => setView('safe')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -159,11 +141,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
           <button
             onClick={() => setView('cos')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -188,11 +167,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
           <button
             onClick={() => setView('team')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -217,11 +193,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
           <button
             onClick={() => setView('schedule')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -246,11 +219,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
           <button
             onClick={() => setView('connection-board')}
-            className="w-full bg-white rounded-xl p-5 text-left shadow-md border border-white/10 hover:shadow-lg transition-all"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.95)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-            }}
+            className="w-full text-left cursor-pointer"
+            style={{ ...styles.card }}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -279,7 +249,7 @@ const CulinaryDashboard = ({ manager, onBack }) => {
 
   // Individual tool views - placeholders
   return (
-    <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+    <div style={{ ...styles.pageContainer }}>
       <div className="bg-white shadow-sm p-4 flex items-center sticky top-0 z-10">
         <button onClick={() => setView('main')} className="mr-4">
           <ChevronLeft size={24} style={{ color: colors.chiliNavy }} />
@@ -299,8 +269,8 @@ const CulinaryDashboard = ({ manager, onBack }) => {
           </p>
           <button
             onClick={() => setView('main')}
-            className="mt-6 px-6 py-3 rounded-lg font-bold text-white"
-            style={{ backgroundColor: colors.chiliRed }}
+            className="mt-6"
+            style={{ ...styles.buttonPrimary }}
           >
             Back to Dashboard
           </button>
