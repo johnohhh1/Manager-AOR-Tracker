@@ -14,6 +14,9 @@ import QuickReference from './components/coaching/QuickReference';
 import Analytics from './components/coaching/Analytics';
 import TeamManagement from './components/TeamManagement';
 import OracleAlohaGuide from './components/OracleAlohaGuide';
+import TableauDashboards from './components/TableauDashboards';
+import TableauPATTest from './components/TableauPATTest';
+import TableauAPIExplorer from './components/TableauAPIExplorer';
 import { db } from './supabase';
 
 const AppFixed = () => {
@@ -152,6 +155,24 @@ const AppFixed = () => {
         <Route
           path="/oracle-aloha"
           element={manager ? <OracleAlohaGuide onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Tableau Analytics Dashboards */}
+        <Route
+          path="/tableau"
+          element={manager ? <TableauDashboards onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Tableau PAT Test */}
+        <Route
+          path="/tableau-test"
+          element={manager ? <TableauPATTest onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Tableau API Explorer */}
+        <Route
+          path="/tableau-api"
+          element={manager ? <TableauAPIExplorer onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
         />
 
         {/* Catch all - redirect to login if no manager, otherwise home */}

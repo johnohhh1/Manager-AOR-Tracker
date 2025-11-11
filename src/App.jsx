@@ -695,6 +695,23 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               </div>
             </div>
           </button>
+
+          <button
+            onClick={() => window.location.href = '/tableau'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliNavy }}
+          >
+            <div className="flex items-center">
+              <BarChart3 size={32} style={{ color: colors.chiliNavy }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Tableau Analytics</h3>
+                <p style={{ color: colors.chiliBrown }}>RAP Portal, GWAP, P&L, Comps & Server Scorecard</p>
+                <p className="text-sm font-medium" style={{ color: colors.chiliRed }}>
+                  📊 Live Metrics
+                </p>
+              </div>
+            </div>
+          </button>
         </div>
       </div>
     );
