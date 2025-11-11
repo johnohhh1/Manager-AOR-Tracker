@@ -448,34 +448,37 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
         {/* Team Summary */}
         <div className="mx-6 mb-6">
           <div className="bg-white rounded-lg p-6 shadow-md">
-            <h2 className="text-xl font-bold mb-4" style={{ color: colors.chiliNavy }}>
+            <h2 className="text-xl font-bold mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
               📊 Team Summary
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {['daily', 'weekly', 'monthly'].map(freq => {
                 let totalCompleted = 0;
                 let totalTasks = 0;
-                
+
                 managerTeam.forEach(mgr => {
                   const stats = getCompletionStats(freq, mgr.aor, mgr.completions);
                   totalCompleted += stats.completed;
                   totalTasks += stats.total;
                 });
-                
+
                 const teamProgress = totalTasks > 0 ? Math.round((totalCompleted / totalTasks) * 100) : 0;
-                
+
                 return (
-                  <div key={freq} className="text-center p-4 rounded-lg" style={{ backgroundColor: colors.chiliCream }}>
-                    <div className="text-2xl font-bold mb-1" style={{ 
-                      color: teamProgress === 100 ? colors.chiliGreen : 
-                             teamProgress >= 75 ? colors.chiliYellow : colors.chiliRed 
+                  <div key={freq} className="text-center p-4 rounded-lg" style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)'
+                  }}>
+                    <div className="text-2xl font-bold mb-1" style={{
+                      color: teamProgress === 100 ? colors.chiliGreen :
+                             teamProgress >= 75 ? colors.chiliYellow : colors.chiliRed
                     }}>
                       {teamProgress}%
                     </div>
-                    <div className="text-sm font-medium" style={{ color: colors.chiliNavy }}>
+                    <div className="text-sm font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                       Team {freq.charAt(0).toUpperCase() + freq.slice(1)}
                     </div>
-                    <div className="text-xs" style={{ color: colors.chiliBrown }}>
+                    <div className="text-xs" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                       {totalCompleted}/{totalTasks} tasks
                     </div>
                   </div>
