@@ -408,19 +408,20 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                             coached: false,
                             recognized: false
                           })}
-                          className={`p-2 rounded-md transition-all ${
-                            formData.observations[position]?.[behavior]?.met === true
-                              ? 'bg-green-100 ring-2'
-                              : 'bg-gray-100 hover:bg-gray-200'
-                          }`}
+                          className="p-2 rounded-md transition-all"
                           style={{
-                            '--tw-ring-color': colors.chiliGreen
+                            backgroundColor: formData.observations[position]?.[behavior]?.met === true
+                              ? 'rgba(116, 158, 51, 0.2)'
+                              : 'rgba(255, 255, 255, 0.1)',
+                            border: formData.observations[position]?.[behavior]?.met === true
+                              ? `2px solid ${colors.chiliGreen}`
+                              : '1px solid rgba(255, 255, 255, 0.2)'
                           }}
                         >
                           <CheckCircle size={20} style={{
                             color: formData.observations[position]?.[behavior]?.met === true
                               ? colors.chiliGreen
-                              : colors.chiliGray
+                              : 'rgba(255, 255, 255, 0.5)'
                           }} />
                         </button>
                         <button
@@ -430,19 +431,20 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                             coached: true,
                             recognized: false
                           })}
-                          className={`p-2 rounded-md transition-all ${
-                            formData.observations[position]?.[behavior]?.met === false
-                              ? 'bg-red-100 ring-2'
-                              : 'bg-gray-100 hover:bg-gray-200'
-                          }`}
+                          className="p-2 rounded-md transition-all"
                           style={{
-                            '--tw-ring-color': colors.chiliRed
+                            backgroundColor: formData.observations[position]?.[behavior]?.met === false
+                              ? 'rgba(237, 28, 36, 0.2)'
+                              : 'rgba(255, 255, 255, 0.1)',
+                            border: formData.observations[position]?.[behavior]?.met === false
+                              ? `2px solid ${colors.chiliRed}`
+                              : '1px solid rgba(255, 255, 255, 0.2)'
                           }}
                         >
                           <XCircle size={20} style={{
                             color: formData.observations[position]?.[behavior]?.met === false
                               ? colors.chiliRed
-                              : colors.chiliGray
+                              : 'rgba(255, 255, 255, 0.5)'
                           }} />
                         </button>
                       </div>
