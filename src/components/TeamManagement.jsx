@@ -189,14 +189,16 @@ const TeamManagement = ({ manager }) => {
     }
   };
 
-  // Convert Excel date serial number to JavaScript Date
-  const excelDateToJSDate = (serial) => {
+  // Convert Excel date serial number to Month-Day only (no year for privacy)
+  const excelDateToMonthDay = (serial) => {
     if (!serial || typeof serial !== 'number') return null;
-    // Excel dates are days since 1900-01-01 (with 1900 incorrectly treated as leap year)
+    // Excel dates are days since 1900-01-01
     const utc_days = Math.floor(serial - 25569);
     const utc_value = utc_days * 86400;
     const date_info = new Date(utc_value * 1000);
-    return date_info.toISOString().split('T')[0]; // Return YYYY-MM-DD format
+    const month = String(date_info.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(date_info.getUTCDate()).padStart(2, '0');
+    return `--${month}-${day}`; // ISO 8601 partial date format (e.g., --02-04)
   };
 
   const handleFileUpload = async (event) => {
@@ -245,7 +247,7 @@ const TeamManagement = ({ manager }) => {
             phone: '-',
             email: '-',
             position: position,
-            date_of_birth: dobIdx >= 0 ? excelDateToJSDate(row[dobIdx]) : null
+            date_of_birth: dobIdx >= 0 ? excelDateToMonthDay(row[dobIdx]) : null
           };
         })
         .filter(member => member.name && member.name.trim() !== '');

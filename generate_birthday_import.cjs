@@ -1,13 +1,15 @@
 const XLSX = require('xlsx');
 const fs = require('fs');
 
-// Excel date converter
-const excelDateToJSDate = (serial) => {
+// Excel date converter - MONTH/DAY ONLY (no year for privacy, matching Oracle)
+const excelDateToMonthDay = (serial) => {
   if (!serial || typeof serial !== 'number') return null;
   const utc_days = Math.floor(serial - 25569);
   const utc_value = utc_days * 86400;
   const date_info = new Date(utc_value * 1000);
-  return date_info.toISOString().split('T')[0];
+  const month = String(date_info.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(date_info.getUTCDate()).padStart(2, '0');
+  return `--${month}-${day}`; // ISO 8601 partial date format (e.g., --02-04 for Feb 4)
 };
 
 // Read Excel
@@ -15,10 +17,12 @@ const workbook = XLSX.readFile('TM Roster (1).xlsx');
 const sheet = workbook.Sheets[workbook.SheetNames[0]];
 const data = XLSX.utils.sheet_to_json(sheet, {header: 1});
 
-let sql = '-- Auto-generated birthday import SQL\n';
+let sql = '-- Auto-generated birthday import SQL (MONTH/DAY ONLY - No years for privacy)\n';
 sql += '-- Run this in Supabase SQL Editor\n\n';
-sql += '-- First, add the date_of_birth column if not exists\n';
-sql += 'ALTER TABLE team_members ADD COLUMN IF NOT EXISTS date_of_birth DATE;\n\n';
+sql += '-- Note: Birthdays stored as --MM-DD format (ISO 8601 partial dates)\n';
+sql += '-- This matches Oracle behavior - no birth years stored\n\n';
+sql += '-- First, change date_of_birth to VARCHAR to store month/day only\n';
+sql += 'ALTER TABLE team_members ADD COLUMN IF NOT EXISTS date_of_birth VARCHAR(7);\n\n';
 sql += '-- Insert team members with birthdays\n\n';
 
 for (let i = 1; i < data.length; i++) {
@@ -27,7 +31,7 @@ for (let i = 1; i < data.length; i++) {
 
   const name = row[1].replace(/'/g, "''"); // Escape quotes
   const job = (row[2] || '').replace(/'/g, "''");
-  const dob = excelDateToJSDate(row[7]);
+  const dob = excelDateToMonthDay(row[7]);
 
   // Determine position
   let position = 'Server';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Cake, Calendar, Gift, Phone, Mail, Download, Search } from 'lucide-react';
+import { ArrowLeft, Cake, Calendar, Gift, Phone, Mail, Download, Search, Filter } from 'lucide-react';
 import { supabase } from '../supabase';
 import { colors, styles, radius, spacing, shadows } from '../styles/design-system';
 import * as XLSX from 'xlsx';
@@ -11,7 +11,7 @@ const BirthdayTracker = ({ manager }) => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterPosition, setFilterPosition] = useState('All');
-  const [viewMode, setViewMode] = useState('upcoming');
+  const [viewMode, setViewMode] = useState('upcoming'); // upcoming, calendar, all
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
 
   const positions = ['All', 'Server', 'Host', 'Runner', 'Busser', 'Bartender', 'To-Go', 'QA', 'Kitchen', 'Dishwasher', 'Shift Leader', 'Manager'];
@@ -38,20 +38,13 @@ const BirthdayTracker = ({ manager }) => {
     }
   };
 
-  // Parse month/day from --MM-DD format (no year for privacy)
-  const parseMonthDay = (dateOfBirth) => {
-    if (!dateOfBirth || !dateOfBirth.startsWith('--')) return null;
-    const [_, month, day] = dateOfBirth.split('-');
-    return { month: parseInt(month) - 1, day: parseInt(day) };
-  };
-
-  // Calculate days until next birthday (month/day only)
+  // Calculate days until next birthday
   const getDaysUntilBirthday = (dateOfBirth) => {
-    const parsed = parseMonthDay(dateOfBirth);
-    if (!parsed) return null;
+    if (!dateOfBirth) return null;
 
     const today = new Date();
-    const thisYearBirthday = new Date(today.getFullYear(), parsed.month, parsed.day);
+    const birthday = new Date(dateOfBirth);
+    const thisYearBirthday = new Date(today.getFullYear(), birthday.getMonth(), birthday.getDate());
 
     if (thisYearBirthday < today) {
       thisYearBirthday.setFullYear(today.getFullYear() + 1);
@@ -60,6 +53,19 @@ const BirthdayTracker = ({ manager }) => {
     const diffTime = thisYearBirthday - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
+  };
+
+  // Calculate age
+  const getAge = (dateOfBirth) => {
+    if (!dateOfBirth) return null;
+    const today = new Date();
+    const birthday = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthday.getFullYear();
+    const monthDiff = today.getMonth() - birthday.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+      age--;
+    }
+    return age;
   };
 
   // Get urgency color
@@ -87,8 +93,8 @@ const BirthdayTracker = ({ manager }) => {
         const matchesPosition = filterPosition === 'All' || member.position === filterPosition;
 
         if (viewMode === 'calendar') {
-          const parsed = parseMonthDay(member.date_of_birth);
-          return matchesSearch && matchesPosition && parsed && parsed.month === selectedMonth;
+          const birthday = new Date(member.date_of_birth);
+          return matchesSearch && matchesPosition && birthday.getMonth() === selectedMonth;
         }
 
         if (viewMode === 'upcoming') {
@@ -124,11 +130,12 @@ const BirthdayTracker = ({ manager }) => {
   // Export to Excel
   const handleExport = () => {
     const exportData = getFilteredMembers().map(member => {
-      const parsed = parseMonthDay(member.date_of_birth);
+      const birthday = new Date(member.date_of_birth);
       return {
         Name: member.name,
         Position: member.position,
-        Birthday: parsed ? `${months[parsed.month]} ${parsed.day}` : 'N/A',
+        Birthday: `${months[birthday.getMonth()]} ${birthday.getDate()}`,
+        Age: getAge(member.date_of_birth),
         'Days Until': getDaysUntilBirthday(member.date_of_birth),
         Phone: member.phone,
         Email: member.email
@@ -357,7 +364,8 @@ const BirthdayTracker = ({ manager }) => {
               const daysUntil = getDaysUntilBirthday(member.date_of_birth);
               const urgencyColor = getUrgencyColor(daysUntil);
               const urgencyLabel = getUrgencyLabel(daysUntil);
-              const parsed = parseMonthDay(member.date_of_birth);
+              const birthday = new Date(member.date_of_birth);
+              const age = getAge(member.date_of_birth);
 
               return (
                 <div
@@ -417,7 +425,8 @@ const BirthdayTracker = ({ manager }) => {
                       <div className="flex items-center gap-2" style={{ color: colors.textMuted }}>
                         <Calendar size={16} />
                         <span className="text-sm">
-                          {parsed ? `${months[parsed.month]} ${parsed.day}` : 'N/A'}
+                          {months[birthday.getMonth()]} {birthday.getDate()}
+                          {age && ` • Turning ${age + 1}`}
                         </span>
                       </div>
                       {daysUntil > 7 && (

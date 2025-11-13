@@ -15,7 +15,9 @@
       "Bash(for file in Analytics.jsx CoachingGuide.jsx QuickReference.jsx)",
       "Bash(do sed -i 's/style={{ \\.\\.\\.styles\\.buttonOutline,\\(.*\\)}}/className=\"\"bg-white bg-opacity-20 px-4 py-2 rounded-md hover:bg-opacity-30 transition-all cursor-pointer flex items-center gap-2\"\" style={{ color: ''''white'''' }}/g' \"$file\")",
       "Bash(done)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(node:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
