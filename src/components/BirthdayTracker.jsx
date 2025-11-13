@@ -164,7 +164,7 @@ const BirthdayTracker = ({ manager }) => {
     <div style={{
       minHeight: '100vh',
       background: `linear-gradient(135deg, ${colors.bgDark} 0%, ${colors.bgDarkAlt} 50%, ${colors.chiliNavy} 100%)`,
-      padding: spacing.lg,
+      padding: window.innerWidth < 768 ? spacing.md : spacing.lg,
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -255,47 +255,49 @@ const BirthdayTracker = ({ manager }) => {
             </motion.div>
           ))}
 
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <motion.button
-                whileHover={{ scale: 1.2, rotate: -20 }}
-                whileTap={{ scale: 0.8, rotate: 20 }}
-                onClick={() => navigate('/dashboard')}
-                className="bg-white bg-opacity-20 p-2 rounded-md hover:bg-opacity-30 transition-all cursor-pointer"
-              >
-                <ArrowLeft size={20} />
-              </motion.button>
-              <div>
-                <motion.h1
-                  className="text-3xl font-bold mb-1"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    textShadow: [
-                      `0 0 10px ${colors.chiliYellow}`,
-                      `0 0 30px ${colors.chiliRed}`,
-                      `0 0 10px ${colors.chiliYellow}`
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
+          <div className="flex flex-col gap-4 mb-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.2, rotate: -20 }}
+                  whileTap={{ scale: 0.8, rotate: 20 }}
+                  onClick={() => navigate('/dashboard')}
+                  className="bg-white bg-opacity-20 p-2 rounded-md hover:bg-opacity-30 transition-all cursor-pointer"
                 >
-                  🎂 BIRTHDAY TRACKER 🎉
-                </motion.h1>
-                <p className="text-yellow-100">Celebrate Your Team!</p>
+                  <ArrowLeft size={20} />
+                </motion.button>
+                <div>
+                  <motion.h1
+                    className="text-2xl md:text-3xl font-bold mb-1"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      textShadow: [
+                        `0 0 10px ${colors.chiliYellow}`,
+                        `0 0 30px ${colors.chiliRed}`,
+                        `0 0 10px ${colors.chiliYellow}`
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    🎂 BIRTHDAY TRACKER 🎉
+                  </motion.h1>
+                  <p className="text-yellow-100 text-sm md:text-base">Celebrate Your Team!</p>
+                </div>
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 animate={{
                   boxShadow: celebrateMode
                     ? ['0 0 20px rgba(237, 28, 36, 0.8)', '0 0 60px rgba(255, 198, 11, 1)', '0 0 20px rgba(237, 28, 36, 0.8)']
                     : '0 4px 12px rgba(0,0,0,0.3)',
-                  scale: celebrateMode ? [1, 1.05, 1] : 1
+                  scale: celebrateMode ? [1, 1.02, 1] : 1
                 }}
                 transition={{ duration: 0.8, repeat: Infinity }}
                 onClick={() => setCelebrateMode(!celebrateMode)}
-                className="flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-lg"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-bold text-base md:text-lg"
                 style={{
                   background: celebrateMode
                     ? `linear-gradient(135deg, ${colors.chiliRed} 0%, ${colors.chiliYellow} 50%, ${colors.chiliGreen} 100%)`
@@ -307,30 +309,30 @@ const BirthdayTracker = ({ manager }) => {
                   animate={{ rotate: celebrateMode ? 360 : 0 }}
                   transition={{ duration: 1, repeat: celebrateMode ? Infinity : 0 }}
                 >
-                  <PartyPopper size={24} />
+                  <PartyPopper size={20} />
                 </motion.div>
-                {celebrateMode ? 'CELEBRATING! 🎊' : 'CELEBRATE NOW!'}
+                <span className="whitespace-nowrap">{celebrateMode ? 'CELEBRATING! 🎊' : 'CELEBRATE NOW!'}</span>
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={handleExport}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
+                className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium"
                 style={{
                   background: `linear-gradient(135deg, ${colors.chiliGreen} 0%, ${colors.chiliGreenBright} 100%)`,
                   color: 'white',
                   boxShadow: shadows.green
                 }}
               >
-                <Download size={20} />
-                Export
+                <Download size={18} />
+                <span>Export</span>
               </motion.button>
             </div>
           </div>
         </motion.div>
 
         {/* MEGA Animated Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
           {[
             { label: '🎉 TODAY', value: stats.today, color: colors.chiliRed, delay: 0 },
             { label: '📅 THIS WEEK', value: stats.thisWeek, color: colors.chiliYellow, delay: 0.1 },
@@ -343,9 +345,9 @@ const BirthdayTracker = ({ manager }) => {
               animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
               transition={{ duration: 0.6, delay: stat.delay, type: 'spring', bounce: 0.6 }}
               whileHover={{
-                scale: 1.15,
+                scale: window.innerWidth < 768 ? 1.05 : 1.15,
                 boxShadow: `0 20px 60px ${stat.color}80`,
-                y: -15,
+                y: window.innerWidth < 768 ? -5 : -15,
                 rotateZ: stat.value > 0 && idx === 0 ? [0, -5, 5, 0] : 0
               }}
               style={{
@@ -357,7 +359,7 @@ const BirthdayTracker = ({ manager }) => {
               }}
             >
               <motion.div
-                className="text-5xl font-black mb-2"
+                className="text-3xl md:text-5xl font-black mb-2"
                 style={{ color: stat.color, textShadow: `0 0 20px ${stat.color}80` }}
                 animate={stat.value > 0 && idx === 0 ? {
                   scale: [1, 1.3, 1],
@@ -367,7 +369,7 @@ const BirthdayTracker = ({ manager }) => {
               >
                 {stat.value}
               </motion.div>
-              <div className="text-sm font-bold tracking-wider" style={{ color: colors.textLight }}>
+              <div className="text-xs md:text-sm font-bold tracking-wider" style={{ color: colors.textLight }}>
                 {stat.label}
               </div>
             </motion.div>
@@ -406,7 +408,7 @@ const BirthdayTracker = ({ manager }) => {
             </div>
 
             <div className="flex gap-2 flex-wrap w-full md:w-auto">
-              <div className="relative flex-1 md:flex-initial">
+              <div className="relative flex-1">
                 <Search size={18} style={{
                   position: 'absolute',
                   left: '12px',
@@ -422,7 +424,7 @@ const BirthdayTracker = ({ manager }) => {
                   style={{
                     ...styles.input,
                     paddingLeft: '40px',
-                    minWidth: '200px',
+                    width: '100%',
                     backgroundColor: colors.whiteAlpha(0.1),
                     border: `2px solid ${colors.whiteAlpha(0.2)}`,
                     color: colors.textLight
@@ -435,6 +437,7 @@ const BirthdayTracker = ({ manager }) => {
                 onChange={(e) => setFilterPosition(e.target.value)}
                 style={{
                   ...styles.input,
+                  width: '100%',
                   minWidth: '150px',
                   backgroundColor: colors.whiteAlpha(0.1),
                   border: `2px solid ${colors.whiteAlpha(0.2)}`,
@@ -454,6 +457,7 @@ const BirthdayTracker = ({ manager }) => {
                   onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
                   style={{
                     ...styles.input,
+                    width: '100%',
                     minWidth: '150px',
                     backgroundColor: colors.whiteAlpha(0.1),
                     border: `2px solid ${colors.whiteAlpha(0.2)}`,
@@ -509,7 +513,7 @@ const BirthdayTracker = ({ manager }) => {
             </div>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             <AnimatePresence>
               {filteredMembers.map((member, index) => {
                 const daysUntil = getDaysUntilBirthday(member.date_of_birth);
@@ -533,10 +537,10 @@ const BirthdayTracker = ({ manager }) => {
                       stiffness: 80
                     }}
                     whileHover={{
-                      scale: 1.08,
+                      scale: window.innerWidth < 768 ? 1.02 : 1.08,
                       boxShadow: `0 30px 80px ${urgencyColor}80, 0 0 60px ${urgencyColor}40`,
-                      y: -15,
-                      rotateZ: [-2, 2, -2]
+                      y: window.innerWidth < 768 ? -5 : -15,
+                      rotateZ: window.innerWidth < 768 ? 0 : [-2, 2, -2]
                     }}
                     style={{
                       ...styles.card,
@@ -593,13 +597,13 @@ const BirthdayTracker = ({ manager }) => {
                         transition={{ duration: 1, repeat: Infinity }}
                         style={{
                           position: 'absolute',
-                          top: '12px',
-                          right: '12px',
-                          padding: `${spacing.sm} ${spacing.lg}`,
+                          top: '8px',
+                          right: '8px',
+                          padding: `${spacing.xs} ${spacing.md}`,
                           borderRadius: radius.full,
                           backgroundColor: urgencyColor,
                           color: 'white',
-                          fontSize: '14px',
+                          fontSize: window.innerWidth < 768 ? '11px' : '14px',
                           fontWeight: '800',
                           textTransform: 'uppercase',
                           zIndex: 20
@@ -622,7 +626,7 @@ const BirthdayTracker = ({ manager }) => {
                           >
                             <Cake size={28} style={{ color: urgencyColor }} />
                           </motion.div>
-                          <h3 className="text-xl font-bold" style={{
+                          <h3 className="text-lg md:text-xl font-bold" style={{
                             color: colors.textLight,
                             textShadow: isSoon ? `0 0 10px ${urgencyColor}60` : 'none'
                           }}>
@@ -666,7 +670,7 @@ const BirthdayTracker = ({ manager }) => {
                       {/* MEGA Countdown Flip Card */}
                       {daysUntil > 0 && (
                         <motion.div
-                          className="flex items-center justify-center gap-2 py-4 px-6 rounded-xl mb-4"
+                          className="flex items-center justify-center gap-2 py-3 px-4 md:py-4 md:px-6 rounded-xl mb-4"
                           style={{
                             background: `linear-gradient(135deg, ${urgencyColor}30 0%, ${colors.whiteAlpha(0.1)} 100%)`,
                             border: `2px solid ${urgencyColor}`,
@@ -679,7 +683,7 @@ const BirthdayTracker = ({ manager }) => {
                             initial={{ rotateX: -90, opacity: 0 }}
                             animate={{ rotateX: 0, opacity: 1 }}
                             style={{
-                              fontSize: '48px',
+                              fontSize: window.innerWidth < 768 ? '36px' : '48px',
                               fontWeight: '900',
                               color: urgencyColor,
                               textShadow: `0 0 30px ${urgencyColor}, 0 4px 8px ${colors.blackAlpha(0.5)}`
@@ -687,7 +691,7 @@ const BirthdayTracker = ({ manager }) => {
                           >
                             {daysUntil}
                           </motion.div>
-                          <div style={{ color: colors.textLight, fontSize: '16px', fontWeight: '600' }}>
+                          <div style={{ color: colors.textLight, fontSize: window.innerWidth < 768 ? '14px' : '16px', fontWeight: '600' }}>
                             day{daysUntil !== 1 ? 's' : ''}<br/>until birthday
                           </div>
                         </motion.div>
