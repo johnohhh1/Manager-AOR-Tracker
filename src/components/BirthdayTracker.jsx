@@ -43,9 +43,24 @@ const BirthdayTrackerCool = ({ manager }) => {
   };
 
   const parseMonthDay = (dateOfBirth) => {
-    if (!dateOfBirth || !dateOfBirth.startsWith('--')) return null;
-    const [_, month, day] = dateOfBirth.split('-');
-    return { month: parseInt(month) - 1, day: parseInt(day) };
+    if (!dateOfBirth) return null;
+
+    // Handle both formats: '--MM-DD' (month-day only) and 'YYYY-MM-DD' (full date)
+    if (dateOfBirth.startsWith('--')) {
+      // Month-day format: '--02-04'
+      const parts = dateOfBirth.split('-'); // ['', '', '02', '04']
+      const month = parseInt(parts[2]) - 1; // Month is 0-indexed
+      const day = parseInt(parts[3]);
+      return { month, day };
+    } else if (dateOfBirth.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      // Full date format: '2004-02-04'
+      const parts = dateOfBirth.split('-'); // ['2004', '02', '04']
+      const month = parseInt(parts[1]) - 1; // Month is 0-indexed
+      const day = parseInt(parts[2]);
+      return { month, day };
+    }
+
+    return null;
   };
 
   const getDaysUntilBirthday = (dateOfBirth) => {
