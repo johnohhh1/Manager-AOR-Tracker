@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Cake, Calendar, Gift, Phone, Mail, Download, Search, Sparkles, PartyPopper, Zap } from 'lucide-react';
+import { ArrowLeft, Cake, Calendar, Gift, Phone, Mail, Download, Search, Sparkles, PartyPopper } from 'lucide-react';
 import { supabase } from '../supabase';
 import { colors, styles, radius, spacing, shadows } from '../styles/design-system';
 import * as XLSX from 'xlsx';
 import { motion, AnimatePresence } from 'framer-motion';
-import Confetti from 'react-confetti';
+import ConfettiBoom from 'react-confetti-boom';
 
-const BirthdayTracker = ({ manager }) => {
+const BirthdayTrackerCool = ({ manager }) => {
   const navigate = useNavigate();
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,18 +16,13 @@ const BirthdayTracker = ({ manager }) => {
   const [viewMode, setViewMode] = useState('upcoming');
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [celebrateMode, setCelebrateMode] = useState(false);
-  const [windowDimensions, setWindowDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [selectedCard, setSelectedCard] = useState(null);
 
   const positions = ['All', 'Server', 'Host', 'Runner', 'Busser', 'Bartender', 'To-Go', 'QA', 'Kitchen', 'Dishwasher', 'Shift Leader', 'Manager'];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   useEffect(() => {
     loadTeamMembers();
-    const handleResize = () => {
-      setWindowDimensions({ width: window.innerWidth, height: window.innerHeight });
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const loadTeamMembers = async () => {
@@ -50,14 +45,17 @@ const BirthdayTracker = ({ manager }) => {
   const parseMonthDay = (dateOfBirth) => {
     if (!dateOfBirth) return null;
 
+    // Handle both formats: '--MM-DD' (month-day only) and 'YYYY-MM-DD' (full date)
     if (dateOfBirth.startsWith('--')) {
-      const parts = dateOfBirth.split('-');
-      const month = parseInt(parts[2]) - 1;
+      // Month-day format: '--02-04'
+      const parts = dateOfBirth.split('-'); // ['', '', '02', '04']
+      const month = parseInt(parts[2]) - 1; // Month is 0-indexed
       const day = parseInt(parts[3]);
       return { month, day };
     } else if (dateOfBirth.match(/^\d{4}-\d{2}-\d{2}$/)) {
-      const parts = dateOfBirth.split('-');
-      const month = parseInt(parts[1]) - 1;
+      // Full date format: '2004-02-04'
+      const parts = dateOfBirth.split('-'); // ['2004', '02', '04']
+      const month = parseInt(parts[1]) - 1; // Month is 0-indexed
       const day = parseInt(parts[2]);
       return { month, day };
     }
@@ -158,29 +156,16 @@ const BirthdayTracker = ({ manager }) => {
   const stats = getBirthdayStats();
   const filteredMembers = getFilteredMembers();
   const hasTodayBirthdays = stats.today > 0;
-  const hasUpcomingBirthdays = stats.thisWeek > 0 || stats.thisMonth > 0;
 
   return (
     <div style={{
       minHeight: '100vh',
-      background: `linear-gradient(135deg, ${colors.bgDark} 0%, ${colors.bgDarkAlt} 50%, ${colors.chiliNavy} 100%)`,
+      background: `linear-gradient(135deg, ${colors.bgDark} 0%, ${colors.bgDarkAlt} 100%)`,
       padding: spacing.lg,
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* FULL SCREEN CONFETTI */}
-      {celebrateMode && (hasTodayBirthdays || hasUpcomingBirthdays) && (
-        <Confetti
-          width={windowDimensions.width}
-          height={windowDimensions.height}
-          recycle={true}
-          numberOfPieces={300}
-          colors={[colors.chiliRed, colors.chiliYellow, colors.chiliGreen, '#FFD700', '#FF69B4']}
-          gravity={0.3}
-        />
-      )}
-
-      {/* MEGA VISIBLE FLOATING PARTICLES */}
+      {/* Animated background particles */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -190,76 +175,57 @@ const BirthdayTracker = ({ manager }) => {
         pointerEvents: 'none',
         zIndex: 0
       }}>
-        {[...Array(50)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             style={{
               position: 'absolute',
-              width: `${10 + Math.random() * 20}px`,
-              height: `${10 + Math.random() * 20}px`,
+              width: '4px',
+              height: '4px',
               borderRadius: '50%',
-              background: i % 3 === 0 ? colors.chiliRed : i % 3 === 1 ? colors.chiliYellow : colors.chiliGreen,
+              background: `rgba(${237 + Math.random() * 18}, ${28 + Math.random() * 170}, ${36 + Math.random() * 219}, ${0.1 + Math.random() * 0.3})`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              opacity: 0.4 + Math.random() * 0.4,
-              boxShadow: `0 0 ${20 + Math.random() * 30}px currentColor`
             }}
             animate={{
-              y: [0, -50 - Math.random() * 50, 0],
-              x: [-20 + Math.random() * 40, 20 - Math.random() * 40, -20 + Math.random() * 40],
-              scale: [1, 1.3 + Math.random() * 0.5, 1],
-              opacity: [0.3, 0.8, 0.3]
+              y: [0, -30, 0],
+              opacity: [0.3, 0.7, 0.3],
+              scale: [1, 1.5, 1]
             }}
             transition={{
-              duration: 4 + Math.random() * 4,
+              duration: 3 + Math.random() * 4,
               repeat: Infinity,
-              delay: Math.random() * 3,
-              ease: 'easeInOut'
+              delay: Math.random() * 2
             }}
           />
         ))}
       </div>
 
-      <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        {/* Header with MEGA animation */}
-        <motion.div
-          initial={{ opacity: 0, y: -100, scale: 0.8 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, type: 'spring', bounce: 0.5 }}
-          style={{ ...styles.header, position: 'relative', overflow: 'visible' }}
-        >
-          {/* Sparkle burst around header */}
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: '20px',
-                height: '20px'
-              }}
-              animate={{
-                x: Math.cos((i / 8) * Math.PI * 2) * 100,
-                y: Math.sin((i / 8) * Math.PI * 2) * 100,
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.2
-              }}
-            >
-              <Sparkles size={20} style={{ color: colors.chiliYellow }} />
-            </motion.div>
-          ))}
+      {/* Confetti for today's birthdays */}
+      {hasTodayBirthdays && celebrateMode && (
+        <ConfettiBoom
+          particleCount={200}
+          effectCount={3}
+          colors={[colors.chiliRed, colors.chiliYellow, colors.chiliGreen, '#FFD700']}
+          shapeSize={12}
+          effectInterval={2000}
+          mode="boom"
+        />
+      )}
 
+      <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        {/* Header with animation */}
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, type: 'spring' }}
+          style={{ ...styles.header }}
+        >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <motion.button
-                whileHover={{ scale: 1.2, rotate: -20 }}
-                whileTap={{ scale: 0.8, rotate: 20 }}
+                whileHover={{ scale: 1.1, rotate: -10 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => navigate('/dashboard')}
                 className="bg-white bg-opacity-20 p-2 rounded-md hover:bg-opacity-30 transition-all cursor-pointer"
               >
@@ -268,52 +234,42 @@ const BirthdayTracker = ({ manager }) => {
               <div>
                 <motion.h1
                   className="text-3xl font-bold mb-1"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    textShadow: [
-                      `0 0 10px ${colors.chiliYellow}`,
-                      `0 0 30px ${colors.chiliRed}`,
-                      `0 0 10px ${colors.chiliYellow}`
-                    ]
-                  }}
+                  animate={{ scale: [1, 1.02, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  🎂 BIRTHDAY TRACKER 🎉
+                  🎂 Birthday Tracker
                 </motion.h1>
                 <p className="text-yellow-100">Celebrate Your Team!</p>
               </div>
             </div>
             <div className="flex gap-2">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                animate={{
-                  boxShadow: celebrateMode
-                    ? ['0 0 20px rgba(237, 28, 36, 0.8)', '0 0 60px rgba(255, 198, 11, 1)', '0 0 20px rgba(237, 28, 36, 0.8)']
-                    : '0 4px 12px rgba(0,0,0,0.3)',
-                  scale: celebrateMode ? [1, 1.05, 1] : 1
-                }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                onClick={() => setCelebrateMode(!celebrateMode)}
-                className="flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-lg"
-                style={{
-                  background: celebrateMode
-                    ? `linear-gradient(135deg, ${colors.chiliRed} 0%, ${colors.chiliYellow} 50%, ${colors.chiliGreen} 100%)`
-                    : `linear-gradient(135deg, ${colors.chiliYellow} 0%, ${colors.chiliGreen} 100%)`,
-                  color: 'white'
-                }}
-              >
-                <motion.div
-                  animate={{ rotate: celebrateMode ? 360 : 0 }}
-                  transition={{ duration: 1, repeat: celebrateMode ? Infinity : 0 }}
+              {hasTodayBirthdays && (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setCelebrateMode(!celebrateMode)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
+                  style={{
+                    background: celebrateMode
+                      ? `linear-gradient(135deg, ${colors.chiliRed} 0%, ${colors.chiliYellow} 100%)`
+                      : `linear-gradient(135deg, ${colors.chiliYellow} 0%, ${colors.chiliGreen} 100%)`,
+                    color: 'white',
+                    boxShadow: celebrateMode ? shadows.red : shadows.green
+                  }}
+                  animate={{
+                    boxShadow: celebrateMode
+                      ? ['0 0 20px rgba(237, 28, 36, 0.5)', '0 0 40px rgba(237, 28, 36, 0.8)', '0 0 20px rgba(237, 28, 36, 0.5)']
+                      : shadows.green
+                  }}
+                  transition={{ duration: 1, repeat: Infinity }}
                 >
-                  <PartyPopper size={24} />
-                </motion.div>
-                {celebrateMode ? 'CELEBRATING! 🎊' : 'CELEBRATE NOW!'}
-              </motion.button>
+                  <PartyPopper size={20} />
+                  {celebrateMode ? 'CELEBRATING!' : 'Celebrate'}
+                </motion.button>
+              )}
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={handleExport}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
                 style={{
@@ -329,45 +285,43 @@ const BirthdayTracker = ({ manager }) => {
           </div>
         </motion.div>
 
-        {/* MEGA Animated Stats Cards */}
+        {/* Animated Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           {[
-            { label: '🎉 TODAY', value: stats.today, color: colors.chiliRed, delay: 0 },
-            { label: '📅 THIS WEEK', value: stats.thisWeek, color: colors.chiliYellow, delay: 0.1 },
-            { label: '🎂 THIS MONTH', value: stats.thisMonth, color: colors.chiliGreen, delay: 0.2 },
-            { label: '👥 TOTAL TEAM', value: stats.total, color: colors.textLight, delay: 0.3 }
+            { label: '🎉 Today', value: stats.today, color: colors.chiliRed, delay: 0 },
+            { label: '📅 This Week', value: stats.thisWeek, color: colors.chiliYellow, delay: 0.1 },
+            { label: '🎂 This Month', value: stats.thisMonth, color: colors.chiliGreen, delay: 0.2 },
+            { label: '👥 Total Team', value: stats.total, color: colors.textLight, delay: 0.3 }
           ].map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 100, scale: 0.5, rotateY: -180 }}
-              animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
-              transition={{ duration: 0.6, delay: stat.delay, type: 'spring', bounce: 0.6 }}
+              initial={{ opacity: 0, y: 50, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: stat.delay, type: 'spring' }}
               whileHover={{
-                scale: 1.15,
-                boxShadow: `0 20px 60px ${stat.color}80`,
-                y: -15,
-                rotateZ: stat.value > 0 && idx === 0 ? [0, -5, 5, 0] : 0
+                scale: 1.05,
+                boxShadow: `0 10px 40px ${stat.color}40`,
+                y: -5
               }}
               style={{
                 ...styles.card,
-                borderLeft: `6px solid ${stat.color}`,
+                borderLeft: `4px solid ${stat.color}`,
                 textAlign: 'center',
-                cursor: 'pointer',
-                background: `linear-gradient(135deg, ${colors.whiteAlpha(0.15)} 0%, ${colors.whiteAlpha(0.05)} 100%)`
+                cursor: 'pointer'
               }}
             >
               <motion.div
-                className="text-5xl font-black mb-2"
-                style={{ color: stat.color, textShadow: `0 0 20px ${stat.color}80` }}
+                className="text-4xl font-bold mb-1"
+                style={{ color: stat.color }}
                 animate={stat.value > 0 && idx === 0 ? {
-                  scale: [1, 1.3, 1],
-                  rotate: [0, 15, -15, 0]
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 10, -10, 0]
                 } : {}}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                transition={{ duration: 2, repeat: Infinity }}
               >
                 {stat.value}
               </motion.div>
-              <div className="text-sm font-bold tracking-wider" style={{ color: colors.textLight }}>
+              <div className="text-sm font-medium" style={{ color: colors.textMuted }}>
                 {stat.label}
               </div>
             </motion.div>
@@ -378,7 +332,7 @@ const BirthdayTracker = ({ manager }) => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.4 }}
           style={{ ...styles.card, marginBottom: spacing.lg }}
         >
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
@@ -390,13 +344,10 @@ const BirthdayTracker = ({ manager }) => {
               ].map(({ mode, icon: Icon, label }) => (
                 <motion.button
                   key={mode}
-                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode(mode)}
-                  style={viewMode === mode ? {
-                    ...styles.pillActive,
-                    boxShadow: `0 8px 25px ${colors.chiliRed}60`
-                  } : styles.pillInactive}
+                  style={viewMode === mode ? styles.pillActive : styles.pillInactive}
                   className="cursor-pointer"
                 >
                   <Icon size={16} className="inline mr-1" />
@@ -471,7 +422,7 @@ const BirthdayTracker = ({ manager }) => {
           </div>
         </motion.div>
 
-        {/* Birthday Cards with INSANE animations */}
+        {/* Birthday Cards with Staggered Animation */}
         {loading ? (
           <motion.div
             initial={{ opacity: 0 }}
@@ -479,29 +430,29 @@ const BirthdayTracker = ({ manager }) => {
             style={{ ...styles.card, textAlign: 'center', padding: '60px' }}
           >
             <motion.div
-              animate={{ rotate: 360, scale: [1, 1.3, 1] }}
+              animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               className="inline-block"
             >
-              <Zap size={64} style={{ color: colors.chiliYellow }} />
+              <Sparkles size={48} style={{ color: colors.chiliYellow }} />
             </motion.div>
-            <div className="text-2xl mt-4 font-bold" style={{ color: colors.textLight }}>
+            <div className="text-xl mt-4" style={{ color: colors.textMuted }}>
               Loading birthdays...
             </div>
           </motion.div>
         ) : filteredMembers.length === 0 ? (
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             style={{ ...styles.card, textAlign: 'center', padding: '60px' }}
           >
             <motion.div
-              animate={{ y: [0, -20, 0], rotate: [0, 10, -10, 0] }}
+              animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Cake size={80} style={{ color: colors.textMuted, margin: '0 auto 20px' }} />
+              <Cake size={64} style={{ color: colors.textMuted, margin: '0 auto 20px' }} />
             </motion.div>
-            <div className="text-2xl font-bold mb-2" style={{ color: colors.textLight }}>
+            <div className="text-xl font-bold mb-2" style={{ color: colors.textLight }}>
               No Birthdays Found
             </div>
             <div style={{ color: colors.textMuted }}>
@@ -509,7 +460,7 @@ const BirthdayTracker = ({ manager }) => {
             </div>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <AnimatePresence>
               {filteredMembers.map((member, index) => {
                 const daysUntil = getDaysUntilBirthday(member.date_of_birth);
@@ -517,92 +468,80 @@ const BirthdayTracker = ({ manager }) => {
                 const urgencyLabel = getUrgencyLabel(daysUntil);
                 const parsed = parseMonthDay(member.date_of_birth);
                 const isToday = daysUntil === 0;
-                const isSoon = daysUntil <= 7;
 
                 return (
                   <motion.div
                     key={member.id}
                     layout
-                    initial={{ opacity: 0, y: 100, scale: 0.7, rotateY: -90 }}
-                    animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
-                    exit={{ opacity: 0, scale: 0.7, rotateY: 90 }}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
                     transition={{
-                      duration: 0.6,
-                      delay: index * 0.1,
+                      duration: 0.4,
+                      delay: index * 0.05,
                       type: 'spring',
-                      stiffness: 80
+                      stiffness: 100
                     }}
                     whileHover={{
-                      scale: 1.08,
-                      boxShadow: `0 30px 80px ${urgencyColor}80, 0 0 60px ${urgencyColor}40`,
-                      y: -15,
-                      rotateZ: [-2, 2, -2]
+                      scale: 1.03,
+                      boxShadow: `0 20px 60px ${urgencyColor}40`,
+                      y: -8
                     }}
+                    onClick={() => setSelectedCard(selectedCard === member.id ? null : member.id)}
                     style={{
                       ...styles.card,
-                      borderLeft: `8px solid ${urgencyColor}`,
+                      borderLeft: `4px solid ${urgencyColor}`,
                       position: 'relative',
-                      overflow: 'visible',
+                      overflow: 'hidden',
                       cursor: 'pointer',
                       background: isToday
-                        ? `linear-gradient(135deg, ${colors.chiliRed}40 0%, ${colors.whiteAlpha(0.12)} 100%)`
-                        : `linear-gradient(135deg, ${colors.whiteAlpha(0.15)} 0%, ${colors.whiteAlpha(0.08)} 100%)`
+                        ? `linear-gradient(135deg, ${colors.whiteAlpha(0.12)} 0%, ${colors.whiteAlpha(0.08)} 100%)`
+                        : colors.whiteAlpha(0.08)
                     }}
                   >
-                    {/* MEGA Sparkle effect for soon birthdays */}
-                    {isSoon && (
-                      <>
-                        {[...Array(6)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            style={{
-                              position: 'absolute',
-                              top: `${20 + Math.random() * 60}%`,
-                              left: `${20 + Math.random() * 60}%`,
-                              zIndex: 10
-                            }}
-                            animate={{
-                              rotate: [0, 360],
-                              scale: [0, 1.5, 0],
-                              opacity: [0, 1, 0]
-                            }}
-                            transition={{
-                              duration: 2 + Math.random(),
-                              repeat: Infinity,
-                              delay: i * 0.3
-                            }}
-                          >
-                            <Sparkles size={20} style={{ color: colors.chiliYellow }} />
-                          </motion.div>
-                        ))}
-                      </>
+                    {/* Sparkle effect for today's birthdays */}
+                    {isToday && (
+                      <motion.div
+                        style={{
+                          position: 'absolute',
+                          top: '10px',
+                          left: '10px',
+                          zIndex: 1
+                        }}
+                        animate={{
+                          rotate: [0, 360],
+                          scale: [1, 1.2, 1]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity
+                        }}
+                      >
+                        <Sparkles size={24} style={{ color: colors.chiliYellow }} />
+                      </motion.div>
                     )}
 
-                    {/* Urgency Badge with MEGA pulse */}
-                    {isSoon && (
+                    {/* Urgency Badge with pulse */}
+                    {daysUntil <= 7 && (
                       <motion.div
-                        animate={{
-                          scale: isToday ? [1, 1.3, 1] : [1, 1.15, 1],
-                          rotate: isToday ? [0, 10, -10, 0] : 0,
-                          boxShadow: [
-                            `0 4px 20px ${urgencyColor}60`,
-                            `0 8px 40px ${urgencyColor}`,
-                            `0 4px 20px ${urgencyColor}60`
-                          ]
-                        }}
-                        transition={{ duration: 1, repeat: Infinity }}
+                        animate={isToday ? {
+                          scale: [1, 1.1, 1],
+                          rotate: [0, 5, -5, 0]
+                        } : {}}
+                        transition={{ duration: 2, repeat: Infinity }}
                         style={{
                           position: 'absolute',
                           top: '12px',
                           right: '12px',
-                          padding: `${spacing.sm} ${spacing.lg}`,
+                          padding: `${spacing.xs} ${spacing.md}`,
                           borderRadius: radius.full,
                           backgroundColor: urgencyColor,
                           color: 'white',
-                          fontSize: '14px',
-                          fontWeight: '800',
+                          fontSize: '12px',
+                          fontWeight: '700',
                           textTransform: 'uppercase',
-                          zIndex: 20
+                          boxShadow: `0 4px 20px ${urgencyColor}60`,
+                          zIndex: 2
                         }}
                       >
                         {urgencyLabel}
@@ -611,36 +550,30 @@ const BirthdayTracker = ({ manager }) => {
 
                     {/* Member Info */}
                     <div className="mb-4">
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-center gap-3">
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex items-center gap-2">
                           <motion.div
-                            animate={isToday ? {
-                              rotate: [0, 30, -30, 0],
-                              scale: [1, 1.3, 1]
-                            } : {}}
-                            transition={{ duration: 1.5, repeat: Infinity }}
+                            animate={isToday ? { rotate: [0, 20, -20, 0] } : {}}
+                            transition={{ duration: 2, repeat: Infinity }}
                           >
-                            <Cake size={28} style={{ color: urgencyColor }} />
+                            <Cake size={20} style={{ color: urgencyColor }} />
                           </motion.div>
-                          <h3 className="text-xl font-bold" style={{
-                            color: colors.textLight,
-                            textShadow: isSoon ? `0 0 10px ${urgencyColor}60` : 'none'
-                          }}>
+                          <h3 className="text-lg font-bold" style={{ color: colors.textLight }}>
                             {member.name}
                           </h3>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-2 mb-4">
+                      <div className="flex items-center gap-2 mb-3">
                         <motion.span
-                          whileHover={{ scale: 1.1 }}
+                          whileHover={{ scale: 1.05 }}
                           style={{
                             padding: `${spacing.xs} ${spacing.md}`,
                             borderRadius: radius.full,
                             backgroundColor: colors.chiliGreen,
                             color: 'white',
-                            fontSize: '12px',
-                            fontWeight: '700'
+                            fontSize: '11px',
+                            fontWeight: '600'
                           }}
                         >
                           {member.position}
@@ -648,107 +581,96 @@ const BirthdayTracker = ({ manager }) => {
                       </div>
 
                       {/* Birthday Info */}
-                      <div className="space-y-3 mb-4">
-                        <div className="flex items-center gap-2" style={{ color: colors.textLight, fontSize: '16px' }}>
-                          <Calendar size={20} />
-                          <span className="font-semibold">
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center gap-2" style={{ color: colors.textMuted }}>
+                          <Calendar size={16} />
+                          <span className="text-sm">
                             {parsed ? `${months[parsed.month]} ${parsed.day}` : 'N/A'}
                           </span>
                         </div>
                         {daysUntil > 7 && (
                           <div className="flex items-center gap-2" style={{ color: colors.textMuted }}>
-                            <Gift size={18} />
-                            <span>{urgencyLabel}</span>
+                            <Gift size={16} />
+                            <span className="text-sm">{urgencyLabel}</span>
                           </div>
                         )}
                       </div>
 
-                      {/* MEGA Countdown Flip Card */}
+                      {/* Countdown Flip Card */}
                       {daysUntil > 0 && (
                         <motion.div
-                          className="flex items-center justify-center gap-2 py-4 px-6 rounded-xl mb-4"
+                          className="flex items-center justify-center gap-2 py-3 px-4 rounded-lg mb-4"
                           style={{
-                            background: `linear-gradient(135deg, ${urgencyColor}30 0%, ${colors.whiteAlpha(0.1)} 100%)`,
-                            border: `2px solid ${urgencyColor}`,
-                            boxShadow: `0 0 30px ${urgencyColor}40`
+                            background: `linear-gradient(135deg, ${colors.whiteAlpha(0.1)} 0%, ${colors.whiteAlpha(0.05)} 100%)`,
+                            border: `1px solid ${colors.whiteAlpha(0.2)}`
                           }}
-                          whileHover={{ scale: 1.05 }}
+                          whileHover={{ scale: 1.02 }}
                         >
                           <motion.div
                             key={daysUntil}
                             initial={{ rotateX: -90, opacity: 0 }}
                             animate={{ rotateX: 0, opacity: 1 }}
                             style={{
-                              fontSize: '48px',
-                              fontWeight: '900',
+                              fontSize: '32px',
+                              fontWeight: '800',
                               color: urgencyColor,
-                              textShadow: `0 0 30px ${urgencyColor}, 0 4px 8px ${colors.blackAlpha(0.5)}`
+                              textShadow: `0 0 20px ${urgencyColor}60`
                             }}
                           >
                             {daysUntil}
                           </motion.div>
-                          <div style={{ color: colors.textLight, fontSize: '16px', fontWeight: '600' }}>
-                            day{daysUntil !== 1 ? 's' : ''}<br/>until birthday
+                          <div style={{ color: colors.textMuted, fontSize: '14px' }}>
+                            day{daysUntil !== 1 ? 's' : ''} until birthday
                           </div>
                         </motion.div>
                       )}
 
-                      {/* Contact Buttons */}
+                      {/* Contact Buttons with animation */}
                       <motion.div
                         className="flex gap-2"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.2 }}
                       >
                         {member.phone && member.phone !== '-' && (
                           <motion.a
-                            whileHover={{
-                              scale: 1.1,
-                              backgroundColor: colors.whiteAlpha(0.3),
-                              boxShadow: `0 8px 25px ${colors.chiliGreen}60`
-                            }}
+                            whileHover={{ scale: 1.05, backgroundColor: colors.whiteAlpha(0.2) }}
                             whileTap={{ scale: 0.95 }}
                             href={`tel:${member.phone}`}
                             style={{
                               ...styles.buttonGhost,
-                              padding: `${spacing.md} ${spacing.lg}`,
-                              fontSize: '14px',
+                              padding: `${spacing.sm} ${spacing.md}`,
+                              fontSize: '13px',
                               display: 'flex',
                               alignItems: 'center',
-                              gap: spacing.sm,
+                              gap: spacing.xs,
                               textDecoration: 'none',
                               flex: 1,
-                              justifyContent: 'center',
-                              fontWeight: '600'
+                              justifyContent: 'center'
                             }}
                           >
-                            <Phone size={16} />
+                            <Phone size={14} />
                             Call
                           </motion.a>
                         )}
                         {member.email && member.email !== '-' && (
                           <motion.a
-                            whileHover={{
-                              scale: 1.1,
-                              backgroundColor: colors.whiteAlpha(0.3),
-                              boxShadow: `0 8px 25px ${colors.chiliGreen}60`
-                            }}
+                            whileHover={{ scale: 1.05, backgroundColor: colors.whiteAlpha(0.2) }}
                             whileTap={{ scale: 0.95 }}
                             href={`mailto:${member.email}`}
                             style={{
                               ...styles.buttonGhost,
-                              padding: `${spacing.md} ${spacing.lg}`,
-                              fontSize: '14px',
+                              padding: `${spacing.sm} ${spacing.md}`,
+                              fontSize: '13px',
                               display: 'flex',
                               alignItems: 'center',
-                              gap: spacing.sm,
+                              gap: spacing.xs,
                               textDecoration: 'none',
                               flex: 1,
-                              justifyContent: 'center',
-                              fontWeight: '600'
+                              justifyContent: 'center'
                             }}
                           >
-                            <Mail size={16} />
+                            <Mail size={14} />
                             Email
                           </motion.a>
                         )}
@@ -765,4 +687,4 @@ const BirthdayTracker = ({ manager }) => {
   );
 };
 
-export default BirthdayTracker;
+export default BirthdayTrackerCool;
