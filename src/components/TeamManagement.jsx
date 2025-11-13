@@ -189,6 +189,16 @@ const TeamManagement = ({ manager }) => {
     }
   };
 
+  // Convert Excel date serial number to JavaScript Date
+  const excelDateToJSDate = (serial) => {
+    if (!serial || typeof serial !== 'number') return null;
+    // Excel dates are days since 1900-01-01 (with 1900 incorrectly treated as leap year)
+    const utc_days = Math.floor(serial - 25569);
+    const utc_value = utc_days * 86400;
+    const date_info = new Date(utc_value * 1000);
+    return date_info.toISOString().split('T')[0]; // Return YYYY-MM-DD format
+  };
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -198,34 +208,44 @@ const TeamManagement = ({ manager }) => {
       const data = await file.arrayBuffer();
       const workbook = XLSX.read(data);
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-      const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-      // Parse Excel data - adjust field names based on your Excel structure
+      // Get data with headers
+      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      const headers = jsonData[0];
+
+      // Find column indexes
+      const nameIdx = headers.findIndex(h => h === 'Legal Name' || h === 'All Employees');
+      const jobIdx = headers.findIndex(h => h === 'Primary Job' || h.includes('Job'));
+      const dobIdx = headers.findIndex(h => h === 'Date of Birth');
+
+      // Parse data rows (skip header)
       const teamData = jsonData
-        .filter(row => row['All Employees'] && row['All Employees'] !== 'Name') // Skip header rows
+        .slice(1)
+        .filter(row => row[nameIdx]) // Must have a name
         .map(row => {
-          // Extract position from "Schedules" column
+          // Extract position from job title
           let position = 'Server'; // default
-          const schedules = row['__EMPTY_3'] || '';
+          const jobTitle = row[jobIdx] || '';
 
-          if (schedules.includes('Server')) position = 'Server';
-          else if (schedules.includes('Host')) position = 'Host';
-          else if (schedules.includes('Bar')) position = 'Bartender';
-          else if (schedules.includes('Kitchen')) position = 'Kitchen';
-          else if (schedules.includes('Bus')) position = 'Busser';
-          else if (schedules.includes('Runner') || schedules.includes('Food Runner')) position = 'Runner';
-          else if (schedules.includes('To Go')) position = 'To-Go';
-          else if (schedules.includes('QA')) position = 'QA';
-          else if (schedules.includes('Dish')) position = 'Dishwasher';
-          else if (schedules.includes('Manager')) position = 'Manager';
-          else if (schedules.includes('Shift Leader')) position = 'Shift Leader';
-          else if (schedules.includes('Night Cleaner')) position = 'Night Cleaner';
+          if (jobTitle.includes('Server')) position = 'Server';
+          else if (jobTitle.includes('Host')) position = 'Host';
+          else if (jobTitle.includes('Bar')) position = 'Bartender';
+          else if (jobTitle.includes('Kitchen') || jobTitle.includes('Cook')) position = 'Kitchen';
+          else if (jobTitle.includes('Bus')) position = 'Busser';
+          else if (jobTitle.includes('Runner') || jobTitle.includes('Food Runner')) position = 'Runner';
+          else if (jobTitle.includes('To Go') || jobTitle.includes('ToGo')) position = 'To-Go';
+          else if (jobTitle.includes('QA')) position = 'QA';
+          else if (jobTitle.includes('Dish')) position = 'Dishwasher';
+          else if (jobTitle.includes('Manager')) position = 'Manager';
+          else if (jobTitle.includes('Shift Leader')) position = 'Shift Leader';
+          else if (jobTitle.includes('Night Cleaner')) position = 'Night Cleaner';
 
           return {
-            name: row['All Employees'],
-            phone: row['__EMPTY'] || '-',
-            email: row['__EMPTY_1'] || '-',
-            position: position
+            name: row[nameIdx],
+            phone: '-',
+            email: '-',
+            position: position,
+            date_of_birth: dobIdx >= 0 ? excelDateToJSDate(row[dobIdx]) : null
           };
         })
         .filter(member => member.name && member.name.trim() !== '');
@@ -235,8 +255,9 @@ const TeamManagement = ({ manager }) => {
         return;
       }
 
+      const withBirthdays = teamData.filter(m => m.date_of_birth).length;
       const confirmImport = window.confirm(
-        `Found ${teamData.length} team members in the file. Import them?`
+        `Found ${teamData.length} team members (${withBirthdays} with birthdays). Import them?`
       );
 
       if (!confirmImport) return;
@@ -248,7 +269,7 @@ const TeamManagement = ({ manager }) => {
       if (error) throw error;
 
       await loadTeamMembers();
-      alert(`Successfully imported ${teamData.length} team members!`);
+      alert(`Successfully imported ${teamData.length} team members! (${withBirthdays} with birthdays)`);
       event.target.value = ''; // Reset file input
     } catch (error) {
       console.error('Error uploading file:', error);

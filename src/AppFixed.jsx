@@ -13,7 +13,9 @@ import CoachingGuide from './components/coaching/CoachingGuide';
 import QuickReference from './components/coaching/QuickReference';
 import Analytics from './components/coaching/Analytics';
 import TeamManagement from './components/TeamManagement';
+import BirthdayTracker from './components/BirthdayTracker';
 import OracleAlohaGuide from './components/OracleAlohaGuide';
+import ScheduleGuide from './components/ScheduleGuide';
 import TableauDashboards from './components/TableauDashboards';
 import TableauPATTest from './components/TableauPATTest';
 import TableauAPIExplorer from './components/TableauAPIExplorer';
@@ -151,10 +153,22 @@ const AppFixed = () => {
           element={manager ? <TeamManagement manager={manager} /> : <Navigate to="/" replace />}
         />
 
+        {/* Birthday Tracker */}
+        <Route
+          path="/birthdays"
+          element={manager ? <BirthdayTracker manager={manager} /> : <Navigate to="/" replace />}
+        />
+
         {/* Oracle/Aloha Quick Reference Guide */}
         <Route
           path="/oracle-aloha"
           element={manager ? <OracleAlohaGuide onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
+        />
+
+        {/* Schedule & Labor Card Guide */}
+        <Route
+          path="/schedule-guide"
+          element={manager ? <ScheduleGuide onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
         />
 
         {/* Tableau Analytics Dashboards */}

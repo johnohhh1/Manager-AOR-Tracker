@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet, GraduationCap, Book } from 'lucide-react';
+import { ChevronLeft, Settings, Users, BarChart3, CheckSquare, Calendar, Clock, AlertTriangle, TrendingUp, Edit3, Plus, Trash2, Eye, Shield, ArrowLeft, Download, FileSpreadsheet, GraduationCap, Book, Cake } from 'lucide-react';
 import { colors, styles, radius, spacing, shadows } from './styles/design-system';
 
 // Manager AOR Responsibilities from updated spreadsheet
@@ -683,6 +683,23 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
           </button>
 
           <button
+            onClick={() => window.location.href = '/birthdays'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliYellow }}
+          >
+            <div className="flex items-center">
+              <Cake size={32} style={{ color: colors.chiliYellow }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Birthday Tracker</h3>
+                <p style={{ color: colors.chiliBrown }}>Celebrate Your Team's Special Days</p>
+                <p className="text-sm font-medium" style={{ color: colors.chiliYellow }}>
+                  🎉 NEW!
+                </p>
+              </div>
+            </div>
+          </button>
+
+          <button
             onClick={() => window.location.href = '/oracle-aloha'}
             className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
             style={{ borderColor: colors.chiliYellow }}
@@ -692,6 +709,20 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
               <div>
                 <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Oracle & Aloha Quick Reference</h3>
                 <p style={{ color: colors.chiliBrown }}>Step-by-step procedures for Oracle, Aloha & MenuLink</p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={() => window.location.href = '/schedule-guide'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliGreen }}
+          >
+            <div className="flex items-center">
+              <Calendar size={32} style={{ color: colors.chiliGreen }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Schedule & Labor Card Guide</h3>
+                <p style={{ color: colors.chiliBrown }}>Complete guide for schedule writing and labor card execution</p>
               </div>
             </div>
           </button>
