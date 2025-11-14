@@ -666,6 +666,23 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
           </button>
 
           <button
+            onClick={() => window.location.href = '/brand-standards'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliNavy }}
+          >
+            <div className="flex items-center">
+              <Shield size={32} style={{ color: colors.chiliNavy }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Brand Standards Validation</h3>
+                <p style={{ color: colors.chiliBrown }}>Comprehensive Walkthrough & Action Tracking</p>
+                <p className="text-sm font-medium" style={{ color: colors.chiliGreen }}>
+                  For All Managers
+                </p>
+              </div>
+            </div>
+          </button>
+
+          <button
             onClick={() => window.location.href = '/team'}
             className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
             style={{ borderColor: colors.chiliGreen }}
