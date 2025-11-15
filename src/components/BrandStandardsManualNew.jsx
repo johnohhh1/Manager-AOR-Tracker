@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ChevronLeft, Search, X, ChevronDown, ChevronRight, Printer } from 'lucide-react';
-import { colors } from '../styles/design-system';
+import { colors, styles, shadows } from '../styles/design-system';
 import { manualData } from '../data/brandStandardsManualData';
 
 const BrandStandardsManualNew = ({ manager, onBack }) => {
@@ -14,10 +14,7 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
 
     const term = searchTerm.toLowerCase();
     return manualData.sections.filter(section => {
-      // Search in section title
       if (section.title.toLowerCase().includes(term)) return true;
-
-      // Search in content
       return JSON.stringify(section.content).toLowerCase().includes(term);
     });
   }, [searchTerm]);
@@ -45,15 +42,13 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: colors.chiliCream }}>
+    <div style={styles.pageContainer}>
       {/* Header */}
       <div
         className="sticky top-0 z-20 print:hidden"
         style={{
-          background: `linear-gradient(135deg, ${colors.chiliNavy}, ${colors.chiliRed})`,
-          color: 'white',
-          padding: '1rem',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+          ...styles.header,
+          marginBottom: '2rem'
         }}
       >
         <div className="max-w-7xl mx-auto">
@@ -104,24 +99,29 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
       </div>
 
       {/* Purpose Statement */}
-      <div className="max-w-7xl mx-auto p-6 print:p-2">
+      <div className="max-w-7xl mx-auto px-6 print:p-2">
         <div
-          className="rounded-lg p-6 mb-6 text-center print:mb-4"
+          className="rounded-xl p-6 mb-6 text-center"
           style={{
             background: `linear-gradient(135deg, ${colors.chiliNavy}, ${colors.chiliRed})`,
-            color: 'white'
+            color: 'white',
+            boxShadow: shadows.xl
           }}
         >
           <h2 className="text-2xl font-bold mb-2">Our Purpose</h2>
-          <p className="text-lg">{manualData.purpose}</p>
+          <p className="text-lg opacity-90">{manualData.purpose}</p>
         </div>
 
         {/* Table of Contents - Side Panel on Desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* TOC Sidebar */}
           <div className="lg:col-span-1 print:hidden">
-            <div className="bg-white rounded-lg p-4 shadow-md sticky top-32">
-              <h3 className="font-bold mb-3 text-lg" style={{ color: colors.chiliNavy }}>
+            <div style={{
+              ...styles.card,
+              position: 'sticky',
+              top: '150px'
+            }}>
+              <h3 className="font-bold mb-3 text-lg" style={{ color: colors.textLight }}>
                 Table of Contents
               </h3>
               <div className="space-y-2">
@@ -129,18 +129,16 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
                   <button
                     key={section.id}
                     onClick={() => scrollToSection(section.id)}
-                    className={`w-full text-left px-3 py-2 rounded transition-all cursor-pointer ${
-                      activeSection === section.id ? 'font-bold' : ''
-                    }`}
+                    className="w-full text-left px-3 py-2 rounded transition-all cursor-pointer"
                     style={{
                       backgroundColor: activeSection === section.id
-                        ? colors.chiliCream
+                        ? colors.whiteAlpha(0.15)
                         : 'transparent',
                       color: activeSection === section.id
-                        ? colors.chiliRed
-                        : colors.chiliBrown,
+                        ? colors.chiliYellow
+                        : colors.textMuted,
                       borderLeft: activeSection === section.id
-                        ? `3px solid ${colors.chiliRed}`
+                        ? `3px solid ${colors.chiliYellow}`
                         : '3px solid transparent'
                     }}
                   >
@@ -155,8 +153,15 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
           {/* Main Content */}
           <div className="lg:col-span-3">
             {searchTerm && (
-              <div className="mb-4 p-3 bg-blue-50 rounded-lg border-l-4" style={{ borderColor: colors.chiliNavy }}>
-                <p style={{ color: colors.chiliBrown }}>
+              <div
+                className="mb-4 p-3 rounded-lg border-l-4"
+                style={{
+                  backgroundColor: colors.whiteAlpha(0.1),
+                  borderColor: colors.chiliYellow,
+                  color: colors.textLight
+                }}
+              >
+                <p>
                   {filteredSections.length} section{filteredSections.length !== 1 ? 's' : ''} found for "{searchTerm}"
                 </p>
               </div>
@@ -170,17 +175,19 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
                   <div
                     key={section.id}
                     id={`section-${section.id}`}
-                    className="bg-white rounded-lg shadow-md overflow-hidden print:break-inside-avoid"
+                    style={{
+                      ...styles.card,
+                      borderLeft: `4px solid ${section.color}`
+                    }}
                   >
                     {/* Section Header */}
                     <button
                       onClick={() => toggleSection(section.id)}
-                      className="w-full p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors print:cursor-default print:hover:bg-white"
-                      style={{ borderLeft: `4px solid ${section.color}` }}
+                      className="w-full flex items-center justify-between cursor-pointer hover:opacity-80 transition-opacity"
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-3xl">{section.icon}</span>
-                        <h2 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>
+                        <h2 className="text-xl font-bold" style={{ color: colors.textLight }}>
                           {section.title}
                         </h2>
                       </div>
@@ -195,17 +202,17 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
 
                     {/* Section Content */}
                     {isExpanded && (
-                      <div className="p-6 space-y-6">
+                      <div className="mt-6 space-y-6">
                         {section.content.map((item, idx) => (
                           <div key={idx} className="space-y-3">
                             {item.heading && (
-                              <h3 className="text-lg font-bold" style={{ color: section.color }}>
+                              <h3 className="text-lg font-bold" style={{ color: colors.chiliYellow }}>
                                 {item.heading}
                               </h3>
                             )}
 
                             {item.text && (
-                              <p style={{ color: colors.chiliBrown }}>
+                              <p style={{ color: colors.textMuted }}>
                                 {item.text}
                               </p>
                             )}
@@ -218,7 +225,7 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
                                     className="flex items-start gap-2"
                                   >
                                     <span style={{ color: section.color }}>•</span>
-                                    <span style={{ color: colors.chiliBrown }}>{bullet}</span>
+                                    <span style={{ color: colors.textMuted }}>{bullet}</span>
                                   </li>
                                 ))}
                               </ul>
@@ -230,19 +237,22 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
                                   <div
                                     key={roleIdx}
                                     className="p-4 rounded-lg"
-                                    style={{ backgroundColor: colors.chiliCream }}
+                                    style={{
+                                      backgroundColor: colors.whiteAlpha(0.05),
+                                      border: `1px solid ${colors.whiteAlpha(0.1)}`
+                                    }}
                                   >
-                                    <div className="font-bold mb-1" style={{ color: colors.chiliNavy }}>
+                                    <div className="font-bold mb-1" style={{ color: colors.textLight }}>
                                       {role.position}
                                     </div>
-                                    <div className="text-sm mb-2" style={{ color: colors.chiliBrown }}>
+                                    <div className="text-sm mb-2" style={{ color: colors.textMuted }}>
                                       {role.description}
                                     </div>
                                     <ul className="space-y-1 ml-4">
                                       {role.responsibilities.map((resp, respIdx) => (
                                         <li key={respIdx} className="flex items-start gap-2 text-sm">
                                           <span style={{ color: section.color }}>•</span>
-                                          <span style={{ color: colors.chiliBrown }}>{resp}</span>
+                                          <span style={{ color: colors.textMuted }}>{resp}</span>
                                         </li>
                                       ))}
                                     </ul>
@@ -255,18 +265,18 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
                               <div className="space-y-4 ml-4">
                                 {item.subsections.map((subsection, subIdx) => (
                                   <div key={subIdx} className="space-y-2">
-                                    <h4 className="font-bold" style={{ color: colors.chiliNavy }}>
+                                    <h4 className="font-bold" style={{ color: colors.textLight }}>
                                       {subsection.subheading}
                                     </h4>
                                     {subsection.text && (
-                                      <p style={{ color: colors.chiliBrown }}>{subsection.text}</p>
+                                      <p style={{ color: colors.textMuted }}>{subsection.text}</p>
                                     )}
                                     {subsection.bullets && (
                                       <ul className="space-y-1 ml-4">
                                         {subsection.bullets.map((bullet, bulletIdx) => (
                                           <li key={bulletIdx} className="flex items-start gap-2">
                                             <span style={{ color: section.color }}>•</span>
-                                            <span style={{ color: colors.chiliBrown }}>{bullet}</span>
+                                            <span style={{ color: colors.textMuted }}>{bullet}</span>
                                           </li>
                                         ))}
                                       </ul>
@@ -286,12 +296,12 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
 
             {filteredSections.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-lg" style={{ color: colors.chiliBrown }}>
+                <p className="text-lg mb-4" style={{ color: colors.textMuted }}>
                   No sections found for "{searchTerm}"
                 </p>
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="mt-4 px-4 py-2 rounded-md hover:opacity-90 transition-opacity cursor-pointer"
+                  className="px-4 py-2 rounded-md hover:opacity-90 transition-opacity cursor-pointer"
                   style={{ backgroundColor: colors.chiliRed, color: 'white' }}
                 >
                   Clear Search
@@ -302,7 +312,7 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm print:mt-4" style={{ color: colors.chiliBrown }}>
+        <div className="mt-8 text-center text-sm" style={{ color: colors.textSubtle }}>
           <p>Brinker International Payroll Company • {manualData.version}</p>
           <p className="mt-1">© {new Date().getFullYear()} Brinker International. All rights reserved.</p>
         </div>
