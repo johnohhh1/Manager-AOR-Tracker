@@ -116,8 +116,11 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* TOC Sidebar */}
           <div className="lg:col-span-1 print:hidden">
-            <div style={{
-              ...styles.card,
+            <div className="p-6 rounded-xl" style={{
+              backgroundColor: colors.whiteAlpha(0.08),
+              backdropFilter: 'blur(12px)',
+              border: `1px solid ${colors.whiteAlpha(0.1)}`,
+              boxShadow: shadows.md,
               position: 'sticky',
               top: '150px'
             }}>
@@ -175,9 +178,13 @@ const BrandStandardsManualNew = ({ manager, onBack }) => {
                   <div
                     key={section.id}
                     id={`section-${section.id}`}
+                    className="p-6 rounded-xl"
                     style={{
-                      ...styles.card,
-                      borderLeft: `4px solid ${section.color}`
+                      backgroundColor: colors.whiteAlpha(0.08),
+                      backdropFilter: 'blur(12px)',
+                      border: `1px solid ${colors.whiteAlpha(0.1)}`,
+                      borderLeft: `4px solid ${section.color}`,
+                      boxShadow: shadows.md
                     }}
                   >
                     {/* Section Header */}
