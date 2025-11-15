@@ -1,25 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)",
-      "Bash(curl:*)",
-      "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nComplete ALL Phase 2 coaching tools - full implementation\n\nPhase 1 MVP Complete:\n- Weekly 1:1 Form: Multi-step wizard with position-specific behaviors, metrics tracking, and development plans\n- Floor Observations: Already complete from previous commit\n\nPhase 2 Complete (All Features Implemented):\n- Training Scenarios: 18 interactive role-play scenarios by position with coaching focus\n- Coaching Guide: Position-specific observable behaviors, coaching scenarios, and recognition examples\n- Quick Reference: Mobile-friendly quick card with 5-step model, coaching starters, and common scenarios\n- Analytics: Real-time coaching metrics with progress tracking and insights\n\nTechnical Updates:\n- Added vercel.json for proper SPA routing on Vercel deployment\n- All components fully functional with Supabase integration\n- Mobile-responsive design throughout\n- No placeholders - everything is implemented and working\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(do sed -i \"s/backgroundColor: ''#f8f9fa''/backgroundColor: colors.chiliNavy/g\" \"$file\")",
-      "Bash(for file in src/components/coaching/CoachingGuide.jsx src/components/coaching/Analytics.jsx)",
-      "Bash(do sed -i \"s/color: colors\\.chiliNavy/color: colors.chiliGreen/g\" \"$file\")",
-      "Bash(npx vite build:*)",
-      "Bash(git reset:*)",
-      "Bash(npm run dev:*)",
-      "Bash(git push:*)",
-      "Bash(for file in Analytics.jsx CoachingGuide.jsx QuickReference.jsx)",
-      "Bash(do sed -i 's/style={{ \\.\\.\\.styles\\.buttonOutline,\\(.*\\)}}/className=\"\"bg-white bg-opacity-20 px-4 py-2 rounded-md hover:bg-opacity-30 transition-all cursor-pointer flex items-center gap-2\"\" style={{ color: ''''white'''' }}/g' \"$file\")",
-      "Bash(done)",
-      "Bash(git commit:*)",
-      "Bash(node:*)",
-      "Bash(npm run build:*)",
-      "Bash(cat:*)",
-      "Bash(npx shadcn@latest mcp:*)"
+      "Bash(pip install:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []
