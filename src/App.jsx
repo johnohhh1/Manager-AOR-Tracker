@@ -683,6 +683,23 @@ const ManagerAORTracker = ({ manager: propManager, setManager: propSetManager })
           </button>
 
           <button
+            onClick={() => window.location.href = '/brand-standards-manual'}
+            className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
+            style={{ borderColor: colors.chiliRed }}
+          >
+            <div className="flex items-center">
+              <Book size={32} style={{ color: colors.chiliRed }} className="mr-4" />
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: colors.chiliNavy }}>Brand Standards Manual</h3>
+                <p style={{ color: colors.chiliBrown }}>F26 Q2 Official Reference Guide</p>
+                <p className="text-sm font-medium" style={{ color: colors.chiliRed }}>
+                  📖 NEW!
+                </p>
+              </div>
+            </div>
+          </button>
+
+          <button
             onClick={() => window.location.href = '/team'}
             className="w-full bg-white rounded-lg p-6 text-left shadow-md hover:shadow-lg transition-shadow border-2"
             style={{ borderColor: colors.chiliGreen }}
