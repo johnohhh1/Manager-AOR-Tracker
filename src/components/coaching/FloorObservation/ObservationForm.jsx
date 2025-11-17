@@ -92,6 +92,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
           .order('name');
 
         if (error) throw error;
+        console.log('Loaded team members:', data);
         setTeamMembers(data || []);
       } catch (error) {
         console.error('Error loading team members:', error);
@@ -349,16 +350,27 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
 
             {Object.entries(positionBehaviors).map(([position, behaviors]) => {
               // Map position keys to friendly names for filtering
+              // Also handle plural forms and variations
               const positionNameMap = {
-                host: 'Host',
-                server: 'Server',
-                bartender: 'Bartender',
-                cook: 'Cook',
-                togoSpecialist: 'To-Go Specialist',
-                busser: 'Busser'
+                host: ['Host', 'Hosts'],
+                server: ['Server', 'Servers'],
+                bartender: ['Bartender', 'Bartenders'],
+                cook: ['Cook', 'Cooks', 'Line Cook', 'Line Cooks', 'Prep Cook', 'Prep Cooks'],
+                togoSpecialist: ['To-Go Specialist', 'To-Go', 'ToGo', 'To Go Specialist'],
+                busser: ['Busser', 'Bussers', 'Runner', 'Runners']
               };
-              const positionName = positionNameMap[position] || position;
-              const teamMembersForPosition = teamMembers.filter(tm => tm.position === positionName);
+              const positionVariations = positionNameMap[position] || [position];
+              let teamMembersForPosition = teamMembers.filter(tm => {
+                if (!tm.position) return false;
+                return positionVariations.some(variation =>
+                  tm.position.toLowerCase().includes(variation.toLowerCase())
+                );
+              });
+
+              // If no position-specific matches, show all team members as fallback
+              if (teamMembersForPosition.length === 0) {
+                teamMembersForPosition = teamMembers;
+              }
 
               return (
               <div key={position} className="rounded-lg p-6 shadow-md" style={{
@@ -388,7 +400,7 @@ const ObservationForm = ({ manager, existingObservation = null }) => {
                     <option value="" style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>Select team member...</option>
                     {teamMembersForPosition.map(tm => (
                       <option key={tm.id} value={tm.name} style={{ backgroundColor: colors.chiliNavy, color: 'white' }}>
-                        {tm.name}
+                        {tm.name} {tm.position ? `(${tm.position})` : ''}
                       </option>
                     ))}
                   </select>
