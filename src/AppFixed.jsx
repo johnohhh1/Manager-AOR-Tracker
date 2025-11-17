@@ -15,7 +15,7 @@ import Analytics from './components/coaching/Analytics';
 import TeamManagement from './components/TeamManagement';
 import BirthdayTracker from './components/BirthdayTracker';
 import BrandStandardsDashboard from './components/brand-standards/BrandStandardsDashboard';
-import BrandStandardsManualNew from './components/BrandStandardsManualNew';
+import BrandStandardsViewer from './components/BrandStandardsViewer';
 import OracleAlohaGuide from './components/OracleAlohaGuide';
 import ScheduleGuide from './components/ScheduleGuide';
 import TableauDashboards from './components/TableauDashboards';
@@ -170,7 +170,7 @@ const AppFixed = () => {
         {/* Brand Standards Manual */}
         <Route
           path="/brand-standards-manual"
-          element={manager ? <BrandStandardsManualNew manager={manager} onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
+          element={manager ? <BrandStandardsViewer onBack={() => window.location.href = '/dashboard'} /> : <Navigate to="/" replace />}
         />
 
         {/* Oracle/Aloha Quick Reference Guide */}

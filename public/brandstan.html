@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chili's Brand Standards - F26 Q2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #22235B;
+            --gold: #FFC60A;
+            --green: #759E33;
+            --red: #E12827;
+            --blue: #215E9E;
+            --white: #FFFFFF;
+            --beige: #EDECE8;
+            --dark-blue: #24245B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Gill Sans MT', sans-serif;
+            background-color: var(--beige);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .purpose {
+            background-color: rgba(255, 198, 10, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+
+        .purpose h2 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .purpose p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .nav a {
+            color: var(--navy);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background-color: var(--white);
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .section-header.foh {
+            background: linear-gradient(135deg, var(--green) 0%, #66A112 100%);
+        }
+
+        .section-header.hoh {
+            background: linear-gradient(135deg, var(--red) 0%, #C41E1E 100%);
+        }
+
+        .section-content {
+            padding: 2rem;
+        }
+
+        .subsection {
+            margin-bottom: 2rem;
+        }
+
+        .subsection h3 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .subsection h4 {
+            color: var(--green);
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .role-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--gold);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .role-card h4 {
+            color: var(--navy);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .highlight {
+            background-color: rgba(255, 198, 10, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .alert {
+            background-color: rgba(225, 40, 39, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .info {
+            background-color: rgba(33, 94, 158, 0.1);
+            border-left: 4px solid var(--blue);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .footer {
+            background-color: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-box {
+            padding: 1rem 2rem;
+            background-color: var(--white);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--navy);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section-content {
+                padding: 1rem;
+            }
+        }
+
+        .toc {
+            column-count: 2;
+            column-gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .toc-item {
+            break-inside: avoid;
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-item a {
+            color: var(--navy);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .toc-item a:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .toc {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Chili's Brand Standards</h1>
+        <p class="tagline">Everything you ever wanted to know about Chili's standards, but were too afraid to ask.</p>
+
+        <div class="purpose">
+            <h2>OUR PURPOSE</h2>
+            <p>To Make Everyone Feel Special through a <strong>Fun Atmosphere, Delicious Food & Drinks</strong> with <strong>ChiliHead Hospitality</strong>.</p>
+        </div>
+
+        <p style="margin-top: 2rem; opacity: 0.8;">Brinker International Payroll Company, 06/2025</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search brand standards..." onkeyup="searchContent()">
+    </div>
+
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="#overview">Overview</a>
+            <a href="#safety">Safety & Security</a>
+            <a href="#technology">Technology</a>
+            <a href="#foh">Front of House</a>
+            <a href="#hoh">Heart of House</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="section">
+            <div class="section-header">Brand Standards Overview</div>
+            <div class="section-content">
+                <div class="subsection">
+                    <h3>Why Are Brand Standards Important?</h3>
+                    <p>When we execute the Brand Standards, we create a meaningful experience for our Guests and Team Members by delivering genuine ChiliHead Hospitality.</p>
+
+                    <p style="margin-top: 1rem;"><strong>To our Guests, this experience looks like:</strong></p>
+                    <ul>
+                        <li>An excited ChiliHead welcomes them to the party.</li>
+                        <li>Their Server is excited to serve them, makes them feel special and taken care of, like they're a regular.</li>
+                        <li>There is consistently delicious food and margaritas around the table.</li>
+                        <li>When they leave, they're already looking forward to their next visit.</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;">Each member of your team plays an important role delivering on the Brand Standards and ChiliHead Hospitality Behaviors.</p>
+                </div>
+
+                <div class="subsection">
+                    <h3>Team Member Roles</h3>
+
+                    <div class="role-card">
+                        <h4>MANAGER: Host and coach the party</h4>
+                        <ul>
+                            <li>Proactively engage with all Guests and TMs.</li>
+                            <li>Praise and coach ChiliHead Hospitality Behaviors.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>HOST: Welcomes all Guests to the party</h4>
+                        <ul>
+                            <li>Greet every Guest with a smile and "Hi! Welcome to Chili's!"</li>
+                            <li>Open the door for arriving and departing Guests.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>TO-GO: Make every Guest feel like they're a regular</h4>
+                        <ul>
+                            <li>Greet every Guest with a smile and "Hi! Welcome to Chili's!"</li>
+                            <li>Work the bag chit to ensure order accuracy and no missing items.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>RUNNER: Elevate the Guest experience</h4>
+                        <ul>
+                            <li>Ask, "What more can I get you?"</li>
+                            <li>Run drinks/apps quickly and consistently pre-bus.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>BUSSER: Take pride in a clean restaurant</h4>
+                        <ul>
+                            <li>Bus tables with the bus tub, wipe down tables and spot sweep.</li>
+                            <li>Use headset to communicate with Host about table status.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>BARTENDER: Makes every Guest feel like they're a regular</h4>
+                        <ul>
+                            <li>Greet Guests within 60 seconds and recommend a Marg and app.</li>
+                            <li>Make and deliver drinks in under 3 minutes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>SERVER: Makes every Guest feel like they're a regular</h4>
+                        <ul>
+                            <li>Greet Guests within 60 seconds and recommend a Marg and app.</li>
+                            <li>Elevate the Guest experience with regular check-ins, silent refills and pre-bussing.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>QA: Ensure the safety and quality of our Delicious Food</h4>
+                        <ul>
+                            <li>Proactively communicate order status to HOH and Managers.</li>
+                            <li>Validate all orders are made to spec and use names to ensure food is delivered hot and fast.</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-card">
+                        <h4>HOH: Take pride in creating consistently Delicious Food</h4>
+                        <ul>
+                            <li>Ensure all orders are made to spec and every plate and To-Go box is 100% complete.</li>
+                            <li>Ensure all food safety and Chili's Clean measures are followed.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert">
+                        <h4>All Team Members</h4>
+                        <ul>
+                            <li><strong>5/10 Rule:</strong> 5 ft = smile, make eye contact and say something genuine and nice. 10 ft = smile and make eye contact.</li>
+                            <li>Proper dress guidelines, including headsets.</li>
+                            <li>Have fun! Make connections! Live our Purpose.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAFETY & SECURITY SECTION -->
+        <section id="safety" class="section">
+            <div class="section-header">Safety & Security</div>
+            <div class="section-content">
+                <div class="subsection">
+                    <h3>Safety Crisis Reporting</h3>
+
+                    <div class="alert">
+                        <h4>Self Service Portal (SSP)</h4>
+                        <p><strong>All crisis incidents MUST be reported in the Self Service Portal (SSP).</strong></p>
+                        <p>Link: <a href="https://brinker.service-now.com/chilis_ssp" target="_blank">https://brinker.service-now.com/chilis_ssp</a></p>
+                    </div>
+
+                    <h4>Crisis incidents include the following:</h4>
+                    <ul>
+                        <li>Police/Security Incidents</li>
+                        <li>Team Member/Guest Accidents</li>
+                        <li>Restaurant Closures</li>
+                        <li>Boil Water Notices</li>
+                        <li>Social Media Concerns/Media Inquiries</li>
+                        <li>Multiple Guests Reporting Illness After Dining/Foreign Objects in Food</li>
+                        <li>Team Member Reporting Illness/Health Department Investigation</li>
+                    </ul>
+
+                    <h4>Reporting Illness Guidelines</h4>
+                    <p><strong>When to use the Crisis Portal to report ill TM/Guest(s):</strong></p>
+
+                    <p style="margin-top: 1rem;"><strong>Team Member(s):</strong></p>
+                    <ul>
+                        <li>Three or more TMs call out for vomiting or diarrhea within seven days.</li>
+                        <li>Any TM seeks medical care and is diagnosed with a foodborne illness.</li>
+                        <li>Anytime a Health Department informs you they are investigating an illness.</li>
+                    </ul>
+
+                    <p><strong>Guest(s):</strong></p>
+                    <ul>
+                        <li>Multiple Guests reporting food related illness or symptoms.</li>
+                    </ul>
+
+                    <div class="info">
+                        <p><strong>STEP 1: OPEN A TICKET</strong><br>Immediately report incident.</p>
+                        <p style="margin-top: 0.5rem;"><strong>STEP 2: INFORM</strong><br>GM/Manager MUST immediately inform DO.</p>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Food Safety</h3>
+
+                    <h4>Criticals</h4>
+                    <ul>
+                        <li>Digital Quality Line Check completed shiftly.</li>
+                        <li>Digital Critical Checklist completed shiftly.
+                            <ul><li>Testing strips are taped to Daily Pull Thaw sheet.</li></ul>
+                        </li>
+                        <li>Cooling Log is reviewed and verified each week.</li>
+                    </ul>
+
+                    <h4>Practices</h4>
+                    <ul>
+                        <li>Follow posted <span class="highlight">Hand Washing Procedure</span> as mandated.</li>
+                        <li>Gloves must always be worn when handling Ready To Eat Food.
+                            <ul><li>When handling burgers (on the Cook Line), use Burger mitts 100% of the time.</li></ul>
+                        </li>
+                        <li>Hat/hairnet worn 100% of the time by all HOH TMs, including Manager(s) and QA.</li>
+                        <li>Beard net MUST be worn 100% of the time (if applicable) including Manager(s).</li>
+                        <li>Hat/hairnet/beard guards MUST be stocked and hung outside the office door.</li>
+                        <li>Shoulder length or longer hair: pulled back in ponytail or bun, hair away from face, with no loose strands. HOH TMs and QA MUST also wear hat and/or hairnet.</li>
+                        <li>Fingernails: clean and neatly trimmed.</li>
+                        <li>Prep items ONLY in proper designated areas.</li>
+                        <li>Any TM exhibiting signs of foodborne illness may NOT work.
+                            <ul><li>Common symptoms include: Vomiting, diarrhea, jaundice and sore throat with fever.</li></ul>
+                        </li>
+                        <li>TMs MUST properly cover infected/exposed wounds, lesions, cuts or boils with double barrier protection to be cleared to work.
+                            <ul><li>Double barrier example: band-aid covered by clothing/gloves.</li></ul>
+                        </li>
+                        <li>Manager ServSafe certified.</li>
+                        <li>TMs certified based on state regulations.</li>
+                        <li>Immediately enter any pest sighting in SSP every day seen.</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Security Procedures</h3>
+
+                    <h4>Safe Exiting/Entering</h4>
+                    <ul>
+                        <li><strong>Opening:</strong> Manager is required to drive around the building to observe anything unusual and cannot enter the restaurant until a second TM arrives. Manager will enter the restaurant to disable the alarm system while the second TM waits inside their locked vehicle. Manager (from inside the restaurant) then watches TM enter the restaurant.</li>
+                        <li><strong>Closing:</strong> Manager is required to observe the last TM walk to their vehicle while inside the locked restaurant. Once this TM is safely inside their locked vehicle, the Manager is to immediately set the alarm and exit through the front or To-Go door to their vehicle while TM observes from their vehicle.</li>
+                        <li>No Brinker TM can ever be in the restaurant alone, except when following Safe Exiting/Entering Procedure described above and second person MUST be a Brinker TM.</li>
+                        <li>TMs MUST enter through the back door in the morning prior to restaurant opening, however, no TMs are allowed to exit the restaurant after their shift via the rear door. TMs must exit via the most visible door (front door or To-Go door).</li>
+                        <li>No one can exit, enter or open the back door from one hour prior to close until open the following morning.</li>
+                        <li>All doors are required to be locked at closing - no TMs or Guests are allowed back in the restaurant after closing.</li>
+                        <li>The restaurant alarm system is required to be set each evening (unless a no close alarm is called in).</li>
+                        <li>The sharing of alarm pass codes is prohibited.</li>
+                    </ul>
+
+                    <h4>Back Door</h4>
+                    <ul>
+                        <li>Back door and security cage are NEVER propped open OR open at the same time (including deliveries) and must always be securely locked.</li>
+                        <li>Back door is NOT allowed to be opened one hour prior to close for any reason.
+                            <ul>
+                                <li>Trash needs to be emptied prior to this time.</li>
+                                <li>Any remaining trash bags are consolidated and staged (closed/tied up) by the back door until the next a.m. shift.</li>
+                            </ul>
+                        </li>
+                        <li>Detex system is engaged/armed during operating hours.
+                            <ul><li>NOTE: Ensure "Stop" sign is posted.</li></ul>
+                        </li>
+                    </ul>
+
+                    <h4>Exterior Lights</h4>
+                    <ul>
+                        <li>Timers for exterior lights, including pole signs/neons, should be set for lights to remain on approximately one hour after last Manager and TM leave the restaurant.
+                            <ul><li>Adjust accordingly for daylight savings time change.</li></ul>
+                        </li>
+                    </ul>
+
+                    <h4>TM Parking</h4>
+                    <ul>
+                        <li>Prime spots are for Guests ONLY (front of building, To-Go parking, etc.)</li>
+                        <li>TMs should leave in pairs; safety is top priority.</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Policy Guidelines</h3>
+                    <ul>
+                        <li>Chili's is committed to promoting an inclusive environment where everyone feels welcome, valued and respected. Chili's does not tolerate discrimination, harassment, or retaliation of any kind and strives to create a positive and diverse workplace where all TMs and Guests feel safe.</li>
+                        <li>TMs must be mindful of cell phone usage during a shift/in Guest's view and must prioritize Guest engagement. If it is necessary, TMs can discreetly and quickly use their cell phone in a designated area (out of Guests view).</li>
+                        <li>It is crucial to ensure a safe and enjoyable work environment. All TMs must follow Brinker Policies & Procedures Manual and abide by all federal, state and local laws.</li>
+                        <li>TMs MUST clock in for all hours worked.</li>
+                    </ul>
+
+                    <h4>Social Media Standards:</h4>
+                    <ul>
+                        <li>Clearly state that any opinions you express are your own and do not reflect those of the Company.</li>
+                        <li>DON'T disclose confidential business info about Chili's/Brinker, other TMs or our business partners.</li>
+                        <li>DON'T post anything that's discriminatory or would constitute a threat, intimidation, harassment or bullying.</li>
+                        <li>If you see something communicated that could be potentially harmful to the company, report it immediately to your Manager, the Social Media team or the Public Relations team. Don't respond to negative comments yourself.</li>
+                        <li>DON'T post any Guest information or pictures without their consent, never post any Guest information (ie. a receipt, tip amount or credit card details).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNOLOGY SECTION -->
+        <section id="technology" class="section">
+            <div class="section-header">Technology</div>
+            <div class="section-content">
+                <div class="subsection">
+                    <h4>iPads:</h4>
+                    <ul>
+                        <li>All iPads in cases, working and in good condition</li>
+                        <li>iPad bulk charger stored in office (or safe/enclosed space)</li>
+                        <li>iPads must be plugged in when not in use and left on overnight to ensure required updates are installed</li>
+                    </ul>
+
+                    <h4>Tabletop Devices:</h4>
+                    <ul>
+                        <li>Clean and powered on during operating hours</li>
+                        <li>Dining room: One device placed at the back of each table</li>
+                        <li>Bar Top: One device placed at every third seat</li>
+                        <li>To-Go: One device placed at To-Go counter in To-Go mode</li>
+                        <li>Back-Up Devices: Two devices kept in office without batteries
+                            <ul><li>Put batteries in once a week to receive any software updates</li></ul>
+                        </li>
+                    </ul>
+
+                    <h4>Kitchen Hardware</h4>
+                    <ul>
+                        <li>KDS: dust/grease-free; cords neatly wrapped, screens clean/plastic wrapped
+                            <ul><li>Do NOT manually power down KDS overnight</li></ul>
+                        </li>
+                        <li>Two sticky chit printers working and in good condition on the Cook Line</li>
+                        <li>One KitchenSync printer working and in good condition in the Prep Area</li>
+                    </ul>
+
+                    <h4>Returned Merchandise Authorization (RMAs) Procedure</h4>
+                    <ul>
+                        <li>Enter RMA in SSP (one ticket per device) and mail out RMAs IMMEDIATELY.</li>
+                        <li>Do NOT stockpile devices - send RMAs as they occur</li>
+                        <li>Replacement device will be shipped once the return label is scanned at pick-up</li>
+                    </ul>
+
+                    <h4>Laptops</h4>
+                    <ul>
+                        <li>Stored in the office and plugged in to charge when not in use</li>
+                        <li>In FOH, ALWAYS lock screen and close laptop when away from keyboard</li>
+                    </ul>
+
+                    <h4>Point of Sale (POS)</h4>
+                    <ul>
+                        <li>GMs must check POS units for unusual USB devices</li>
+                    </ul>
+
+                    <h4>Radios</h4>
+                    <ul>
+                        <li>24 working radios, earpieces and charging bays</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRONT OF HOUSE SECTION -->
+        <section id="foh" class="section">
+            <div class="section-header foh">Front of House</div>
+            <div class="section-content">
+                <div class="subsection">
+                    <h3>Exterior</h3>
+
+                    <h4>Parking Lot & Landscaping</h4>
+                    <ul>
+                        <li>Sidewalks and parking lot in good condition - no potholes, no visible debris or trip hazards</li>
+                        <li>Parking lot lines are clearly visible</li>
+                        <li>Parking lot signs in good condition</li>
+                        <li>No trashcans present ONLY receptacle ash tray
+                            <ul><li>NOTE: Follow city and county health protocols for distance from front door</li></ul>
+                        </li>
+                        <li>Landscape in good appearance - NOT dead or overgrown, shrubbery at least 18 inches away from the building and six inches off the ground, rock or concrete barrier 12"-18" around building</li>
+                        <li>Paint, awnings, doors and windows are in good condition and clean</li>
+                        <li>Lighting is bright, no burned out bulbs - ONLY order bulbs through Chili's Lighting List
+                            <ul><li>BWeb > Forms and Policies > Forms > Supply Chain Forms > Chili's Lighting List</li></ul>
+                        </li>
+                        <li>Neon is bright with no burned out sections</li>
+                        <li>Exterior speakers working and music level set between 65-70 (SPLNFFT Noise Meter App)</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>EXTERIOR ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Validate landlord responsibility vs. restaurant's prior to any exterior repairs</li>
+                            <li>If bench is not in good condition, DO/VPO discretion for removal</li>
+                            <li>Sprinkler functioning correctly and NOT spraying building</li>
+                            <li>No wood rot, no fogged windows</li>
+                            <li>No micro-trash</li>
+                            <li>Replace curb-stops/rebar</li>
+                            <li>Ground lights: CAP when not working or broken, do not replace</li>
+                            <li>Reference Chili's Postings Checklist for proper signage placement (To-Go doors, front doors, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Chili's Clean</h3>
+
+                    <h4>Manager</h4>
+                    <p><strong>FOH/HOH Clean: Daily Sidework & Weekly Sparkle</strong></p>
+                    <ul>
+                        <li>Daily Sidework
+                            <ul><li>Responsible for validating with closing TM</li></ul>
+                        </li>
+                        <li>Weekly Sparkle
+                            <ul>
+                                <li>Responsible for assigning shiftly to appropriate TMs and validating completion</li>
+                                <li>FOH Clean - staged near Connection Board</li>
+                                <li>FOH Clean: Host - staged near Host stand, out of Guest view</li>
+                                <li>HOH Clean - staged near HOH Connection Board</li>
+                                <li>HOH Clean: Janitorial - staged near Mop Sink</li>
+                            </ul>
+                        </li>
+                        <li>Deep Clean Checklist
+                            <ul>
+                                <li>Responsible for handing appropriate weekly list to TM and validating completion</li>
+                                <li>Staged in office on key ring when not in use</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>Team Members</h4>
+                    <ul>
+                        <li>Responsible for utilizing job aids to complete Daily Sidework/Weekly Sparkle and Deep Clean Checklist</li>
+                        <li>Closing TM responsible for validating TMs cut before them</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Host Stand</h3>
+
+                    <h4>Host Behaviors</h4>
+                    <ul>
+                        <li>Greet every Guest with six menus in hand as soon as they walk through our doors with a smile and "Hi! Welcome to Chili's!"</li>
+                        <li>Open the door for arriving/departing Guests</li>
+                        <li>Use Host iPad for tracking table status (open, seated, needs bussing) for every table, every time</li>
+                        <li>Deliver kid silverware when seating Guests with kids</li>
+                        <li>Always honor/accommodate Guest seating requests, including large parties</li>
+                        <li>Use headset to:
+                            <ul>
+                                <li>Communicate with Bussers about table status</li>
+                                <li>Communicate with Managers for guidance when seating large parties</li>
+                                <li>Perform open menu counts as requested by Manager on duty</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>HOST ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Inviting, clean fresh smell, clutter-free</li>
+                            <li>To be pest-free eliminate excess benches and minimize storage usage</li>
+                            <li>No stationary hand sanitizer (unless health codes mandate otherwise) - scrub wall to remove residue if required</li>
+                            <li>Greet every Guest with a smile and "Hi! Welcome to Chili's!" with six menus in hand; present and in front of Guests at all times, opening the door for arriving and departing Guests</li>
+                            <li>Everyone owns greeting Guests when a Host is not present - coach TMs for best practices during shift change/no Host hour</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Dining Room</h3>
+
+                    <p>During the shift, Manager is ALWAYS proactively on the floor engaging with Guests and observing/coaching ChiliHead Hospitality Behaviors.</p>
+
+                    <h4>Overall Area</h4>
+                    <ul>
+                        <li>Inviting, clutter-free and organized</li>
+                        <li>Dust-free, high-dusting from ceiling to the floor</li>
+                        <li>Temperature set to 68˚ on heat or 72˚ on cool - set to Guest comfort</li>
+                        <li>Music level between 65-70 (SPLNFFT Noise Meter App)</li>
+                        <li>Lighting is bright, no burned out bulbs - ONLY order bulbs through Chili's Lighting List
+                            <ul><li>BWeb > Forms and Policies > Forms > Supply Chain Forms > Chili's Lighting List</li></ul>
+                        </li>
+                        <li>No brooms/dust pans visible - reference Brooms, Mops, Cans Placement for staging locations
+                            <ul><li>BWeb > OYR > Chili's Clean > Brooms, Mops, Cans Placement</li></ul>
+                        </li>
+                        <li>Doors unlocked at 10:45 a.m.</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>DINING ROOM ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Manager validates swept floors, clean booths, tables and chairs with flashlight at EOD – trust but verify</li>
+                            <li>Pest-free: Immediately enter any pest sighting in SSP every day seen</li>
+                            <li>Clean from ceiling to the floor: high-dust areas</li>
+                            <li>Air balance can be a cause of dust: enter issues in Corrigo
+                                <ul><li>Check air flow by pushing to exit through the To-Go door with hood fans on</li></ul>
+                            </li>
+                            <li>Floors are clear of debris, build up etc.</li>
+                            <li>Ensure floors/corners are being scrubbed with buffer and mopped by zone</li>
+                            <li>All paint is in good condition, touch up as needed - reference Interior Paint Guidelines
+                                <ul><li>BWeb > OYR > Chili's Clean > Interior Paint Guidelines</li></ul>
+                            </li>
+                            <li>All interior wood rot entered in Corrigo</li>
+                            <li>Uniform lighting – all LED, all fluorescent, no burned bulbs and light shield clean</li>
+                        </ul>
+                    </div>
+
+                    <h4>Blinds</h4>
+                    <ul>
+                        <li>All blinds are functional and clean</li>
+                        <li>Blinds are ALWAYS open</li>
+                        <li>Individual blinds can be lowered upon Guest request due to sun, return to open once the sun goes down</li>
+                    </ul>
+
+                    <h4>Tables, Booths & Chairs</h4>
+                    <img src="https://imgur.com/0ytVW75.png" alt="Table Setup" style="width: 100%; max-width: 600px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <ul>
+                        <li>Tables, booths, and chairs are clean, in good condition with no rips, residue or rust</li>
+                        <li>Chairs have working glides on all four legs</li>
+                        <li>Chairs are NEVER placed on tables and cushions are returned in place after cleaning</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>TABLES, BOOTHS & CHAIRS ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Sticky, worn out or warped tables need to be replaced</li>
+                            <li>Ripped, broken, worn out cushions need to be replaced</li>
+                            <li>No visible rust</li>
+                        </ul>
+                    </div>
+
+                    <h4>Server Station Setup</h4>
+                    <img src="https://imgur.com/TMNYlSg.png" alt="Server Station Setup" style="width: 100%; max-width: 600px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <ul>
+                        <li>Clean organized, clutter-free and cleaning products stored but NOT visible to Guests</li>
+                        <li>Server Stations ONLY have the following items stored:
+                            <ul>
+                                <li>Sugar in: Two full sugar caddies (or two 1/2 bowls)</li>
+                                <li>Two salt and pepper grinders</li>
+                                <li>Straws in 1/9 pan</li>
+                                <li>Silverware</li>
+                                <li>Napkins</li>
+                                <li>NO condiments</li>
+                            </ul>
+                        </li>
+                        <li>Tea and water pitchers staged on drip trays
+                            <ul>
+                                <li>Clear pitcher: Water</li>
+                                <li>Brown pitcher: Unsweet tea</li>
+                                <li>Blue pitcher: Sweet tea (if applicable)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>SERVER STATION ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Free of clutter, no personal belongings, TM drinks, To-Go boxes, etc.</li>
+                            <li>Cleaning products are NOT to be left on Server ledges in Guests view</li>
+                        </ul>
+                    </div>
+
+                    <h4>Table Setup</h4>
+                    <ul>
+                        <li>Tabletop device: One device on every table, clean and powered on during operating hours. Placed at back of table, with the front side of the device visible to Guests</li>
+                        <li>Ketchup: Clean bottle placed to the right of the tabletop device</li>
+                        <li>One table tent per table, clean and in good condition and placed in middle of table</li>
+                        <li>Reference Chili's Postings Checklist for photos
+                            <ul>
+                                <li>Sent monthly in ChiliHead Chat</li>
+                                <li>BWeb > OYR > Chili's Postings Checklist</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>TABLE SETUP ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>With table set up, increased focus on walls surrounding tables - ensure they are clean and well maintained</li>
+                        </ul>
+                    </div>
+
+                    <h4>Service Model</h4>
+                    <ul>
+                        <li>Servers use Team Member Handhelds (TMH) 100% of the time</li>
+                        <li>Immediately ring in and send each meal segment of an order on handheld
+                            <ul>
+                                <li>drinks, "send"; apps, "send"; entrees, "send"; desserts, "send"</li>
+                                <li>For large parties: send no more than 6 orders at a time to the HOH</li>
+                            </ul>
+                        </li>
+                        <li>All restaurants MUST have TMH iPads in cases
+                            <ul><li>Place TMH iPads on chargers when not in use</li></ul>
+                        </li>
+                        <li>A Runner and Busser are to be scheduled and present as business dictates</li>
+                        <li>Bar Servers and second Bartenders are to be scheduled and present as business dictates</li>
+                        <li>80/20 Rule:
+                            <ul>
+                                <li>Bartenders/Servers: 80% of time is spent in FOH, connecting with Guests, running food, pre-bussing and full hands in and out - 20% is focused on side work</li>
+                                <li>Runners: 80% of time is spent running drinks and apps, pre-bussing and spot sweeping - 20% is focused on bussing, helping up front and completing side work</li>
+                            </ul>
+                        </li>
+                        <li>Busser: Use bus tub to clean table and keeps floors swept
+                            <ul><li>Use headset to communicate with Hosts about table status</li></ul>
+                        </li>
+                        <li>When delivering food, all TMs must ask "Is there anything else I can get for you?"</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>SERVICE MODEL ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Use support staff (Hosts, Bussers, Runners and QA) to execute ChiliHead Hospitality Behaviors, deliver on our Purpose and Chili's Clean</li>
+                        </ul>
+                    </div>
+
+                    <h4>Table Greeting</h4>
+                    <ul>
+                        <li>Greet seated Guests within 60 seconds with silverware and napkins (one per Guest)
+                            <ul><li>For Bar/Lounge area: TM delivers menus prior to or at table greet</li></ul>
+                        </li>
+                        <li>Table greet always includes a recommendation for a marg and app. It will sound something like:
+                            <ul>
+                                <li>"Hi! Welcome to Chili's! My name is Sarah. Can I get you all started with our Patron Frozen Marg and a Triple Dipper?"</li>
+                                <li>"Hi! Welcome to Chili's! My name is George. Can I get you all started with the world's most popular Margarita, The Presidente and some Chips and Guac?"</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>Bussing Tables</h4>
+                    <ul>
+                        <li>Dirty tables are flagged with a ketchup bottle standing upright, placed on the edge of the table</li>
+                        <li>Use the bus tub when bussing tables - wipe crumbs in to the bus tub to avoid falling onto floor</li>
+                        <li>Hold/move the tabletop device then spray the table with RAPID Multi Surface Cleaner 3 times. Then wipe the entire table and tabletop device with a paper towel. ALWAYS spray close to the table to prevent Guest coming in contact with the disinfectant mist. Reference Table to the Floor cleaning procedure
+                            <ul><li>BWeb > OYR > Chili's Clean > Table to the Floor</li></ul>
+                        </li>
+                        <li>Ensure booths, booth backs and chairs have been cleaned and reset with the proper table setup for the next Guest</li>
+                        <li>Bus tub staging
+                            <ul>
+                                <li>One staged under bar three compartment sink</li>
+                                <li>One staged on bottom level of silverware shelf in dish area</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>BUSSING TABLES ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Coach proper cleaning procedures - ALWAYS use bus tubs</li>
+                            <li>NEVER stage bus tubs in dining room</li>
+                        </ul>
+                    </div>
+
+                    <h4>Birthday Procedures</h4>
+                    <ul>
+                        <li>Birthday song</li>
+                        <li>Free scoop</li>
+                        <li>My Chili's coupons</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <h3>Team Members</h3>
+
+                    <h4>TM Dress Guidelines</h4>
+                    <ul>
+                        <li>Follow Dress Code requirements</li>
+                        <li>Headsets must be worn</li>
+                        <li>Hair requirements: Shoulder length or longer hair pulled back</li>
+                    </ul>
+
+                    <h4>Shift Meals</h4>
+                    <ul>
+                        <li>TMs must order from the approved quarterly shift meal menu through the Bartender</li>
+                        <li>TM is able to sit in a closed zone (NOT in the bar area) away from Guests</li>
+                        <li>Managers must verify meals are rang in and discount the meals per shift</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>TEAM MEMBER EXPECTATIONS:</h4>
+                        <p><strong>Personal Items</strong></p>
+                        <ul>
+                            <li>TMs should NOT leave the restaurant for their personal belongings throughout the shift</li>
+                            <li>Needs to be out of Guest view and NOT in a food service area</li>
+                            <li>GM owns identifying a place for TMs belongings in each restaurant</li>
+                            <li>TMs MUST clock in for all hours worked</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Bar</h3>
+
+                    <h4>Bar Greet</h4>
+                    <ul>
+                        <li>Greet Guests within <span class="highlight">60 seconds</span> and recommend a Marg and app</li>
+                        <li>Make and deliver drinks in under <span class="highlight">3 minutes</span></li>
+                    </ul>
+
+                    <h4>Serving Responsibly</h4>
+                    <ul>
+                        <li>When serving alcoholic drinks, ALWAYS use your Responsible Alcohol Service training and serve responsibly</li>
+                        <li>NEVER serve alcohol to a Guest who is showing any signs of intoxication</li>
+                        <li>No more than 2 oz. of liquor may be in one glass except specialty drinks (reference state specific laws where applicable)</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>BAR ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>No foul smells - clean bars, floors and drains thoroughly
+                                <ul><li>If foul smell persists after thorough cleaning, enter in Corrigo</li></ul>
+                            </li>
+                            <li>All beer glasses are brought to the dish area, NOT the bar</li>
+                            <li>Stemmed glassware and wine glasses MUST be washed by hand in the bar 3 compartment sink</li>
+                            <li>If you have fruit flies, your bar is dirty! This means more attention to cleaning and entered in SSP
+                                <ul><li>Check coolers, soda lines, drain screens and drain catch for build up</li></ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>TVs</h3>
+
+                    <h4>What to Show</h4>
+                    <ul>
+                        <li>Local/Regional/National live sporting events</li>
+                    </ul>
+
+                    <h4>What NOT to Show</h4>
+                    <ul>
+                        <li>Anything violent or graphic, or inappropriate</li>
+                        <li>MMA, UFC, Boxing or other violent action sports</li>
+                        <li>News programming</li>
+                        <li>Religious programming</li>
+                    </ul>
+
+                    <h4>Special Circumstance Content</h4>
+                    <ul>
+                        <li>Weather channel, when appropriate</li>
+                        <li>News programming over relevant or big events (keep in mind, news broadcasts can be polarizing so this is ONLY to be considered during times of crisis and significant national interest)</li>
+                        <li>National election results are acceptable, but do NOT show political debates or primary results</li>
+                        <li>Special requests from Guests, as long as they fit Chili's guidelines</li>
+                    </ul>
+
+                    <h4>Sound & Setup</h4>
+                    <ul>
+                        <li>Sound is ONLY allowed to be on one TV when a big game is being featured, otherwise, music is to be playing.</li>
+                        <li>TV remotes are to be paired to up to three televisions – reference the Remote Program job aid
+                            <ul><li>BWeb > OYR > Rollouts > Initiatives > Raise the Bar 2022 > Remote Program Guide</li></ul>
+                        </li>
+                        <li>TVs must have clear picture quality and are clean, residue and dust-free</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>TV ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>To help keep TVs clean and dust-free, an option is to have window cleaners clean TVs once a quarter</li>
+                            <li>Enter non-working TVs in Corrigo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>To-Go</h3>
+
+                    <h4>To-Go Systems</h4>
+                    <ul>
+                        <li>ALWAYS work the bag chit to ensure no missing items</li>
+                        <li>Greet Guests immediately with "Hi! Welcome to Chili's! How may I help you?"
+                            <ul><li>ALWAYS use the Guest's name</li></ul>
+                        </li>
+                        <li>Answer the phone within three rings with "Thank you for calling Chili's, this is [name], how may I help you?"</li>
+                        <li>NEVER accept credit card payment over the phone</li>
+                        <li>Always bump from To-Go KDS after bagging order to notify Guest order is ready</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>TO-GO ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Mention the importance of no missing items</li>
+                            <li>Managers validate HOH complete boxes and bagged orders throughout the shift</li>
+                            <li>Clutter-free, no TM belongings</li>
+                            <li>Four or less To-Go parking spaces with appropriate signage</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Restroom</h3>
+
+                    <h4>Atmosphere</h4>
+                    <ul>
+                        <li>Clean smell, air freshener</li>
+                        <li>Proper lighting</li>
+                        <li>Soap/towels/paper fully stocked</li>
+                        <li>Trash cans emptied</li>
+                        <li>Baby changing table available</li>
+                        <li>Mirrors clean</li>
+                    </ul>
+
+                    <h4>Restroom Checks</h4>
+                    <ul>
+                        <li>All TMs are responsible for checking the restroom any time they use one and/or if they are assigned to do so by a Manager/QA and should report any issues to the MOD</li>
+                        <li>Restrooms MUST be cleaned/serviced by ONLY a TM clocked in at full minimum wage or greater</li>
+                        <li>Return air vents clean and dust-free</li>
+                        <li>Restroom checks include:
+                            <ul>
+                                <li>Mirrors: clean with no water spots</li>
+                                <li>Floors and counter tops: clear of paper, trash and water/liquid</li>
+                                <li>Toilet/Urinal: flushed and clear of paper and trash</li>
+                                <li>Urinal screens present and in use</li>
+                                <li>Soap, paper towels and toilet paper properly stocked</li>
+                                <li>Trash is NOT overflowing</li>
+                                <li>All plumbing working properly, no clogs or leaks</li>
+                            </ul>
+                        </li>
+                        <li>TMs must ALWAYS wash hands before returning to work</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>RESTROOM ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Foul smells = dirty restrooms - reinforce the importance of restroom checks
+                                <ul><li>If foul smell persists after thorough cleaning, enter in Corrigo</li></ul>
+                            </li>
+                            <li>No graffiti, mirror spots, peels, chipped paint etc.</li>
+                            <li>Check for loose toilet bases as well as green lime build-up at bases of toilets/urinals
+                                <ul><li>No corrosion present on faucets/plumbing</li></ul>
+                            </li>
+                            <li>Transition to press pedal paper towel dispenser when replacements are needed</li>
+                            <li>Restroom checks prompt every 30 mins. on QA KDS - QA and MGR responsible for delegating restroom check to TM clocked in at full minimum wage or greater</li>
+                            <li>Floors dry and free from trash or debris</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HEART OF HOUSE SECTION -->
+        <section id="hoh" class="section">
+            <div class="section-header hoh">Heart of House</div>
+            <div class="section-content">
+                <div class="subsection">
+                    <h3>Passout / QA</h3>
+
+                    <h4>Tip Policy</h4>
+                    <ul>
+                        <li>Voluntary sharing</li>
+                        <li>No tip pool participation</li>
+                    </ul>
+
+                    <h4>Bumping Orders</h4>
+                    <ul>
+                        <li>One ticket at a time</li>
+                    </ul>
+
+                    <h4>Split Items</h4>
+                    <ul>
+                        <li>Split items at Guest request and make it right for them</li>
+                    </ul>
+
+                    <h4>Passout Setup</h4>
+                    <ul>
+                        <li>QA line is organized, clean and well-stocked prior to, during and after every shift</li>
+                        <li>Floors to ceiling - clean and no clutter, including the top of passout</li>
+                        <li>Less is more - ONLY store what is needed (bottled sauces, crackers, etc.)</li>
+                        <li>Ensure plates are stacked so that the Cook Line is visible from QA Line</li>
+                        <li>EACH cooler MUST have a working thermometer present</li>
+                        <li>Lighting is bright, no burned out bulbs and light shield clean - ONLY order bulbs through Chili's Lighting List
+                            <ul><li>BWeb > Forms and Policies > Forms > Supply Chain Forms > Chili's Lighting List</li></ul>
+                        </li>
+                        <li>Soda bibs are opened upon delivery and staged appropriately - NEVER on the floor
+                            <ul><li>All other items need to be removed from cardboard boxes</li></ul>
+                        </li>
+                        <li>One Sani bucket with fully submerged towel - change every three hours or sooner if heavily soiled</li>
+                        <li>Connection Board is updated daily and has blank recognition cards accessible</li>
+                        <li>Posting/material up to date and set up per Chili's Postings Checklist
+                            <ul>
+                                <li>Sent monthly in ChiliHead Chat</li>
+                                <li>BWeb > OYR > Chili's Postings Checklist</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>PASSOUT / QA ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Less is more. No clutter. ONLY store what is needed</li>
+                            <li>Clean all around - floors to ceilings</li>
+                            <li>Floors always debris-free and dry</li>
+                            <li>Casters clean and able to move - pull out equipment when cleaning</li>
+                            <li>All shelves clean and grease-free (top, bottom, over inductions, etc.)</li>
+                            <li>If dessert hot well is not working properly, dispose at DO/VPO discretion (phasing out)</li>
+                            <li>Heat lamps clean and in working condition</li>
+                            <li>Brooms staged in proper areas (FOH vs. HOH brooms)</li>
+                            <li>Ensure restaurant has mineral oil for trivets and follows trivet maintenance procedures</li>
+                            <li>Connection Board is updated daily and being used as a communication tool for TMs</li>
+                            <li>Dispose of metal mounted To-Go cup holders if not in use</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Dish Area</h3>
+
+                    <h4>Organization</h4>
+                    <img src="https://imgur.com/CiZwCuc.png" alt="Dish Area Organization" style="width: 100%; max-width: 600px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <ul>
+                        <li>Floors clean and dry</li>
+                        <li>Silverware pans organized</li>
+                        <li>Pan spray available</li>
+                        <li>Decoy system in place</li>
+                        <li>Mugs/glassware properly stored</li>
+                        <li>Dish racks organized</li>
+                    </ul>
+
+                    <h4>Chemicals</h4>
+                    <ul>
+                        <li>Used for intended purpose only</li>
+                        <li>Approved chemicals only</li>
+                        <li>Solid Power properly stored</li>
+                    </ul>
+
+                    <h4>Dish/Machine Maintenance</h4>
+                    <ul>
+                        <li>All dishes and pans need to be free of debris and product labels before going through the dish machine
+                            <ul><li>NOTE: All TMs are responsible for removing labels as labels will leave residue and clog the dish machine jets</li></ul>
+                        </li>
+                        <li>Load rack to capacity and with similar dishes and glasses</li>
+                        <li>Follow silverware washing procedure (reference Flatware Presoak & Wash Procedure)
+                            <ul><li>BWeb > OYR > Culinary and Beverage > Job Aids > Silverware Presoak Wash</li></ul>
+                        </li>
+                        <li>Deliming chemical/Lime-A-Way should be purchased and stored in the shed</li>
+                        <li>Dish water must be changed every two hours or sooner (as needed) to ensure water is clean
+                            <ul><li>Ensure dish water is changed when prompted by KDS</li></ul>
+                        </li>
+                        <li>Appropriate number of curtains must be installed each morning before starting a wash cycle - reference posted Ecolab stickers</li>
+                        <li>Spray handle and nozzles need to be cleaned daily to remove any obstructions so machine sprays properly</li>
+                        <li>NO metal brushes or steel wool</li>
+                        <li>Dish machine MUST be broken down at end of night and put back together each morning</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>DISH AREA ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Use floor fans in HOH as needed</li>
+                            <li>Less is more. Clutter-free and organized - everything has a place</li>
+                            <li>NO chipped, cracked or melted pans/plateware</li>
+                            <li>NO colored tongs or colored cutting boards</li>
+                            <li>Chemicals are NEVER stored outside of designated area</li>
+                            <li>When checking cleanliness:
+                                <ul>
+                                    <li>Above and below machine, chimney, curtains, etc.</li>
+                                    <li>All shelves, dish counters, sprayers, drains, piping, etc.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Office</h3>
+
+                    <h4>Office Door</h4>
+                    <ul>
+                        <li>Locked when not in use</li>
+                        <li>Good condition</li>
+                        <li>Proper signage</li>
+                    </ul>
+
+                    <h4>Inside Office</h4>
+                    <ul>
+                        <li>Safe must ALWAYS be locked, in working order and must have a lockable inner compartment with a key that ONLY the armored car carrier has access</li>
+                        <li>No cash visible and/or accessible to anyone except the Manager(s) on duty</li>
+                        <li>Store necessary paperwork in sealed bin according to Restaurant Record Retention Policy
+                            <ul>
+                                <li>Discard necessary paperwork after 90 days</li>
+                                <li>NOTE: Reference Restaurant Record Retention Policy</li>
+                                <li>BWeb > Forms and Policies > Policies and Procedures > Document Retention Schedules > Restaurant Records Retention Policy</li>
+                            </ul>
+                        </li>
+                        <li>Any lost and found items are secured in the office for up to 14 days</li>
+                        <li>Floors clean, dry and clutter-free</li>
+                        <li>TMs may use office privately for lactation purposes</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>OFFICE ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>To avoid harboring pest, less is more - clutter-free and organized</li>
+                            <li>Office door is NEVER propped open</li>
+                            <li>Trust but verify - Inspect tickets in Corrigo</li>
+                            <li>Inspect paperwork stored - discard outdated, old records</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Mop Sink / Chemicals</h3>
+
+                    <h4>Mop Sink & Chemical Tower</h4>
+                    <ul>
+                        <li>Safety equipment accessible to all TMs</li>
+                        <li>Reference Chemical Safety Poster for proper chemical handling
+                            <ul>
+                                <li>BWeb > OYR > Chili's Clean > Chemical Safety Poster</li>
+                                <li>NOTE: NEVER mix chemicals</li>
+                            </ul>
+                        </li>
+                        <li>Reference Chili's Postings Checklist for signage guidelines
+                            <ul>
+                                <li>Sent monthly in ChiliHead Chat</li>
+                                <li>Bweb > OYR > Chili's Postings Checklist</li>
+                            </ul>
+                        </li>
+                        <li>Area cleaned and organized</li>
+                        <li>Mop bucket MUST be stored in mop sink</li>
+                        <li>NO hoses used inside the building</li>
+                        <li>RAPID Multi Surface Disinfectant Cleaner is used in all Guest areas</li>
+                        <li>Chemical tower clean, chemicals properly labeled and boxes ALWAYS locked
+                            <ul><li>NOTE: Managers are the ONLY ones who have chemical box keys</li></ul>
+                        </li>
+                        <li>Use chemicals ONLY for intended purpose and NEVER mix chemicals</li>
+                        <li>Spray bottles limited and have Ecolab label</li>
+                        <li>SDS Binder posted and up to date</li>
+                        <li>Extra chemical labels readily available</li>
+                        <li>Total of six Sani buckets with fully submerged towels: Prep, Zone 1, Zone 2, Zone 3, QA Line and Bar - Change every three hours or sooner if heavily soiled
+                            <ul><li>BWeb > OYR > Quality Assurance and Food Safety > SAFE > SAFE Sheets > SAFESHEETS Sani Buckets</li></ul>
+                        </li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>MOP SINK / CHEMICAL ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>ONLY Managers are allowed to have keys to chemical boxes</li>
+                            <li>Inspect correct chemicals are in the correct box</li>
+                            <li>Inspect amount of spray bottles - ONLY store what's needed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Prep Area</h3>
+
+                    <h4>Overall Area</h4>
+                    <ul>
+                        <li>Organization maintained</li>
+                        <li>Systems posted</li>
+                        <li>Cooling log updated</li>
+                        <li>Cooler thermometers working</li>
+                        <li>Knives on magnetic strips</li>
+                        <li>Proper lighting</li>
+                        <li>White cutting boards for ready-to-eat</li>
+                        <li>Safety gear available</li>
+                    </ul>
+
+                    <h4>Prep Cards</h4>
+                    <ul>
+                        <li>100% usage required</li>
+                        <li>Daily amounts followed</li>
+                        <li>Manager validation</li>
+                    </ul>
+
+                    <h4>Signage - Zone Labeling</h4>
+                    <ul>
+                        <li>Prep Zones must be properly labeled in their corresponding color</li>
+                        <li>Signs are posted on walls and NEVER hang from ceiling</li>
+                        <li><strong style="color: #888;">White</strong> - Ready to Eat</li>
+                        <li><strong style="color: #759E33;">Green</strong> - Unwashed Produce</li>
+                        <li><strong style="color: #215E9E;">Blue</strong> - Raw Seafood</li>
+                        <li><strong style="color: #E12827;">Red</strong> - Raw Meat</li>
+                        <li><strong style="color: #FFC60A;">Yellow</strong> - Raw Poultry</li>
+                    </ul>
+
+                    <h4>Combi Oven</h4>
+                    <ul>
+                        <li>Do NOT store anything on top of Combi</li>
+                        <li>ONLY store appropriate chemicals and smoker box on bottom shelf</li>
+                        <li>Do NOT store more than the maximum number of Combi racks
+                            <ul>
+                                <li>Double Combi = 14 racks</li>
+                                <li>Single Combi = 7 racks</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>Retherm</h4>
+                    <ul>
+                        <li>Suitcases stored inside</li>
+                        <li>Have heat resistant gloves accessible and in good condition</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>PREP AREA ATMOSPHERE EXPECTATIONS:</h4>
+                        <p><strong>Pans</strong></p>
+                        <ul>
+                            <li>No chips, broken or melted pans</li>
+                            <li>Stock ONLY what pans are needed</li>
+                        </ul>
+                        <p><strong>Equipment and Tools</strong></p>
+                        <ul>
+                            <li>Nothing stored on top of Combi</li>
+                            <li>Appropriate chemicals present</li>
+                            <li>Store cutting boards appropriately when not in use</li>
+                            <li>Proper amount of utensils are available and organized</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Walk-In / Freezer</h3>
+
+                    <h4>Dry Storage</h4>
+                    <ul>
+                        <li>Schematics posted</li>
+                        <li>Cleanliness maintained</li>
+                        <li>Behind shelves clean</li>
+                        <li>Shelving in good condition</li>
+                        <li>Proper lighting</li>
+                    </ul>
+
+                    <h4>Walk-In & Freezer, Beer Cooler / Cage</h4>
+                    <ul>
+                        <li>Set up according to Walk-In/Dry Storage Schematics</li>
+                        <li>Clean, dry and organized from floor to ceiling tiles</li>
+                        <li>EACH cooler MUST have a working thermometer present</li>
+                        <li>Behind shelves are clean and dry</li>
+                        <li>Bottled beer is pulled in increments of six</li>
+                        <li>Lighting is bright, no burned out bulbs and light shield clean - ONLY order bulbs through Chili's Lighting List</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>WALK-IN / FREEZER ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Less is more. Clutter-free and organized</li>
+                            <li>No boxes on floors</li>
+                            <li>Keg dollies, stackers, dividers and shelf clips are clean and mold-free</li>
+                            <li>Replace shelf labels as needed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Cook Line</h3>
+
+                    <h4>Line Setup</h4>
+                    <ul>
+                        <li>Hot food lids/labels/temps maintained</li>
+                        <li>White cutting boards used</li>
+                        <li>Safety gear worn</li>
+                        <li>Organization standards met</li>
+                        <li>Product fill lines followed</li>
+                    </ul>
+
+                    <h4>KDS</h4>
+                    <ul>
+                        <li>Cleanliness maintained</li>
+                        <li>Order management followed</li>
+                        <li>Priority recooks handled properly</li>
+                    </ul>
+
+                    <h4>Equipment</h4>
+                    <ul>
+                        <li>Fryer boil out schedule - 2nd, 4th, 5th Tuesday</li>
+                        <li>Regular filtering</li>
+                        <li>Vent hoods clean</li>
+                        <li>Storage restrictions followed</li>
+                        <li>Lids used properly</li>
+                        <li>Fryer covering at night</li>
+                    </ul>
+
+                    <h4>Chemicals & Supplies</h4>
+                    <ul>
+                        <li>Use approved chemicals ONLY</li>
+                        <li>Have green scrubber, gloves, towels, brushes, grill screens and bricks on hand</li>
+                        <li>Reference Chemical Job Aid for proper chemical handling</li>
+                    </ul>
+
+                    <h4>Cleaning</h4>
+                    <ul>
+                        <li>Follow Sparkle to know when and how often to clean each piece of equipment</li>
+                        <li>Use job aids 100% of the time</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>COOK LINE ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Less is more. Clutter-free and organized</li>
+                            <li>Make sure TMs move equipment to clean behind, backs, and corners of units</li>
+                            <li>Hood Vents - Give guidance on when and how often to clean</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Back Door / Pest Control</h3>
+
+                    <h4>Interior</h4>
+                    <ul>
+                        <li>Pest reporting in SSP</li>
+                        <li>Fly lights - 2 minimum</li>
+                        <li>Air curtain functional</li>
+                        <li>Bait traps maintained</li>
+                    </ul>
+
+                    <h4>Exterior</h4>
+                    <ul>
+                        <li>Immediately enter any pest sighting in SSP every day seen</li>
+                        <li>Door sweeps present and in good condition</li>
+                        <li>Bait traps against walls</li>
+                        <li>Working fly panels: two total (Device location depends on pest vendor)</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>BACK DOOR ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Remove chains; Detex system is engaged/armed during operating hours</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Back Dock</h3>
+
+                    <h4>Overall Area</h4>
+                    <ul>
+                        <li>Back Dock Standards reference</li>
+                        <li>Cleanliness maintained</li>
+                        <li>Dumpster doors/lids functional</li>
+                        <li>Linen containers organized</li>
+                        <li>Touch points cleaned</li>
+                        <li>Broom/mop storage organized</li>
+                    </ul>
+
+                    <h4>Shed</h4>
+                    <ul>
+                        <li>Door(s) have working closures and ALWAYS closed and locked</li>
+                        <li>Clean, organized and clutter-free - all items must be six inches off the ground</li>
+                        <li>Floor buffer stored in shed without brush head when not in use
+                            <ul><li>Store brush head on shelf, off of the ground</li></ul>
+                        </li>
+                        <li>If using for storage of paperwork, it must be sealed and in a plastic (Rubbermaid like) bin - NEVER use cardboard boxes</li>
+                    </ul>
+
+                    <h4>Attic</h4>
+                    <ul>
+                        <li>(If applicable): Clean and organized - NEVER use for storage</li>
+                    </ul>
+
+                    <h4>Mechanical Room</h4>
+                    <ul>
+                        <li>Keep water softening salt drum at least 50% full at all times</li>
+                        <li>Door(s) have working closures and ALWAYS closed and locked</li>
+                        <li>Rodent bait station present and against wall</li>
+                        <li>Clean and clutter-free - NEVER use for storage</li>
+                        <li>No water leaks present</li>
+                        <li>Water heater and wall heater (if applicable) in working condition</li>
+                    </ul>
+
+                    <div class="info">
+                        <h4>BACK DOCK ATMOSPHERE EXPECTATIONS:</h4>
+                        <ul>
+                            <li>Clean, odor/clutter-free and organized atmosphere - no old equipment</li>
+                            <li>Linen bags tied before putting in bin</li>
+                            <li>Shed - items are labeled and organized; clutter-free</li>
+                            <li>Mechanical room - clean, no standing water and no items stored
+                                <ul><li>NOTE: Not all restaurants require water softener</li></ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p><strong>Brinker International Payroll Company</strong></p>
+        <p>F26 Q2 Brand Standards - Updated 06/2025</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">ChiliHead Hospitality - Making Everyone Feel Special</p>
+    </div>
+
+    <script>
+        function searchContent() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // If search is empty, show all sections
+            if (filter === '') {
+                sections.forEach(section => {
+                    section.style.display = 'block';
+                });
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
